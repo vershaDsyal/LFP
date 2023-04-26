@@ -12,6 +12,7 @@ class ProductLists extends Component {
             ProductList: [''],
             Loader:false,
             errors: {},
+            modalClasses: ['modal','fade'],
         };
     
     }
@@ -31,6 +32,10 @@ class ProductLists extends Component {
         }).catch(error => {
             console.log('Error..', error);                
         }); 
+    }
+
+    editProduct(pid){
+        console.log(pid);
     }
 
     deleteProduct(id){
@@ -97,6 +102,12 @@ class ProductLists extends Component {
                                                             <button type="button" className="btn btn-danger btn-xs" onClick={this.deleteProduct.bind(this, row.id)}>
                                                                 <i className="material-icons">delete</i>                                                
                                                             </button>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"   onClick={this.editProduct.bind(this, row.id)}>
+                                                                <i className="material-icons">Edit</i>                                                
+                                                            </button>
+
+                                                            
                                                         
                                                         </td>
 
@@ -107,6 +118,40 @@ class ProductLists extends Component {
 
                                     </tbody>
                                 </table>
+
+                                <div className={this.state.modalClasses.join(' ')} id="defaultModal" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                                   
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="defaultModalLabel">
+                                                <i> edit Product</i></h5><br/>
+                                                 { this.state.Loader &&  <span className="dashboard-spinner spinner-xs"></span> }                               
+                                                    <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </a>
+                                            </div>
+                                            <div className="modal-body">
+
+                                                <div className="form-group">
+                                                   
+                                                     
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                    
+                                                     <button type="button" className="btn btn-primary">
+                                                             Save changes
+                                                        </button>   
+                                                        
+                                                </div>
+                                        
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                     
                                                                
                             </div>

@@ -5436,7 +5436,8 @@ var ProductLists = /*#__PURE__*/function (_Component) {
     _this.state = {
       ProductList: [''],
       Loader: false,
-      errors: {}
+      errors: {},
+      modalClasses: ['modal', 'fade']
     };
     return _this;
   }
@@ -5459,6 +5460,11 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       })["catch"](function (error) {
         console.log('Error..', error);
       });
+    }
+  }, {
+    key: "editProduct",
+    value: function editProduct(pid) {
+      console.log(pid);
     }
   }, {
     key: "deleteProduct",
@@ -5506,9 +5512,9 @@ var ProductLists = /*#__PURE__*/function (_Component) {
             children: "Products List"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "card",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "card-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
                 className: "table table-bordered mb-0 text-center",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
@@ -5531,8 +5537,8 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                         children: row.description
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
                         children: [row.price, " AED"]
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                           type: "button",
                           className: "btn btn-danger btn-xs",
                           onClick: _this4.deleteProduct.bind(_this4, row.id),
@@ -5540,12 +5546,73 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                             className: "material-icons",
                             children: "delete"
                           })
-                        })
+                        }), "\xA0\xA0\xA0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-primary btn-xs",
+                          "data-toggle": "modal",
+                          "data-target": "#defaultModal",
+                          onClick: _this4.editProduct.bind(_this4, row.id),
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                            className: "material-icons",
+                            children: "Edit"
+                          })
+                        })]
                       })]
                     }, key);
                   })
                 })]
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: this.state.modalClasses.join(' '),
+                id: "defaultModal",
+                role: "dialog",
+                "aria-labelledby": "defaultModalLabel",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "modal-dialog",
+                  role: "document",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "modal-content",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "modal-header",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
+                        className: "modal-title",
+                        id: "defaultModalLabel",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                          children: " edit Product"
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), this.state.Loader && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                        className: "dashboard-spinner spinner-xs"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                        href: "#",
+                        className: "close",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                          "aria-hidden": "true",
+                          children: "\xD7"
+                        })
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "modal-body",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "form-group"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                        className: "modal-footer",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                          href: "#",
+                          className: "btn btn-secondary",
+                          "data-dismiss": "modal",
+                          children: "Close"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-primary",
+                          children: "Save changes"
+                        })]
+                      })]
+                    })]
+                  })
+                })
+              })]
             })
           })]
         })
