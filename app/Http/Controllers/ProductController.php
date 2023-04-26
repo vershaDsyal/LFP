@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return Product::select('_id','title','description','price')->get();
+        return Product::select('id','title','description','price')->get();
     }
 
     /**
@@ -127,6 +127,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+       
          try {
 
             $product->delete();
