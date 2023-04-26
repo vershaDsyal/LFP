@@ -12,12 +12,44 @@ class ProductLists extends Component {
             ProductList: [''],
             Loader:false,
             errors: {},
+            pid:'',
+            title: '',
+            description : '',
+            price: '',
+            modalClasses: ['modal','fade'],
         };
-    
+
+        this.onChange = this.onChange.bind(this);
+        this.handleModalClose  = this.handleModalClose.bind(this);
+        this.handleModalOpen  = this.handleModalOpen.bind(this);
+
     }
    
     componentDidMount() {
         this.fetchProducts();    
+    }
+
+
+    handleModalClose(){
+       
+        this.setState({
+            pid:'',
+            title : '',
+            description : '',
+            price : '',
+        });
+    }
+
+    handleModalOpen(){
+       $('#defaultModal').modal('show');
+    }
+
+    onChange(e) {
+
+        this.setState({
+                [e.currentTarget.name]: e.currentTarget.value
+        });
+
     }
 
     //Fetch All Products List 
@@ -33,6 +65,52 @@ class ProductLists extends Component {
         }); 
     }
 
+    editProduct(pid){
+        
+        axios.get('/api/products/'+pid).then(({data})=>{
+
+             this.setState({
+                pid:pid,
+                title: data.product.title,
+                description: data.product.description,
+                price: data.product.price,
+            });
+          
+        }).catch(({response:{data}})=>{
+          Swal.fire({
+            text:data.message,
+            icon:"error"
+          })
+        });
+    }
+
+    updateProduct(pid,title,description,price){
+
+        const formData = new FormData();
+        formData.append('_method', 'PATCH');
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', price);
+
+        axios.post('/api/products/'+pid, formData).then(({data})=>{
+              Swal.fire({
+                icon:"success",
+                text:data.message
+              })
+            this.handleModalClose();
+            this.fetchProducts();
+        }).catch(({response})=>{
+          if(response.status===422){
+            setValidationError(response.data.errors)
+          }else{
+            Swal.fire({
+              text:response.data.message,
+              icon:"error"
+            })
+          }
+        })
+
+    }
     deleteProduct(id){
 
         const isConfirm = Swal.fire({
@@ -97,6 +175,12 @@ class ProductLists extends Component {
                                                             <button type="button" className="btn btn-danger btn-xs" onClick={this.deleteProduct.bind(this, row.id)}>
                                                                 <i className="material-icons">delete</i>                                                
                                                             </button>
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"   onClick={this.editProduct.bind(this, row.id)}>
+                                                                <i className="material-icons">Edit</i>                                                
+                                                            </button>
+
+
                                                         
                                                         </td>
 
@@ -107,6 +191,61 @@ class ProductLists extends Component {
 
                                     </tbody>
                                 </table>
+
+                                <div className={this.state.modalClasses.join(' ')} id="defaultModal" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                                   
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="defaultModalLabel">
+                                                <i> edit Product</i></h5><br/>
+                                                 { this.state.Loader &&  <span className="dashboard-spinner spinner-xs"></span> }                               
+                                                    <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </a>
+                                            </div>
+                                            <div className="modal-body">
+
+                                                <div className="form-group">
+                                                    <div className="row">
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>Name</label>
+                                                            <input className="form-control" type="text" name="title" value={this.state.title} onChange={this.onChange}/>
+                                                            <span className="text-danger">{this.state.errors["title"]}</span>
+                                                        </div>
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>Description</label>
+                                                            <input className="form-control" type="text" name="description" value={this.state.description} onChange={this.onChange}/>
+                                                            <span className="text-danger">{this.state.errors["description"]}</span>
+                                                        </div>
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>Cost</label>
+                                                            <input className="form-control" type="float" name="price" value={this.state.price} onChange={this.onChange}/>
+                                                            <span className="text-danger">{this.state.errors["price"]}</span>
+                                                        </div>
+
+                                                    </div>
+                                                   
+                                                     
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                    
+                                                     <button type="button" className="btn btn-primary" onClick={this.updateProduct.bind(this,this.state.pid,this.state.title,this.state.description,this.state.price)} >
+                                                             Save changes
+                                                        </button>   
+                                                        
+                                                </div>
+                                        
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                     
                                                                
                             </div>

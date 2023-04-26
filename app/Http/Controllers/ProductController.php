@@ -85,6 +85,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+
          $request->validate([
             'title'=>'required',
             'description'=>'required',
@@ -117,6 +118,29 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+
+        
+
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'price'=>'required'
+        ]);
+
+        try{
+
+            $product->fill($request->post())->update();
+
+            return response()->json([
+                'message'=>'Product Updated Successfully!!'
+            ]);
+
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->json([
+                'message'=>'Something goes wrong while updating a product!!'
+            ],500);
+        }
     }
 
     /**
@@ -127,7 +151,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-       
+
          try {
 
             $product->delete();
