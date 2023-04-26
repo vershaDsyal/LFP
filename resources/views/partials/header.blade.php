@@ -12,7 +12,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('elc_theme/assets/images/favi.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('elc_theme/assets/images/lfp.jpg') }}">
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

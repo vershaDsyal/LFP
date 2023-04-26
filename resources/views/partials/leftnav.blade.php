@@ -11,12 +11,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-divider">
-                        Menu
+                        Hi, {{ \Auth::user()->name}}
                     </li>
                      
 
-                     <li class="nav-item ">
-                        <a class="nav-link dash" href="@if(\Auth::user()) route('home') }} @endif"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                    <li class="nav-item ">
+                        <a class="nav-link dash" href="@if(\Auth::user()) {{ route('home') }} @endif"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                         
                     </li>
                   

@@ -11,7 +11,7 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top">
-                @if(\Auth::user())
+                
                 <li class="nav-item dropdown nav-user">
                     <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('elc_theme/assets/images/default-user-image.png') }}" alt="" class="user-avatar-md rounded-circle"></a>
                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
@@ -28,8 +28,7 @@
                         </form>
                     </div>
                 </li>
-                @endif
-
+                
             </ul>
         </div>
     </nav>
