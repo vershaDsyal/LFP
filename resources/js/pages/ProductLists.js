@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 class ProductLists extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            
+        this.state = { 
+            ProductList: [''],
+            Loader:false,
+            errors: {},
         };
     
     }
    
-    componentDidMount() {    
+    componentDidMount() {
+        this.fetchProducts();    
     }
 
+    //Fetch All Products List 
+    fetchProducts() {
+
+        axios.get('/api/products').then(({data})=>{
+            this.setState({
+                ProductList: data,
+            });
+
+        }).catch(error => {
+            console.log('Error..', error);                
+        }); 
+    }
     
     render(){
          
