@@ -5321,7 +5321,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-__webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
+__webpack_require__(/*! ./components/index */ "./resources/js/components/index.js");
 
 /***/ }),
 
@@ -5364,9 +5364,32 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/Example.js":
+/***/ "./resources/js/components/index.js":
+/*!******************************************!*\
+  !*** ./resources/js/components/index.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _pages_ProductLists__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/ProductLists */ "./resources/js/pages/ProductLists.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+if (document.getElementById('productsList')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_pages_ProductLists__WEBPACK_IMPORTED_MODULE_2__["default"], {}), document.getElementById('productsList'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/pages/ProductLists.js":
 /*!********************************************!*\
-  !*** ./resources/js/components/Example.js ***!
+  !*** ./resources/js/pages/ProductLists.js ***!
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -5376,37 +5399,162 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-table */ "./node_modules/react-table/index.js");
+/* harmony import */ var react_table__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_table__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
-function Example() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-          className: "card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "card-header",
-            children: "Example Component"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-            className: "card-body",
-            children: "I'm an example component!"
+
+
+
+var ProductLists = /*#__PURE__*/function (_Component) {
+  _inherits(ProductLists, _Component);
+  var _super = _createSuper(ProductLists);
+  function ProductLists(props) {
+    var _this;
+    _classCallCheck(this, ProductLists);
+    _this = _super.call(this, props);
+    _this.state = {
+      ProductList: [''],
+      Loader: false,
+      errors: {}
+    };
+    return _this;
+  }
+  _createClass(ProductLists, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchProducts();
+    }
+
+    //Fetch All Products List 
+  }, {
+    key: "fetchProducts",
+    value: function fetchProducts() {
+      var _this2 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/products').then(function (_ref) {
+        var data = _ref.data;
+        _this2.setState({
+          ProductList: data
+        });
+      })["catch"](function (error) {
+        console.log('Error..', error);
+      });
+    }
+  }, {
+    key: "deleteProduct",
+    value: function deleteProduct(id) {
+      var _this3 = this;
+      var isConfirm = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+        title: 'Are you sure?',
+        text: "You won't be able to delete this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        return result.isConfirmed;
+      });
+      if (!isConfirm) {
+        return;
+      }
+      axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/api/products/' + id).then(function (_ref2) {
+        var data = _ref2.data;
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+          icon: "success",
+          text: data.message
+        });
+        _this3.fetchProducts();
+      })["catch"](function (_ref3) {
+        var data = _ref3.response.data;
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+          text: data.message,
+          icon: "error"
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "row",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+            className: "section-title",
+            children: "Products List"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            className: "card",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "card-body",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+                className: "table table-bordered mb-0 text-center",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      children: "Title"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      children: "Description"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      children: "Price"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      children: "Actions"
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
+                  children: this.state.ProductList.length > 0 && this.state.ProductList.map(function (row, key) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        children: row.title
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        children: row.description
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                        children: [row.price, " AED"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-danger btn-xs",
+                          onClick: _this4.deleteProduct.bind(_this4, row.id),
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                            className: "material-icons",
+                            children: "delete"
+                          })
+                        })
+                      })]
+                    }, key);
+                  })
+                })]
+              })
+            })
           })]
         })
-      })
-    })
-  });
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
-if (document.getElementById('example')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('example'));
-}
+      });
+    }
+  }]);
+  return ProductLists;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductLists);
 
 /***/ }),
 
@@ -54472,6 +54620,4692 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-table/dist/react-table.development.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/react-table/dist/react-table.development.js ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+(function (global, factory) {
+   true ? factory(exports, __webpack_require__(/*! react */ "./node_modules/react/index.js")) :
+  0;
+}(this, (function (exports, React) { 'use strict';
+
+  React = React && Object.prototype.hasOwnProperty.call(React, 'default') ? React['default'] : React;
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+      var info = gen[key](arg);
+      var value = info.value;
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    if (info.done) {
+      resolve(value);
+    } else {
+      Promise.resolve(value).then(_next, _throw);
+    }
+  }
+
+  function _asyncToGenerator(fn) {
+    return function () {
+      var self = this,
+          args = arguments;
+      return new Promise(function (resolve, reject) {
+        var gen = fn.apply(self, args);
+
+        function _next(value) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+        }
+
+        function _throw(err) {
+          asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+        }
+
+        _next(undefined);
+      });
+    };
+  }
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+
+    for (i = 0; i < sourceKeys.length; i++) {
+      key = sourceKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      target[key] = source[key];
+    }
+
+    return target;
+  }
+
+  function _toPrimitive(input, hint) {
+    if (typeof input !== "object" || input === null) return input;
+    var prim = input[Symbol.toPrimitive];
+
+    if (prim !== undefined) {
+      var res = prim.call(input, hint || "default");
+      if (typeof res !== "object") return res;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+
+    return (hint === "string" ? String : Number)(input);
+  }
+
+  function _toPropertyKey(arg) {
+    var key = _toPrimitive(arg, "string");
+
+    return typeof key === "symbol" ? key : String(key);
+  }
+
+  var renderErr = 'Renderer Error ☝️';
+  var actions = {
+    init: 'init'
+  };
+  var defaultRenderer = function defaultRenderer(_ref) {
+    var _ref$value = _ref.value,
+        value = _ref$value === void 0 ? '' : _ref$value;
+    return value;
+  };
+  var emptyRenderer = function emptyRenderer() {
+    return React.createElement(React.Fragment, null, "\xA0");
+  };
+  var defaultColumn = {
+    Cell: defaultRenderer,
+    width: 150,
+    minWidth: 0,
+    maxWidth: Number.MAX_SAFE_INTEGER
+  };
+
+  function mergeProps() {
+    for (var _len = arguments.length, propList = new Array(_len), _key = 0; _key < _len; _key++) {
+      propList[_key] = arguments[_key];
+    }
+
+    return propList.reduce(function (props, next) {
+      var style = next.style,
+          className = next.className,
+          rest = _objectWithoutPropertiesLoose(next, ["style", "className"]);
+
+      props = _extends({}, props, {}, rest);
+
+      if (style) {
+        props.style = props.style ? _extends({}, props.style || {}, {}, style || {}) : style;
+      }
+
+      if (className) {
+        props.className = props.className ? props.className + ' ' + className : className;
+      }
+
+      if (props.className === '') {
+        delete props.className;
+      }
+
+      return props;
+    }, {});
+  }
+
+  function handlePropGetter(prevProps, userProps, meta) {
+    // Handle a lambda, pass it the previous props
+    if (typeof userProps === 'function') {
+      return handlePropGetter({}, userProps(prevProps, meta));
+    } // Handle an array, merge each item as separate props
+
+
+    if (Array.isArray(userProps)) {
+      return mergeProps.apply(void 0, [prevProps].concat(userProps));
+    } // Handle an object by default, merge the two objects
+
+
+    return mergeProps(prevProps, userProps);
+  }
+
+  var makePropGetter = function makePropGetter(hooks, meta) {
+    if (meta === void 0) {
+      meta = {};
+    }
+
+    return function (userProps) {
+      if (userProps === void 0) {
+        userProps = {};
+      }
+
+      return [].concat(hooks, [userProps]).reduce(function (prev, next) {
+        return handlePropGetter(prev, next, _extends({}, meta, {
+          userProps: userProps
+        }));
+      }, {});
+    };
+  };
+  var reduceHooks = function reduceHooks(hooks, initial, meta, allowUndefined) {
+    if (meta === void 0) {
+      meta = {};
+    }
+
+    return hooks.reduce(function (prev, next) {
+      var nextValue = next(prev, meta);
+
+      {
+        if (!allowUndefined && typeof nextValue === 'undefined') {
+          console.info(next);
+          throw new Error('React Table: A reducer hook ☝️ just returned undefined! This is not allowed.');
+        }
+      }
+
+      return nextValue;
+    }, initial);
+  };
+  var loopHooks = function loopHooks(hooks, context, meta) {
+    if (meta === void 0) {
+      meta = {};
+    }
+
+    return hooks.forEach(function (hook) {
+      var nextValue = hook(context, meta);
+
+      {
+        if (typeof nextValue !== 'undefined') {
+          console.info(hook, nextValue);
+          throw new Error('React Table: A loop-type hook ☝️ just returned a value! This is not allowed.');
+        }
+      }
+    });
+  };
+  function ensurePluginOrder(plugins, befores, pluginName, afters) {
+    if ( afters) {
+      throw new Error("Defining plugins in the \"after\" section of ensurePluginOrder is no longer supported (see plugin " + pluginName + ")");
+    }
+
+    var pluginIndex = plugins.findIndex(function (plugin) {
+      return plugin.pluginName === pluginName;
+    });
+
+    if (pluginIndex === -1) {
+      {
+        throw new Error("The plugin \"" + pluginName + "\" was not found in the plugin list!\nThis usually means you need to need to name your plugin hook by setting the 'pluginName' property of the hook function, eg:\n\n  " + pluginName + ".pluginName = '" + pluginName + "'\n");
+      }
+    }
+
+    befores.forEach(function (before) {
+      var beforeIndex = plugins.findIndex(function (plugin) {
+        return plugin.pluginName === before;
+      });
+
+      if (beforeIndex > -1 && beforeIndex > pluginIndex) {
+        {
+          throw new Error("React Table: The " + pluginName + " plugin hook must be placed after the " + before + " plugin hook!");
+        }
+      }
+    });
+  }
+  function functionalUpdate(updater, old) {
+    return typeof updater === 'function' ? updater(old) : updater;
+  }
+  function useGetLatest(obj) {
+    var ref = React.useRef();
+    ref.current = obj;
+    return React.useCallback(function () {
+      return ref.current;
+    }, []);
+  } // SSR has issues with useLayoutEffect still, so use useEffect during SSR
+
+  var safeUseLayoutEffect = typeof document !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+  function useMountedLayoutEffect(fn, deps) {
+    var mountedRef = React.useRef(false);
+    safeUseLayoutEffect(function () {
+      if (mountedRef.current) {
+        fn();
+      }
+
+      mountedRef.current = true; // eslint-disable-next-line
+    }, deps);
+  }
+  function useAsyncDebounce(defaultFn, defaultWait) {
+    if (defaultWait === void 0) {
+      defaultWait = 0;
+    }
+
+    var debounceRef = React.useRef({});
+    var getDefaultFn = useGetLatest(defaultFn);
+    var getDefaultWait = useGetLatest(defaultWait);
+    return React.useCallback(
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2() {
+        var _len2,
+            args,
+            _key2,
+            _args2 = arguments;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                for (_len2 = _args2.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                  args[_key2] = _args2[_key2];
+                }
+
+                if (!debounceRef.current.promise) {
+                  debounceRef.current.promise = new Promise(function (resolve, reject) {
+                    debounceRef.current.resolve = resolve;
+                    debounceRef.current.reject = reject;
+                  });
+                }
+
+                if (debounceRef.current.timeout) {
+                  clearTimeout(debounceRef.current.timeout);
+                }
+
+                debounceRef.current.timeout = setTimeout(
+                /*#__PURE__*/
+                _asyncToGenerator(
+                /*#__PURE__*/
+                regeneratorRuntime.mark(function _callee() {
+                  return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                      switch (_context.prev = _context.next) {
+                        case 0:
+                          delete debounceRef.current.timeout;
+                          _context.prev = 1;
+                          _context.t0 = debounceRef.current;
+                          _context.next = 5;
+                          return getDefaultFn().apply(void 0, args);
+
+                        case 5:
+                          _context.t1 = _context.sent;
+
+                          _context.t0.resolve.call(_context.t0, _context.t1);
+
+                          _context.next = 12;
+                          break;
+
+                        case 9:
+                          _context.prev = 9;
+                          _context.t2 = _context["catch"](1);
+                          debounceRef.current.reject(_context.t2);
+
+                        case 12:
+                          _context.prev = 12;
+                          delete debounceRef.current.promise;
+                          return _context.finish(12);
+
+                        case 15:
+                        case "end":
+                          return _context.stop();
+                      }
+                    }
+                  }, _callee, null, [[1, 9, 12, 15]]);
+                })), getDefaultWait());
+                return _context2.abrupt("return", debounceRef.current.promise);
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function () {
+        return _ref2.apply(this, arguments);
+      };
+    }(), [getDefaultFn, getDefaultWait]);
+  }
+  function makeRenderer(instance, column, meta) {
+    if (meta === void 0) {
+      meta = {};
+    }
+
+    return function (type, userProps) {
+      if (userProps === void 0) {
+        userProps = {};
+      }
+
+      var Comp = typeof type === 'string' ? column[type] : type;
+
+      if (typeof Comp === 'undefined') {
+        console.info(column);
+        throw new Error(renderErr);
+      }
+
+      return flexRender(Comp, _extends({}, instance, {
+        column: column
+      }, meta, {}, userProps));
+    };
+  }
+  function flexRender(Comp, props) {
+    return isReactComponent(Comp) ? React.createElement(Comp, props) : Comp;
+  }
+
+  function isReactComponent(component) {
+    return isClassComponent(component) || typeof component === 'function' || isExoticComponent(component);
+  }
+
+  function isClassComponent(component) {
+    return typeof component === 'function' && function () {
+      var proto = Object.getPrototypeOf(component);
+      return proto.prototype && proto.prototype.isReactComponent;
+    }();
+  }
+
+  function isExoticComponent(component) {
+    return typeof component === 'object' && typeof component.$$typeof === 'symbol' && ['react.memo', 'react.forward_ref'].includes(component.$$typeof.description);
+  }
+
+  function linkColumnStructure(columns, parent, depth) {
+    if (depth === void 0) {
+      depth = 0;
+    }
+
+    return columns.map(function (column) {
+      column = _extends({}, column, {
+        parent: parent,
+        depth: depth
+      });
+      assignColumnAccessor(column);
+
+      if (column.columns) {
+        column.columns = linkColumnStructure(column.columns, column, depth + 1);
+      }
+
+      return column;
+    });
+  }
+  function flattenColumns(columns) {
+    return flattenBy(columns, 'columns');
+  }
+  function assignColumnAccessor(column) {
+    // First check for string accessor
+    var id = column.id,
+        accessor = column.accessor,
+        Header = column.Header;
+
+    if (typeof accessor === 'string') {
+      id = id || accessor;
+      var accessorPath = accessor.split('.');
+
+      accessor = function accessor(row) {
+        return getBy(row, accessorPath);
+      };
+    }
+
+    if (!id && typeof Header === 'string' && Header) {
+      id = Header;
+    }
+
+    if (!id && column.columns) {
+      console.error(column);
+      throw new Error('A column ID (or unique "Header" value) is required!');
+    }
+
+    if (!id) {
+      console.error(column);
+      throw new Error('A column ID (or string accessor) is required!');
+    }
+
+    Object.assign(column, {
+      id: id,
+      accessor: accessor
+    });
+    return column;
+  }
+  function decorateColumn(column, userDefaultColumn) {
+    if (!userDefaultColumn) {
+      throw new Error();
+    }
+
+    Object.assign(column, _extends({
+      // Make sure there is a fallback header, just in case
+      Header: emptyRenderer,
+      Footer: emptyRenderer
+    }, defaultColumn, {}, userDefaultColumn, {}, column));
+    Object.assign(column, {
+      originalWidth: column.width
+    });
+    return column;
+  } // Build the header groups from the bottom up
+
+  function makeHeaderGroups(allColumns, defaultColumn, additionalHeaderProperties) {
+    if (additionalHeaderProperties === void 0) {
+      additionalHeaderProperties = function additionalHeaderProperties() {
+        return {};
+      };
+    }
+
+    var headerGroups = [];
+    var scanColumns = allColumns;
+    var uid = 0;
+
+    var getUID = function getUID() {
+      return uid++;
+    };
+
+    var _loop = function _loop() {
+      // The header group we are creating
+      var headerGroup = {
+        headers: []
+      }; // The parent columns we're going to scan next
+
+      var parentColumns = [];
+      var hasParents = scanColumns.some(function (d) {
+        return d.parent;
+      }); // Scan each column for parents
+
+      scanColumns.forEach(function (column) {
+        // What is the latest (last) parent column?
+        var latestParentColumn = [].concat(parentColumns).reverse()[0];
+        var newParent;
+
+        if (hasParents) {
+          // If the column has a parent, add it if necessary
+          if (column.parent) {
+            newParent = _extends({}, column.parent, {
+              originalId: column.parent.id,
+              id: column.parent.id + "_" + getUID(),
+              headers: [column]
+            }, additionalHeaderProperties(column));
+          } else {
+            // If other columns have parents, we'll need to add a place holder if necessary
+            var originalId = column.id + "_placeholder";
+            newParent = decorateColumn(_extends({
+              originalId: originalId,
+              id: column.id + "_placeholder_" + getUID(),
+              placeholderOf: column,
+              headers: [column]
+            }, additionalHeaderProperties(column)), defaultColumn);
+          } // If the resulting parent columns are the same, just add
+          // the column and increment the header span
+
+
+          if (latestParentColumn && latestParentColumn.originalId === newParent.originalId) {
+            latestParentColumn.headers.push(column);
+          } else {
+            parentColumns.push(newParent);
+          }
+        }
+
+        headerGroup.headers.push(column);
+      });
+      headerGroups.push(headerGroup); // Start scanning the parent columns
+
+      scanColumns = parentColumns;
+    };
+
+    while (scanColumns.length) {
+      _loop();
+    }
+
+    return headerGroups.reverse();
+  }
+  var pathObjCache = new Map();
+  function getBy(obj, path, def) {
+    if (!path) {
+      return obj;
+    }
+
+    var cacheKey = typeof path === 'function' ? path : JSON.stringify(path);
+
+    var pathObj = pathObjCache.get(cacheKey) || function () {
+      var pathObj = makePathArray(path);
+      pathObjCache.set(cacheKey, pathObj);
+      return pathObj;
+    }();
+
+    var val;
+
+    try {
+      val = pathObj.reduce(function (cursor, pathPart) {
+        return cursor[pathPart];
+      }, obj);
+    } catch (e) {// continue regardless of error
+    }
+
+    return typeof val !== 'undefined' ? val : def;
+  }
+  function getFirstDefined() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    for (var i = 0; i < args.length; i += 1) {
+      if (typeof args[i] !== 'undefined') {
+        return args[i];
+      }
+    }
+  }
+  function isFunction(a) {
+    if (typeof a === 'function') {
+      return a;
+    }
+  }
+  function flattenBy(arr, key) {
+    var flat = [];
+
+    var recurse = function recurse(arr) {
+      arr.forEach(function (d) {
+        if (!d[key]) {
+          flat.push(d);
+        } else {
+          recurse(d[key]);
+        }
+      });
+    };
+
+    recurse(arr);
+    return flat;
+  }
+  function expandRows(rows, _ref) {
+    var manualExpandedKey = _ref.manualExpandedKey,
+        expanded = _ref.expanded,
+        _ref$expandSubRows = _ref.expandSubRows,
+        expandSubRows = _ref$expandSubRows === void 0 ? true : _ref$expandSubRows;
+    var expandedRows = [];
+
+    var handleRow = function handleRow(row, addToExpandedRows) {
+      if (addToExpandedRows === void 0) {
+        addToExpandedRows = true;
+      }
+
+      row.isExpanded = row.original && row.original[manualExpandedKey] || expanded[row.id];
+      row.canExpand = row.subRows && !!row.subRows.length;
+
+      if (addToExpandedRows) {
+        expandedRows.push(row);
+      }
+
+      if (row.subRows && row.subRows.length && row.isExpanded) {
+        row.subRows.forEach(function (row) {
+          return handleRow(row, expandSubRows);
+        });
+      }
+    };
+
+    rows.forEach(function (row) {
+      return handleRow(row);
+    });
+    return expandedRows;
+  }
+  function getFilterMethod(filter, userFilterTypes, filterTypes) {
+    return isFunction(filter) || userFilterTypes[filter] || filterTypes[filter] || filterTypes.text;
+  }
+  function shouldAutoRemoveFilter(autoRemove, value, column) {
+    return autoRemove ? autoRemove(value, column) : typeof value === 'undefined';
+  }
+  function unpreparedAccessWarning() {
+    throw new Error('React-Table: You have not called prepareRow(row) one or more rows you are attempting to render.');
+  }
+  var passiveSupported = null;
+  function passiveEventSupported() {
+    // memoize support to avoid adding multiple test events
+    if (typeof passiveSupported === 'boolean') return passiveSupported;
+    var supported = false;
+
+    try {
+      var options = {
+        get passive() {
+          supported = true;
+          return false;
+        }
+
+      };
+      window.addEventListener('test', null, options);
+      window.removeEventListener('test', null, options);
+    } catch (err) {
+      supported = false;
+    }
+
+    passiveSupported = supported;
+    return passiveSupported;
+  } //
+
+  var reOpenBracket = /\[/g;
+  var reCloseBracket = /\]/g;
+
+  function makePathArray(obj) {
+    return flattenDeep(obj) // remove all periods in parts
+    .map(function (d) {
+      return String(d).replace('.', '_');
+    }) // join parts using period
+    .join('.') // replace brackets with periods
+    .replace(reOpenBracket, '.').replace(reCloseBracket, '') // split it back out on periods
+    .split('.');
+  }
+
+  function flattenDeep(arr, newArr) {
+    if (newArr === void 0) {
+      newArr = [];
+    }
+
+    if (!Array.isArray(arr)) {
+      newArr.push(arr);
+    } else {
+      for (var i = 0; i < arr.length; i += 1) {
+        flattenDeep(arr[i], newArr);
+      }
+    }
+
+    return newArr;
+  }
+
+  var defaultGetTableProps = function defaultGetTableProps(props) {
+    return _extends({
+      role: 'table'
+    }, props);
+  };
+
+  var defaultGetTableBodyProps = function defaultGetTableBodyProps(props) {
+    return _extends({
+      role: 'rowgroup'
+    }, props);
+  };
+
+  var defaultGetHeaderProps = function defaultGetHeaderProps(props, _ref) {
+    var column = _ref.column;
+    return _extends({
+      key: "header_" + column.id,
+      colSpan: column.totalVisibleHeaderCount,
+      role: 'columnheader'
+    }, props);
+  };
+
+  var defaultGetFooterProps = function defaultGetFooterProps(props, _ref2) {
+    var column = _ref2.column;
+    return _extends({
+      key: "footer_" + column.id,
+      colSpan: column.totalVisibleHeaderCount
+    }, props);
+  };
+
+  var defaultGetHeaderGroupProps = function defaultGetHeaderGroupProps(props, _ref3) {
+    var index = _ref3.index;
+    return _extends({
+      key: "headerGroup_" + index,
+      role: 'row'
+    }, props);
+  };
+
+  var defaultGetFooterGroupProps = function defaultGetFooterGroupProps(props, _ref4) {
+    var index = _ref4.index;
+    return _extends({
+      key: "footerGroup_" + index
+    }, props);
+  };
+
+  var defaultGetRowProps = function defaultGetRowProps(props, _ref5) {
+    var row = _ref5.row;
+    return _extends({
+      key: "row_" + row.id,
+      role: 'row'
+    }, props);
+  };
+
+  var defaultGetCellProps = function defaultGetCellProps(props, _ref6) {
+    var cell = _ref6.cell;
+    return _extends({
+      key: "cell_" + cell.row.id + "_" + cell.column.id,
+      role: 'cell'
+    }, props);
+  };
+
+  function makeDefaultPluginHooks() {
+    return {
+      useOptions: [],
+      stateReducers: [],
+      useControlledState: [],
+      columns: [],
+      columnsDeps: [],
+      allColumns: [],
+      allColumnsDeps: [],
+      accessValue: [],
+      materializedColumns: [],
+      materializedColumnsDeps: [],
+      useInstanceAfterData: [],
+      visibleColumns: [],
+      visibleColumnsDeps: [],
+      headerGroups: [],
+      headerGroupsDeps: [],
+      useInstanceBeforeDimensions: [],
+      useInstance: [],
+      prepareRow: [],
+      getTableProps: [defaultGetTableProps],
+      getTableBodyProps: [defaultGetTableBodyProps],
+      getHeaderGroupProps: [defaultGetHeaderGroupProps],
+      getFooterGroupProps: [defaultGetFooterGroupProps],
+      getHeaderProps: [defaultGetHeaderProps],
+      getFooterProps: [defaultGetFooterProps],
+      getRowProps: [defaultGetRowProps],
+      getCellProps: [defaultGetCellProps],
+      useFinalInstance: []
+    };
+  }
+
+  actions.resetHiddenColumns = 'resetHiddenColumns';
+  actions.toggleHideColumn = 'toggleHideColumn';
+  actions.setHiddenColumns = 'setHiddenColumns';
+  actions.toggleHideAllColumns = 'toggleHideAllColumns';
+  var useColumnVisibility = function useColumnVisibility(hooks) {
+    hooks.getToggleHiddenProps = [defaultGetToggleHiddenProps];
+    hooks.getToggleHideAllColumnsProps = [defaultGetToggleHideAllColumnsProps];
+    hooks.stateReducers.push(reducer);
+    hooks.useInstanceBeforeDimensions.push(useInstanceBeforeDimensions);
+    hooks.headerGroupsDeps.push(function (deps, _ref) {
+      var instance = _ref.instance;
+      return [].concat(deps, [instance.state.hiddenColumns]);
+    });
+    hooks.useInstance.push(useInstance);
+  };
+  useColumnVisibility.pluginName = 'useColumnVisibility';
+
+  var defaultGetToggleHiddenProps = function defaultGetToggleHiddenProps(props, _ref2) {
+    var column = _ref2.column;
+    return [props, {
+      onChange: function onChange(e) {
+        column.toggleHidden(!e.target.checked);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      checked: column.isVisible,
+      title: 'Toggle Column Visible'
+    }];
+  };
+
+  var defaultGetToggleHideAllColumnsProps = function defaultGetToggleHideAllColumnsProps(props, _ref3) {
+    var instance = _ref3.instance;
+    return [props, {
+      onChange: function onChange(e) {
+        instance.toggleHideAllColumns(!e.target.checked);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      checked: !instance.allColumnsHidden && !instance.state.hiddenColumns.length,
+      title: 'Toggle All Columns Hidden',
+      indeterminate: !instance.allColumnsHidden && instance.state.hiddenColumns.length
+    }];
+  };
+
+  function reducer(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        hiddenColumns: []
+      }, state);
+    }
+
+    if (action.type === actions.resetHiddenColumns) {
+      return _extends({}, state, {
+        hiddenColumns: instance.initialState.hiddenColumns || []
+      });
+    }
+
+    if (action.type === actions.toggleHideColumn) {
+      var should = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.includes(action.columnId);
+      var hiddenColumns = should ? [].concat(state.hiddenColumns, [action.columnId]) : state.hiddenColumns.filter(function (d) {
+        return d !== action.columnId;
+      });
+      return _extends({}, state, {
+        hiddenColumns: hiddenColumns
+      });
+    }
+
+    if (action.type === actions.setHiddenColumns) {
+      return _extends({}, state, {
+        hiddenColumns: functionalUpdate(action.value, state.hiddenColumns)
+      });
+    }
+
+    if (action.type === actions.toggleHideAllColumns) {
+      var shouldAll = typeof action.value !== 'undefined' ? action.value : !state.hiddenColumns.length;
+      return _extends({}, state, {
+        hiddenColumns: shouldAll ? instance.allColumns.map(function (d) {
+          return d.id;
+        }) : []
+      });
+    }
+  }
+
+  function useInstanceBeforeDimensions(instance) {
+    var headers = instance.headers,
+        hiddenColumns = instance.state.hiddenColumns;
+    var isMountedRef = React.useRef(false);
+
+    if (!isMountedRef.current) ;
+
+    var handleColumn = function handleColumn(column, parentVisible) {
+      column.isVisible = parentVisible && !hiddenColumns.includes(column.id);
+      var totalVisibleHeaderCount = 0;
+
+      if (column.headers && column.headers.length) {
+        column.headers.forEach(function (subColumn) {
+          return totalVisibleHeaderCount += handleColumn(subColumn, column.isVisible);
+        });
+      } else {
+        totalVisibleHeaderCount = column.isVisible ? 1 : 0;
+      }
+
+      column.totalVisibleHeaderCount = totalVisibleHeaderCount;
+      return totalVisibleHeaderCount;
+    };
+
+    var totalVisibleHeaderCount = 0;
+    headers.forEach(function (subHeader) {
+      return totalVisibleHeaderCount += handleColumn(subHeader, true);
+    });
+  }
+
+  function useInstance(instance) {
+    var columns = instance.columns,
+        flatHeaders = instance.flatHeaders,
+        dispatch = instance.dispatch,
+        allColumns = instance.allColumns,
+        getHooks = instance.getHooks,
+        hiddenColumns = instance.state.hiddenColumns,
+        _instance$autoResetHi = instance.autoResetHiddenColumns,
+        autoResetHiddenColumns = _instance$autoResetHi === void 0 ? true : _instance$autoResetHi;
+    var getInstance = useGetLatest(instance);
+    var allColumnsHidden = allColumns.length === hiddenColumns.length;
+    var toggleHideColumn = React.useCallback(function (columnId, value) {
+      return dispatch({
+        type: actions.toggleHideColumn,
+        columnId: columnId,
+        value: value
+      });
+    }, [dispatch]);
+    var setHiddenColumns = React.useCallback(function (value) {
+      return dispatch({
+        type: actions.setHiddenColumns,
+        value: value
+      });
+    }, [dispatch]);
+    var toggleHideAllColumns = React.useCallback(function (value) {
+      return dispatch({
+        type: actions.toggleHideAllColumns,
+        value: value
+      });
+    }, [dispatch]);
+    var getToggleHideAllColumnsProps = makePropGetter(getHooks().getToggleHideAllColumnsProps, {
+      instance: getInstance()
+    });
+    flatHeaders.forEach(function (column) {
+      column.toggleHidden = function (value) {
+        dispatch({
+          type: actions.toggleHideColumn,
+          columnId: column.id,
+          value: value
+        });
+      };
+
+      column.getToggleHiddenProps = makePropGetter(getHooks().getToggleHiddenProps, {
+        instance: getInstance(),
+        column: column
+      });
+    });
+    var getAutoResetHiddenColumns = useGetLatest(autoResetHiddenColumns);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetHiddenColumns()) {
+        dispatch({
+          type: actions.resetHiddenColumns
+        });
+      }
+    }, [dispatch, columns]);
+    Object.assign(instance, {
+      allColumnsHidden: allColumnsHidden,
+      toggleHideColumn: toggleHideColumn,
+      setHiddenColumns: setHiddenColumns,
+      toggleHideAllColumns: toggleHideAllColumns,
+      getToggleHideAllColumnsProps: getToggleHideAllColumnsProps
+    });
+  }
+
+  var defaultInitialState = {};
+  var defaultColumnInstance = {};
+
+  var defaultReducer = function defaultReducer(state, action, prevState) {
+    return state;
+  };
+
+  var defaultGetSubRows = function defaultGetSubRows(row, index) {
+    return row.subRows || [];
+  };
+
+  var defaultGetRowId = function defaultGetRowId(row, index, parent) {
+    return "" + (parent ? [parent.id, index].join('.') : index);
+  };
+
+  var defaultUseControlledState = function defaultUseControlledState(d) {
+    return d;
+  };
+
+  function applyDefaults(props) {
+    var _props$initialState = props.initialState,
+        initialState = _props$initialState === void 0 ? defaultInitialState : _props$initialState,
+        _props$defaultColumn = props.defaultColumn,
+        defaultColumn = _props$defaultColumn === void 0 ? defaultColumnInstance : _props$defaultColumn,
+        _props$getSubRows = props.getSubRows,
+        getSubRows = _props$getSubRows === void 0 ? defaultGetSubRows : _props$getSubRows,
+        _props$getRowId = props.getRowId,
+        getRowId = _props$getRowId === void 0 ? defaultGetRowId : _props$getRowId,
+        _props$stateReducer = props.stateReducer,
+        stateReducer = _props$stateReducer === void 0 ? defaultReducer : _props$stateReducer,
+        _props$useControlledS = props.useControlledState,
+        useControlledState = _props$useControlledS === void 0 ? defaultUseControlledState : _props$useControlledS,
+        rest = _objectWithoutPropertiesLoose(props, ["initialState", "defaultColumn", "getSubRows", "getRowId", "stateReducer", "useControlledState"]);
+
+    return _extends({}, rest, {
+      initialState: initialState,
+      defaultColumn: defaultColumn,
+      getSubRows: getSubRows,
+      getRowId: getRowId,
+      stateReducer: stateReducer,
+      useControlledState: useControlledState
+    });
+  }
+
+  var useTable = function useTable(props) {
+    for (var _len = arguments.length, plugins = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      plugins[_key - 1] = arguments[_key];
+    }
+
+    // Apply default props
+    props = applyDefaults(props); // Add core plugins
+
+    plugins = [useColumnVisibility].concat(plugins); // Create the table instance
+
+    var instanceRef = React.useRef({}); // Create a getter for the instance (helps avoid a lot of potential memory leaks)
+
+    var getInstance = useGetLatest(instanceRef.current); // Assign the props, plugins and hooks to the instance
+
+    Object.assign(getInstance(), _extends({}, props, {
+      plugins: plugins,
+      hooks: makeDefaultPluginHooks()
+    })); // Allow plugins to register hooks as early as possible
+
+    plugins.filter(Boolean).forEach(function (plugin) {
+      plugin(getInstance().hooks);
+    }); // Consume all hooks and make a getter for them
+
+    var getHooks = useGetLatest(getInstance().hooks);
+    getInstance().getHooks = getHooks;
+    delete getInstance().hooks; // Allow useOptions hooks to modify the options coming into the table
+
+    Object.assign(getInstance(), reduceHooks(getHooks().useOptions, applyDefaults(props)));
+
+    var _getInstance = getInstance(),
+        data = _getInstance.data,
+        userColumns = _getInstance.columns,
+        initialState = _getInstance.initialState,
+        defaultColumn = _getInstance.defaultColumn,
+        getSubRows = _getInstance.getSubRows,
+        getRowId = _getInstance.getRowId,
+        stateReducer = _getInstance.stateReducer,
+        useControlledState = _getInstance.useControlledState; // Setup user reducer ref
+
+
+    var getStateReducer = useGetLatest(stateReducer); // Build the reducer
+
+    var reducer = React.useCallback(function (state, action) {
+      // Detect invalid actions
+      if (!action.type) {
+        console.info({
+          action: action
+        });
+        throw new Error('Unknown Action 👆');
+      } // Reduce the state from all plugin reducers
+
+
+      return [].concat(getHooks().stateReducers, Array.isArray(getStateReducer()) ? getStateReducer() : [getStateReducer()]).reduce(function (s, handler) {
+        return handler(s, action, state, getInstance()) || s;
+      }, state);
+    }, [getHooks, getStateReducer, getInstance]); // Start the reducer
+
+    var _React$useReducer = React.useReducer(reducer, undefined, function () {
+      return reducer(initialState, {
+        type: actions.init
+      });
+    }),
+        reducerState = _React$useReducer[0],
+        dispatch = _React$useReducer[1]; // Allow the user to control the final state with hooks
+
+
+    var state = reduceHooks([].concat(getHooks().useControlledState, [useControlledState]), reducerState, {
+      instance: getInstance()
+    });
+    Object.assign(getInstance(), {
+      state: state,
+      dispatch: dispatch
+    }); // Decorate All the columns
+
+    var columns = React.useMemo(function () {
+      return linkColumnStructure(reduceHooks(getHooks().columns, userColumns, {
+        instance: getInstance()
+      }));
+    }, [getHooks, getInstance, userColumns].concat(reduceHooks(getHooks().columnsDeps, [], {
+      instance: getInstance()
+    })));
+    getInstance().columns = columns; // Get the flat list of all columns and allow hooks to decorate
+    // those columns (and trigger this memoization via deps)
+
+    var allColumns = React.useMemo(function () {
+      return reduceHooks(getHooks().allColumns, flattenColumns(columns), {
+        instance: getInstance()
+      }).map(assignColumnAccessor);
+    }, [columns, getHooks, getInstance].concat(reduceHooks(getHooks().allColumnsDeps, [], {
+      instance: getInstance()
+    })));
+    getInstance().allColumns = allColumns; // Access the row model using initial columns
+
+    var _React$useMemo = React.useMemo(function () {
+      var rows = [];
+      var flatRows = [];
+      var rowsById = {};
+      var allColumnsQueue = [].concat(allColumns);
+
+      while (allColumnsQueue.length) {
+        var column = allColumnsQueue.shift();
+        accessRowsForColumn({
+          data: data,
+          rows: rows,
+          flatRows: flatRows,
+          rowsById: rowsById,
+          column: column,
+          getRowId: getRowId,
+          getSubRows: getSubRows,
+          accessValueHooks: getHooks().accessValue,
+          getInstance: getInstance
+        });
+      }
+
+      return [rows, flatRows, rowsById];
+    }, [allColumns, data, getRowId, getSubRows, getHooks, getInstance]),
+        rows = _React$useMemo[0],
+        flatRows = _React$useMemo[1],
+        rowsById = _React$useMemo[2];
+
+    Object.assign(getInstance(), {
+      rows: rows,
+      initialRows: [].concat(rows),
+      flatRows: flatRows,
+      rowsById: rowsById // materializedColumns,
+
+    });
+    loopHooks(getHooks().useInstanceAfterData, getInstance()); // Get the flat list of all columns AFTER the rows
+    // have been access, and allow hooks to decorate
+    // those columns (and trigger this memoization via deps)
+
+    var visibleColumns = React.useMemo(function () {
+      return reduceHooks(getHooks().visibleColumns, allColumns, {
+        instance: getInstance()
+      }).map(function (d) {
+        return decorateColumn(d, defaultColumn);
+      });
+    }, [getHooks, allColumns, getInstance, defaultColumn].concat(reduceHooks(getHooks().visibleColumnsDeps, [], {
+      instance: getInstance()
+    }))); // Combine new visible columns with all columns
+
+    allColumns = React.useMemo(function () {
+      var columns = [].concat(visibleColumns);
+      allColumns.forEach(function (column) {
+        if (!columns.find(function (d) {
+          return d.id === column.id;
+        })) {
+          columns.push(column);
+        }
+      });
+      return columns;
+    }, [allColumns, visibleColumns]);
+    getInstance().allColumns = allColumns;
+
+    {
+      var duplicateColumns = allColumns.filter(function (column, i) {
+        return allColumns.findIndex(function (d) {
+          return d.id === column.id;
+        }) !== i;
+      });
+
+      if (duplicateColumns.length) {
+        console.info(allColumns);
+        throw new Error("Duplicate columns were found with ids: \"" + duplicateColumns.map(function (d) {
+          return d.id;
+        }).join(', ') + "\" in the columns array above");
+      }
+    } // Make the headerGroups
+
+
+    var headerGroups = React.useMemo(function () {
+      return reduceHooks(getHooks().headerGroups, makeHeaderGroups(visibleColumns, defaultColumn), getInstance());
+    }, [getHooks, visibleColumns, defaultColumn, getInstance].concat(reduceHooks(getHooks().headerGroupsDeps, [], {
+      instance: getInstance()
+    })));
+    getInstance().headerGroups = headerGroups; // Get the first level of headers
+
+    var headers = React.useMemo(function () {
+      return headerGroups.length ? headerGroups[0].headers : [];
+    }, [headerGroups]);
+    getInstance().headers = headers; // Provide a flat header list for utilities
+
+    getInstance().flatHeaders = headerGroups.reduce(function (all, headerGroup) {
+      return [].concat(all, headerGroup.headers);
+    }, []);
+    loopHooks(getHooks().useInstanceBeforeDimensions, getInstance()); // Filter columns down to visible ones
+
+    var visibleColumnsDep = visibleColumns.filter(function (d) {
+      return d.isVisible;
+    }).map(function (d) {
+      return d.id;
+    }).sort().join('_');
+    visibleColumns = React.useMemo(function () {
+      return visibleColumns.filter(function (d) {
+        return d.isVisible;
+      });
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    [visibleColumns, visibleColumnsDep]);
+    getInstance().visibleColumns = visibleColumns; // Header Visibility is needed by this point
+
+    var _calculateHeaderWidth = calculateHeaderWidths(headers),
+        totalColumnsMinWidth = _calculateHeaderWidth[0],
+        totalColumnsWidth = _calculateHeaderWidth[1],
+        totalColumnsMaxWidth = _calculateHeaderWidth[2];
+
+    getInstance().totalColumnsMinWidth = totalColumnsMinWidth;
+    getInstance().totalColumnsWidth = totalColumnsWidth;
+    getInstance().totalColumnsMaxWidth = totalColumnsMaxWidth;
+    loopHooks(getHooks().useInstance, getInstance()) // Each materialized header needs to be assigned a render function and other
+    // prop getter properties here.
+    ;
+    [].concat(getInstance().flatHeaders, getInstance().allColumns).forEach(function (column) {
+      // Give columns/headers rendering power
+      column.render = makeRenderer(getInstance(), column); // Give columns/headers a default getHeaderProps
+
+      column.getHeaderProps = makePropGetter(getHooks().getHeaderProps, {
+        instance: getInstance(),
+        column: column
+      }); // Give columns/headers a default getFooterProps
+
+      column.getFooterProps = makePropGetter(getHooks().getFooterProps, {
+        instance: getInstance(),
+        column: column
+      });
+    });
+    getInstance().headerGroups = React.useMemo(function () {
+      return headerGroups.filter(function (headerGroup, i) {
+        // Filter out any headers and headerGroups that don't have visible columns
+        headerGroup.headers = headerGroup.headers.filter(function (column) {
+          var recurse = function recurse(headers) {
+            return headers.filter(function (column) {
+              if (column.headers) {
+                return recurse(column.headers);
+              }
+
+              return column.isVisible;
+            }).length;
+          };
+
+          if (column.headers) {
+            return recurse(column.headers);
+          }
+
+          return column.isVisible;
+        }); // Give headerGroups getRowProps
+
+        if (headerGroup.headers.length) {
+          headerGroup.getHeaderGroupProps = makePropGetter(getHooks().getHeaderGroupProps, {
+            instance: getInstance(),
+            headerGroup: headerGroup,
+            index: i
+          });
+          headerGroup.getFooterGroupProps = makePropGetter(getHooks().getFooterGroupProps, {
+            instance: getInstance(),
+            headerGroup: headerGroup,
+            index: i
+          });
+          return true;
+        }
+
+        return false;
+      });
+    }, [headerGroups, getInstance, getHooks]);
+    getInstance().footerGroups = [].concat(getInstance().headerGroups).reverse(); // The prepareRow function is absolutely necessary and MUST be called on
+    // any rows the user wishes to be displayed.
+
+    getInstance().prepareRow = React.useCallback(function (row) {
+      row.getRowProps = makePropGetter(getHooks().getRowProps, {
+        instance: getInstance(),
+        row: row
+      }); // Build the visible cells for each row
+
+      row.allCells = allColumns.map(function (column) {
+        var value = row.values[column.id];
+        var cell = {
+          column: column,
+          row: row,
+          value: value
+        }; // Give each cell a getCellProps base
+
+        cell.getCellProps = makePropGetter(getHooks().getCellProps, {
+          instance: getInstance(),
+          cell: cell
+        }); // Give each cell a renderer function (supports multiple renderers)
+
+        cell.render = makeRenderer(getInstance(), column, {
+          row: row,
+          cell: cell,
+          value: value
+        });
+        return cell;
+      });
+      row.cells = visibleColumns.map(function (column) {
+        return row.allCells.find(function (cell) {
+          return cell.column.id === column.id;
+        });
+      }); // need to apply any row specific hooks (useExpanded requires this)
+
+      loopHooks(getHooks().prepareRow, row, {
+        instance: getInstance()
+      });
+    }, [getHooks, getInstance, allColumns, visibleColumns]);
+    getInstance().getTableProps = makePropGetter(getHooks().getTableProps, {
+      instance: getInstance()
+    });
+    getInstance().getTableBodyProps = makePropGetter(getHooks().getTableBodyProps, {
+      instance: getInstance()
+    });
+    loopHooks(getHooks().useFinalInstance, getInstance());
+    return getInstance();
+  };
+
+  function calculateHeaderWidths(headers, left) {
+    if (left === void 0) {
+      left = 0;
+    }
+
+    var sumTotalMinWidth = 0;
+    var sumTotalWidth = 0;
+    var sumTotalMaxWidth = 0;
+    var sumTotalFlexWidth = 0;
+    headers.forEach(function (header) {
+      var subHeaders = header.headers;
+      header.totalLeft = left;
+
+      if (subHeaders && subHeaders.length) {
+        var _calculateHeaderWidth2 = calculateHeaderWidths(subHeaders, left),
+            totalMinWidth = _calculateHeaderWidth2[0],
+            totalWidth = _calculateHeaderWidth2[1],
+            totalMaxWidth = _calculateHeaderWidth2[2],
+            totalFlexWidth = _calculateHeaderWidth2[3];
+
+        header.totalMinWidth = totalMinWidth;
+        header.totalWidth = totalWidth;
+        header.totalMaxWidth = totalMaxWidth;
+        header.totalFlexWidth = totalFlexWidth;
+      } else {
+        header.totalMinWidth = header.minWidth;
+        header.totalWidth = Math.min(Math.max(header.minWidth, header.width), header.maxWidth);
+        header.totalMaxWidth = header.maxWidth;
+        header.totalFlexWidth = header.canResize ? header.totalWidth : 0;
+      }
+
+      if (header.isVisible) {
+        left += header.totalWidth;
+        sumTotalMinWidth += header.totalMinWidth;
+        sumTotalWidth += header.totalWidth;
+        sumTotalMaxWidth += header.totalMaxWidth;
+        sumTotalFlexWidth += header.totalFlexWidth;
+      }
+    });
+    return [sumTotalMinWidth, sumTotalWidth, sumTotalMaxWidth, sumTotalFlexWidth];
+  }
+
+  function accessRowsForColumn(_ref) {
+    var data = _ref.data,
+        rows = _ref.rows,
+        flatRows = _ref.flatRows,
+        rowsById = _ref.rowsById,
+        column = _ref.column,
+        getRowId = _ref.getRowId,
+        getSubRows = _ref.getSubRows,
+        accessValueHooks = _ref.accessValueHooks,
+        getInstance = _ref.getInstance;
+
+    // Access the row's data column-by-column
+    // We do it this way so we can incrementally add materialized
+    // columns after the first pass and avoid excessive looping
+    var accessRow = function accessRow(originalRow, rowIndex, depth, parent, parentRows) {
+      if (depth === void 0) {
+        depth = 0;
+      }
+
+      // Keep the original reference around
+      var original = originalRow;
+      var id = getRowId(originalRow, rowIndex, parent);
+      var row = rowsById[id]; // If the row hasn't been created, let's make it
+
+      if (!row) {
+        row = {
+          id: id,
+          original: original,
+          index: rowIndex,
+          depth: depth,
+          cells: [{}] // This is a dummy cell
+
+        }; // Override common array functions (and the dummy cell's getCellProps function)
+        // to show an error if it is accessed without calling prepareRow
+
+        row.cells.map = unpreparedAccessWarning;
+        row.cells.filter = unpreparedAccessWarning;
+        row.cells.forEach = unpreparedAccessWarning;
+        row.cells[0].getCellProps = unpreparedAccessWarning; // Create the cells and values
+
+        row.values = {}; // Push this row into the parentRows array
+
+        parentRows.push(row); // Keep track of every row in a flat array
+
+        flatRows.push(row); // Also keep track of every row by its ID
+
+        rowsById[id] = row; // Get the original subrows
+
+        row.originalSubRows = getSubRows(originalRow, rowIndex); // Then recursively access them
+
+        if (row.originalSubRows) {
+          var subRows = [];
+          row.originalSubRows.forEach(function (d, i) {
+            return accessRow(d, i, depth + 1, row, subRows);
+          }); // Keep the new subRows array on the row
+
+          row.subRows = subRows;
+        }
+      } else if (row.subRows) {
+        // If the row exists, then it's already been accessed
+        // Keep recursing, but don't worry about passing the
+        // accumlator array (those rows already exist)
+        row.originalSubRows.forEach(function (d, i) {
+          return accessRow(d, i, depth + 1, row);
+        });
+      } // If the column has an accessor, use it to get a value
+
+
+      if (column.accessor) {
+        row.values[column.id] = column.accessor(originalRow, rowIndex, row, parentRows, data);
+      } // Allow plugins to manipulate the column value
+
+
+      row.values[column.id] = reduceHooks(accessValueHooks, row.values[column.id], {
+        row: row,
+        column: column,
+        instance: getInstance()
+      }, true);
+    };
+
+    data.forEach(function (originalRow, rowIndex) {
+      return accessRow(originalRow, rowIndex, 0, undefined, rows);
+    });
+  }
+
+  actions.resetExpanded = 'resetExpanded';
+  actions.toggleRowExpanded = 'toggleRowExpanded';
+  actions.toggleAllRowsExpanded = 'toggleAllRowsExpanded';
+  var useExpanded = function useExpanded(hooks) {
+    hooks.getToggleAllRowsExpandedProps = [defaultGetToggleAllRowsExpandedProps];
+    hooks.getToggleRowExpandedProps = [defaultGetToggleRowExpandedProps];
+    hooks.stateReducers.push(reducer$1);
+    hooks.useInstance.push(useInstance$1);
+    hooks.prepareRow.push(prepareRow);
+  };
+  useExpanded.pluginName = 'useExpanded';
+
+  var defaultGetToggleAllRowsExpandedProps = function defaultGetToggleAllRowsExpandedProps(props, _ref) {
+    var instance = _ref.instance;
+    return [props, {
+      onClick: function onClick(e) {
+        instance.toggleAllRowsExpanded();
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      title: 'Toggle All Rows Expanded'
+    }];
+  };
+
+  var defaultGetToggleRowExpandedProps = function defaultGetToggleRowExpandedProps(props, _ref2) {
+    var row = _ref2.row;
+    return [props, {
+      onClick: function onClick() {
+        row.toggleRowExpanded();
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      title: 'Toggle Row Expanded'
+    }];
+  }; // Reducer
+
+
+  function reducer$1(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        expanded: {}
+      }, state);
+    }
+
+    if (action.type === actions.resetExpanded) {
+      return _extends({}, state, {
+        expanded: instance.initialState.expanded || {}
+      });
+    }
+
+    if (action.type === actions.toggleAllRowsExpanded) {
+      var value = action.value;
+      var rowsById = instance.rowsById;
+      var isAllRowsExpanded = Object.keys(rowsById).length === Object.keys(state.expanded).length;
+      var expandAll = typeof value !== 'undefined' ? value : !isAllRowsExpanded;
+
+      if (expandAll) {
+        var expanded = {};
+        Object.keys(rowsById).forEach(function (rowId) {
+          expanded[rowId] = true;
+        });
+        return _extends({}, state, {
+          expanded: expanded
+        });
+      }
+
+      return _extends({}, state, {
+        expanded: {}
+      });
+    }
+
+    if (action.type === actions.toggleRowExpanded) {
+      var id = action.id,
+          setExpanded = action.value;
+      var exists = state.expanded[id];
+      var shouldExist = typeof setExpanded !== 'undefined' ? setExpanded : !exists;
+
+      if (!exists && shouldExist) {
+        var _extends2;
+
+        return _extends({}, state, {
+          expanded: _extends({}, state.expanded, (_extends2 = {}, _extends2[id] = true, _extends2))
+        });
+      } else if (exists && !shouldExist) {
+        var _state$expanded = state.expanded,
+            _ = _state$expanded[id],
+            rest = _objectWithoutPropertiesLoose(_state$expanded, [id].map(_toPropertyKey));
+
+        return _extends({}, state, {
+          expanded: rest
+        });
+      } else {
+        return state;
+      }
+    }
+  }
+
+  function useInstance$1(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        rowsById = instance.rowsById,
+        _instance$manualExpan = instance.manualExpandedKey,
+        manualExpandedKey = _instance$manualExpan === void 0 ? 'expanded' : _instance$manualExpan,
+        _instance$paginateExp = instance.paginateExpandedRows,
+        paginateExpandedRows = _instance$paginateExp === void 0 ? true : _instance$paginateExp,
+        _instance$expandSubRo = instance.expandSubRows,
+        expandSubRows = _instance$expandSubRo === void 0 ? true : _instance$expandSubRo,
+        _instance$autoResetEx = instance.autoResetExpanded,
+        autoResetExpanded = _instance$autoResetEx === void 0 ? true : _instance$autoResetEx,
+        getHooks = instance.getHooks,
+        plugins = instance.plugins,
+        expanded = instance.state.expanded,
+        dispatch = instance.dispatch;
+    ensurePluginOrder(plugins, ['useSortBy', 'useGroupBy', 'usePivotColumns', 'useGlobalFilter'], 'useExpanded');
+    var getAutoResetExpanded = useGetLatest(autoResetExpanded);
+    var isAllRowsExpanded = Boolean(Object.keys(rowsById).length && Object.keys(expanded).length);
+
+    if (isAllRowsExpanded) {
+      if (Object.keys(rowsById).some(function (id) {
+        return !expanded[id];
+      })) {
+        isAllRowsExpanded = false;
+      }
+    } // Bypass any effects from firing when this changes
+
+
+    useMountedLayoutEffect(function () {
+      if (getAutoResetExpanded()) {
+        dispatch({
+          type: actions.resetExpanded
+        });
+      }
+    }, [dispatch, data]);
+    var toggleRowExpanded = React.useCallback(function (id, value) {
+      dispatch({
+        type: actions.toggleRowExpanded,
+        id: id,
+        value: value
+      });
+    }, [dispatch]);
+    var toggleAllRowsExpanded = React.useCallback(function (value) {
+      return dispatch({
+        type: actions.toggleAllRowsExpanded,
+        value: value
+      });
+    }, [dispatch]);
+    var expandedRows = React.useMemo(function () {
+      if (paginateExpandedRows) {
+        return expandRows(rows, {
+          manualExpandedKey: manualExpandedKey,
+          expanded: expanded,
+          expandSubRows: expandSubRows
+        });
+      }
+
+      return rows;
+    }, [paginateExpandedRows, rows, manualExpandedKey, expanded, expandSubRows]);
+    var expandedDepth = React.useMemo(function () {
+      return findExpandedDepth(expanded);
+    }, [expanded]);
+    var getInstance = useGetLatest(instance);
+    var getToggleAllRowsExpandedProps = makePropGetter(getHooks().getToggleAllRowsExpandedProps, {
+      instance: getInstance()
+    });
+    Object.assign(instance, {
+      preExpandedRows: rows,
+      expandedRows: expandedRows,
+      rows: expandedRows,
+      expandedDepth: expandedDepth,
+      isAllRowsExpanded: isAllRowsExpanded,
+      toggleRowExpanded: toggleRowExpanded,
+      toggleAllRowsExpanded: toggleAllRowsExpanded,
+      getToggleAllRowsExpandedProps: getToggleAllRowsExpandedProps
+    });
+  }
+
+  function prepareRow(row, _ref3) {
+    var getHooks = _ref3.instance.getHooks,
+        instance = _ref3.instance;
+
+    row.toggleRowExpanded = function (set) {
+      return instance.toggleRowExpanded(row.id, set);
+    };
+
+    row.getToggleRowExpandedProps = makePropGetter(getHooks().getToggleRowExpandedProps, {
+      instance: instance,
+      row: row
+    });
+  }
+
+  function findExpandedDepth(expanded) {
+    var maxDepth = 0;
+    Object.keys(expanded).forEach(function (id) {
+      var splitId = id.split('.');
+      maxDepth = Math.max(maxDepth, splitId.length);
+    });
+    return maxDepth;
+  }
+
+  var text = function text(rows, ids, filterValue) {
+    rows = rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return String(rowValue).toLowerCase().includes(String(filterValue).toLowerCase());
+      });
+    });
+    return rows;
+  };
+
+  text.autoRemove = function (val) {
+    return !val;
+  };
+
+  var exactText = function exactText(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue !== undefined ? String(rowValue).toLowerCase() === String(filterValue).toLowerCase() : true;
+      });
+    });
+  };
+
+  exactText.autoRemove = function (val) {
+    return !val;
+  };
+
+  var exactTextCase = function exactTextCase(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue !== undefined ? String(rowValue) === String(filterValue) : true;
+      });
+    });
+  };
+
+  exactTextCase.autoRemove = function (val) {
+    return !val;
+  };
+
+  var includes = function includes(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue.includes(filterValue);
+      });
+    });
+  };
+
+  includes.autoRemove = function (val) {
+    return !val || !val.length;
+  };
+
+  var includesAll = function includesAll(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue && rowValue.length && filterValue.every(function (val) {
+          return rowValue.includes(val);
+        });
+      });
+    });
+  };
+
+  includesAll.autoRemove = function (val) {
+    return !val || !val.length;
+  };
+
+  var includesSome = function includesSome(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue && rowValue.length && filterValue.some(function (val) {
+          return rowValue.includes(val);
+        });
+      });
+    });
+  };
+
+  includesSome.autoRemove = function (val) {
+    return !val || !val.length;
+  };
+
+  var includesValue = function includesValue(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return filterValue.includes(rowValue);
+      });
+    });
+  };
+
+  includesValue.autoRemove = function (val) {
+    return !val || !val.length;
+  };
+
+  var exact = function exact(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue === filterValue;
+      });
+    });
+  };
+
+  exact.autoRemove = function (val) {
+    return typeof val === 'undefined';
+  };
+
+  var equals = function equals(rows, ids, filterValue) {
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id]; // eslint-disable-next-line eqeqeq
+
+        return rowValue == filterValue;
+      });
+    });
+  };
+
+  equals.autoRemove = function (val) {
+    return val == null;
+  };
+
+  var between = function between(rows, ids, filterValue) {
+    var _ref = filterValue || [],
+        min = _ref[0],
+        max = _ref[1];
+
+    min = typeof min === 'number' ? min : -Infinity;
+    max = typeof max === 'number' ? max : Infinity;
+
+    if (min > max) {
+      var temp = min;
+      min = max;
+      max = temp;
+    }
+
+    return rows.filter(function (row) {
+      return ids.some(function (id) {
+        var rowValue = row.values[id];
+        return rowValue >= min && rowValue <= max;
+      });
+    });
+  };
+
+  between.autoRemove = function (val) {
+    return !val || typeof val[0] !== 'number' && typeof val[1] !== 'number';
+  };
+
+  var filterTypes = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    text: text,
+    exactText: exactText,
+    exactTextCase: exactTextCase,
+    includes: includes,
+    includesAll: includesAll,
+    includesSome: includesSome,
+    includesValue: includesValue,
+    exact: exact,
+    equals: equals,
+    between: between
+  });
+
+  actions.resetFilters = 'resetFilters';
+  actions.setFilter = 'setFilter';
+  actions.setAllFilters = 'setAllFilters';
+  var useFilters = function useFilters(hooks) {
+    hooks.stateReducers.push(reducer$2);
+    hooks.useInstance.push(useInstance$2);
+  };
+  useFilters.pluginName = 'useFilters';
+
+  function reducer$2(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        filters: []
+      }, state);
+    }
+
+    if (action.type === actions.resetFilters) {
+      return _extends({}, state, {
+        filters: instance.initialState.filters || []
+      });
+    }
+
+    if (action.type === actions.setFilter) {
+      var columnId = action.columnId,
+          filterValue = action.filterValue;
+      var allColumns = instance.allColumns,
+          userFilterTypes = instance.filterTypes;
+      var column = allColumns.find(function (d) {
+        return d.id === columnId;
+      });
+
+      if (!column) {
+        throw new Error("React-Table: Could not find a column with id: " + columnId);
+      }
+
+      var filterMethod = getFilterMethod(column.filter, userFilterTypes || {}, filterTypes);
+      var previousfilter = state.filters.find(function (d) {
+        return d.id === columnId;
+      });
+      var newFilter = functionalUpdate(filterValue, previousfilter && previousfilter.value); //
+
+      if (shouldAutoRemoveFilter(filterMethod.autoRemove, newFilter, column)) {
+        return _extends({}, state, {
+          filters: state.filters.filter(function (d) {
+            return d.id !== columnId;
+          })
+        });
+      }
+
+      if (previousfilter) {
+        return _extends({}, state, {
+          filters: state.filters.map(function (d) {
+            if (d.id === columnId) {
+              return {
+                id: columnId,
+                value: newFilter
+              };
+            }
+
+            return d;
+          })
+        });
+      }
+
+      return _extends({}, state, {
+        filters: [].concat(state.filters, [{
+          id: columnId,
+          value: newFilter
+        }])
+      });
+    }
+
+    if (action.type === actions.setAllFilters) {
+      var filters = action.filters;
+      var _allColumns = instance.allColumns,
+          _userFilterTypes = instance.filterTypes;
+      return _extends({}, state, {
+        // Filter out undefined values
+        filters: functionalUpdate(filters, state.filters).filter(function (filter) {
+          var column = _allColumns.find(function (d) {
+            return d.id === filter.id;
+          });
+
+          var filterMethod = getFilterMethod(column.filter, _userFilterTypes || {}, filterTypes);
+
+          if (shouldAutoRemoveFilter(filterMethod.autoRemove, filter.value, column)) {
+            return false;
+          }
+
+          return true;
+        })
+      });
+    }
+  }
+
+  function useInstance$2(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        flatRows = instance.flatRows,
+        rowsById = instance.rowsById,
+        allColumns = instance.allColumns,
+        userFilterTypes = instance.filterTypes,
+        manualFilters = instance.manualFilters,
+        _instance$defaultCanF = instance.defaultCanFilter,
+        defaultCanFilter = _instance$defaultCanF === void 0 ? false : _instance$defaultCanF,
+        disableFilters = instance.disableFilters,
+        filters = instance.state.filters,
+        dispatch = instance.dispatch,
+        _instance$autoResetFi = instance.autoResetFilters,
+        autoResetFilters = _instance$autoResetFi === void 0 ? true : _instance$autoResetFi;
+    var setFilter = React.useCallback(function (columnId, filterValue) {
+      dispatch({
+        type: actions.setFilter,
+        columnId: columnId,
+        filterValue: filterValue
+      });
+    }, [dispatch]);
+    var setAllFilters = React.useCallback(function (filters) {
+      dispatch({
+        type: actions.setAllFilters,
+        filters: filters
+      });
+    }, [dispatch]);
+    allColumns.forEach(function (column) {
+      var id = column.id,
+          accessor = column.accessor,
+          columnDefaultCanFilter = column.defaultCanFilter,
+          columnDisableFilters = column.disableFilters; // Determine if a column is filterable
+
+      column.canFilter = accessor ? getFirstDefined(columnDisableFilters === true ? false : undefined, disableFilters === true ? false : undefined, true) : getFirstDefined(columnDefaultCanFilter, defaultCanFilter, false); // Provide the column a way of updating the filter value
+
+      column.setFilter = function (val) {
+        return setFilter(column.id, val);
+      }; // Provide the current filter value to the column for
+      // convenience
+
+
+      var found = filters.find(function (d) {
+        return d.id === id;
+      });
+      column.filterValue = found && found.value;
+    });
+
+    var _React$useMemo = React.useMemo(function () {
+      if (manualFilters || !filters.length) {
+        return [rows, flatRows, rowsById];
+      }
+
+      var filteredFlatRows = [];
+      var filteredRowsById = {}; // Filters top level and nested rows
+
+      var filterRows = function filterRows(rows, depth) {
+        if (depth === void 0) {
+          depth = 0;
+        }
+
+        var filteredRows = rows;
+        filteredRows = filters.reduce(function (filteredSoFar, _ref) {
+          var columnId = _ref.id,
+              filterValue = _ref.value;
+          // Find the filters column
+          var column = allColumns.find(function (d) {
+            return d.id === columnId;
+          });
+
+          if (!column) {
+            return filteredSoFar;
+          }
+
+          if (depth === 0) {
+            column.preFilteredRows = filteredSoFar;
+          }
+
+          var filterMethod = getFilterMethod(column.filter, userFilterTypes || {}, filterTypes);
+
+          if (!filterMethod) {
+            console.warn("Could not find a valid 'column.filter' for column with the ID: " + column.id + ".");
+            return filteredSoFar;
+          } // Pass the rows, id, filterValue and column to the filterMethod
+          // to get the filtered rows back
+
+
+          column.filteredRows = filterMethod(filteredSoFar, [columnId], filterValue);
+          return column.filteredRows;
+        }, rows); // Apply the filter to any subRows
+        // We technically could do this recursively in the above loop,
+        // but that would severely hinder the API for the user, since they
+        // would be required to do that recursion in some scenarios
+
+        filteredRows.forEach(function (row) {
+          filteredFlatRows.push(row);
+          filteredRowsById[row.id] = row;
+
+          if (!row.subRows) {
+            return;
+          }
+
+          row.subRows = row.subRows && row.subRows.length > 0 ? filterRows(row.subRows, depth + 1) : row.subRows;
+        });
+        return filteredRows;
+      };
+
+      return [filterRows(rows), filteredFlatRows, filteredRowsById];
+    }, [manualFilters, filters, rows, flatRows, rowsById, allColumns, userFilterTypes]),
+        filteredRows = _React$useMemo[0],
+        filteredFlatRows = _React$useMemo[1],
+        filteredRowsById = _React$useMemo[2];
+
+    React.useMemo(function () {
+      // Now that each filtered column has it's partially filtered rows,
+      // lets assign the final filtered rows to all of the other columns
+      var nonFilteredColumns = allColumns.filter(function (column) {
+        return !filters.find(function (d) {
+          return d.id === column.id;
+        });
+      }); // This essentially enables faceted filter options to be built easily
+      // using every column's preFilteredRows value
+
+      nonFilteredColumns.forEach(function (column) {
+        column.preFilteredRows = filteredRows;
+        column.filteredRows = filteredRows;
+      });
+    }, [filteredRows, filters, allColumns]);
+    var getAutoResetFilters = useGetLatest(autoResetFilters);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetFilters()) {
+        dispatch({
+          type: actions.resetFilters
+        });
+      }
+    }, [dispatch, manualFilters ? null : data]);
+    Object.assign(instance, {
+      preFilteredRows: rows,
+      preFilteredFlatRows: flatRows,
+      preFilteredRowsById: rowsById,
+      filteredRows: filteredRows,
+      filteredFlatRows: filteredFlatRows,
+      filteredRowsById: filteredRowsById,
+      rows: filteredRows,
+      flatRows: filteredFlatRows,
+      rowsById: filteredRowsById,
+      setFilter: setFilter,
+      setAllFilters: setAllFilters
+    });
+  }
+
+  actions.resetGlobalFilter = 'resetGlobalFilter';
+  actions.setGlobalFilter = 'setGlobalFilter';
+  var useGlobalFilter = function useGlobalFilter(hooks) {
+    hooks.stateReducers.push(reducer$3);
+    hooks.useInstance.push(useInstance$3);
+  };
+  useGlobalFilter.pluginName = 'useGlobalFilter';
+
+  function reducer$3(state, action, previousState, instance) {
+    if (action.type === actions.resetGlobalFilter) {
+      return _extends({}, state, {
+        globalFilter: instance.initialState.globalFilter || undefined
+      });
+    }
+
+    if (action.type === actions.setGlobalFilter) {
+      var filterValue = action.filterValue;
+      var userFilterTypes = instance.userFilterTypes;
+      var filterMethod = getFilterMethod(instance.globalFilter, userFilterTypes || {}, filterTypes);
+      var newFilter = functionalUpdate(filterValue, state.globalFilter); //
+
+      if (shouldAutoRemoveFilter(filterMethod.autoRemove, newFilter)) {
+        var globalFilter = state.globalFilter,
+            stateWithoutGlobalFilter = _objectWithoutPropertiesLoose(state, ["globalFilter"]);
+
+        return stateWithoutGlobalFilter;
+      }
+
+      return _extends({}, state, {
+        globalFilter: newFilter
+      });
+    }
+  }
+
+  function useInstance$3(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        flatRows = instance.flatRows,
+        rowsById = instance.rowsById,
+        allColumns = instance.allColumns,
+        userFilterTypes = instance.filterTypes,
+        globalFilter = instance.globalFilter,
+        manualGlobalFilter = instance.manualGlobalFilter,
+        globalFilterValue = instance.state.globalFilter,
+        dispatch = instance.dispatch,
+        _instance$autoResetGl = instance.autoResetGlobalFilter,
+        autoResetGlobalFilter = _instance$autoResetGl === void 0 ? true : _instance$autoResetGl,
+        disableGlobalFilter = instance.disableGlobalFilter;
+    var setGlobalFilter = React.useCallback(function (filterValue) {
+      dispatch({
+        type: actions.setGlobalFilter,
+        filterValue: filterValue
+      });
+    }, [dispatch]); // TODO: Create a filter cache for incremental high speed multi-filtering
+    // This gets pretty complicated pretty fast, since you have to maintain a
+    // cache for each row group (top-level rows, and each row's recursive subrows)
+    // This would make multi-filtering a lot faster though. Too far?
+
+    var _React$useMemo = React.useMemo(function () {
+      if (manualGlobalFilter || typeof globalFilterValue === 'undefined') {
+        return [rows, flatRows, rowsById];
+      }
+
+      var filteredFlatRows = [];
+      var filteredRowsById = {};
+      var filterMethod = getFilterMethod(globalFilter, userFilterTypes || {}, filterTypes);
+
+      if (!filterMethod) {
+        console.warn("Could not find a valid 'globalFilter' option.");
+        return rows;
+      }
+
+      allColumns.forEach(function (column) {
+        var columnDisableGlobalFilter = column.disableGlobalFilter;
+        column.canFilter = getFirstDefined(columnDisableGlobalFilter === true ? false : undefined, disableGlobalFilter === true ? false : undefined, true);
+      });
+      var filterableColumns = allColumns.filter(function (c) {
+        return c.canFilter === true;
+      }); // Filters top level and nested rows
+
+      var filterRows = function filterRows(filteredRows) {
+        filteredRows = filterMethod(filteredRows, filterableColumns.map(function (d) {
+          return d.id;
+        }), globalFilterValue);
+        filteredRows.forEach(function (row) {
+          filteredFlatRows.push(row);
+          filteredRowsById[row.id] = row;
+          row.subRows = row.subRows && row.subRows.length ? filterRows(row.subRows) : row.subRows;
+        });
+        return filteredRows;
+      };
+
+      return [filterRows(rows), filteredFlatRows, filteredRowsById];
+    }, [manualGlobalFilter, globalFilterValue, globalFilter, userFilterTypes, allColumns, rows, flatRows, rowsById, disableGlobalFilter]),
+        globalFilteredRows = _React$useMemo[0],
+        globalFilteredFlatRows = _React$useMemo[1],
+        globalFilteredRowsById = _React$useMemo[2];
+
+    var getAutoResetGlobalFilter = useGetLatest(autoResetGlobalFilter);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetGlobalFilter()) {
+        dispatch({
+          type: actions.resetGlobalFilter
+        });
+      }
+    }, [dispatch, manualGlobalFilter ? null : data]);
+    Object.assign(instance, {
+      preGlobalFilteredRows: rows,
+      preGlobalFilteredFlatRows: flatRows,
+      preGlobalFilteredRowsById: rowsById,
+      globalFilteredRows: globalFilteredRows,
+      globalFilteredFlatRows: globalFilteredFlatRows,
+      globalFilteredRowsById: globalFilteredRowsById,
+      rows: globalFilteredRows,
+      flatRows: globalFilteredFlatRows,
+      rowsById: globalFilteredRowsById,
+      setGlobalFilter: setGlobalFilter,
+      disableGlobalFilter: disableGlobalFilter
+    });
+  }
+
+  function sum(values, aggregatedValues) {
+    // It's faster to just add the aggregations together instead of
+    // process leaf nodes individually
+    return aggregatedValues.reduce(function (sum, next) {
+      return sum + (typeof next === 'number' ? next : 0);
+    }, 0);
+  }
+  function min(values) {
+    var min = values[0] || 0;
+    values.forEach(function (value) {
+      if (typeof value === 'number') {
+        min = Math.min(min, value);
+      }
+    });
+    return min;
+  }
+  function max(values) {
+    var max = values[0] || 0;
+    values.forEach(function (value) {
+      if (typeof value === 'number') {
+        max = Math.max(max, value);
+      }
+    });
+    return max;
+  }
+  function minMax(values) {
+    var min = values[0] || 0;
+    var max = values[0] || 0;
+    values.forEach(function (value) {
+      if (typeof value === 'number') {
+        min = Math.min(min, value);
+        max = Math.max(max, value);
+      }
+    });
+    return min + ".." + max;
+  }
+  function average(values) {
+    return sum(null, values) / values.length;
+  }
+  function median(values) {
+    if (!values.length) {
+      return null;
+    }
+
+    var mid = Math.floor(values.length / 2);
+    var nums = [].concat(values).sort(function (a, b) {
+      return a - b;
+    });
+    return values.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+  }
+  function unique(values) {
+    return Array.from(new Set(values).values());
+  }
+  function uniqueCount(values) {
+    return new Set(values).size;
+  }
+  function count(values) {
+    return values.length;
+  }
+
+  var aggregations = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    sum: sum,
+    min: min,
+    max: max,
+    minMax: minMax,
+    average: average,
+    median: median,
+    unique: unique,
+    uniqueCount: uniqueCount,
+    count: count
+  });
+
+  var emptyArray = [];
+  var emptyObject = {}; // Actions
+
+  actions.resetGroupBy = 'resetGroupBy';
+  actions.setGroupBy = 'setGroupBy';
+  actions.toggleGroupBy = 'toggleGroupBy';
+  var useGroupBy = function useGroupBy(hooks) {
+    hooks.getGroupByToggleProps = [defaultGetGroupByToggleProps];
+    hooks.stateReducers.push(reducer$4);
+    hooks.visibleColumnsDeps.push(function (deps, _ref) {
+      var instance = _ref.instance;
+      return [].concat(deps, [instance.state.groupBy]);
+    });
+    hooks.visibleColumns.push(visibleColumns);
+    hooks.useInstance.push(useInstance$4);
+    hooks.prepareRow.push(prepareRow$1);
+  };
+  useGroupBy.pluginName = 'useGroupBy';
+
+  var defaultGetGroupByToggleProps = function defaultGetGroupByToggleProps(props, _ref2) {
+    var header = _ref2.header;
+    return [props, {
+      onClick: header.canGroupBy ? function (e) {
+        e.persist();
+        header.toggleGroupBy();
+      } : undefined,
+      style: {
+        cursor: header.canGroupBy ? 'pointer' : undefined
+      },
+      title: 'Toggle GroupBy'
+    }];
+  }; // Reducer
+
+
+  function reducer$4(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        groupBy: []
+      }, state);
+    }
+
+    if (action.type === actions.resetGroupBy) {
+      return _extends({}, state, {
+        groupBy: instance.initialState.groupBy || []
+      });
+    }
+
+    if (action.type === actions.setGroupBy) {
+      var value = action.value;
+      return _extends({}, state, {
+        groupBy: value
+      });
+    }
+
+    if (action.type === actions.toggleGroupBy) {
+      var columnId = action.columnId,
+          setGroupBy = action.value;
+      var resolvedGroupBy = typeof setGroupBy !== 'undefined' ? setGroupBy : !state.groupBy.includes(columnId);
+
+      if (resolvedGroupBy) {
+        return _extends({}, state, {
+          groupBy: [].concat(state.groupBy, [columnId])
+        });
+      }
+
+      return _extends({}, state, {
+        groupBy: state.groupBy.filter(function (d) {
+          return d !== columnId;
+        })
+      });
+    }
+  }
+
+  function visibleColumns(columns, _ref3) {
+    var groupBy = _ref3.instance.state.groupBy;
+    // Sort grouped columns to the start of the column list
+    // before the headers are built
+    var groupByColumns = groupBy.map(function (g) {
+      return columns.find(function (col) {
+        return col.id === g;
+      });
+    }).filter(Boolean);
+    var nonGroupByColumns = columns.filter(function (col) {
+      return !groupBy.includes(col.id);
+    });
+    columns = [].concat(groupByColumns, nonGroupByColumns);
+    columns.forEach(function (column) {
+      column.isGrouped = groupBy.includes(column.id);
+      column.groupedIndex = groupBy.indexOf(column.id);
+    });
+    return columns;
+  }
+
+  var defaultUserAggregations = {};
+
+  function useInstance$4(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        flatRows = instance.flatRows,
+        rowsById = instance.rowsById,
+        allColumns = instance.allColumns,
+        flatHeaders = instance.flatHeaders,
+        _instance$groupByFn = instance.groupByFn,
+        groupByFn = _instance$groupByFn === void 0 ? defaultGroupByFn : _instance$groupByFn,
+        manualGroupBy = instance.manualGroupBy,
+        _instance$aggregation = instance.aggregations,
+        userAggregations = _instance$aggregation === void 0 ? defaultUserAggregations : _instance$aggregation,
+        plugins = instance.plugins,
+        groupBy = instance.state.groupBy,
+        dispatch = instance.dispatch,
+        _instance$autoResetGr = instance.autoResetGroupBy,
+        autoResetGroupBy = _instance$autoResetGr === void 0 ? true : _instance$autoResetGr,
+        disableGroupBy = instance.disableGroupBy,
+        defaultCanGroupBy = instance.defaultCanGroupBy,
+        getHooks = instance.getHooks;
+    ensurePluginOrder(plugins, ['useColumnOrder', 'useFilters'], 'useGroupBy');
+    var getInstance = useGetLatest(instance);
+    allColumns.forEach(function (column) {
+      var accessor = column.accessor,
+          defaultColumnGroupBy = column.defaultGroupBy,
+          columnDisableGroupBy = column.disableGroupBy;
+      column.canGroupBy = accessor ? getFirstDefined(column.canGroupBy, columnDisableGroupBy === true ? false : undefined, disableGroupBy === true ? false : undefined, true) : getFirstDefined(column.canGroupBy, defaultColumnGroupBy, defaultCanGroupBy, false);
+
+      if (column.canGroupBy) {
+        column.toggleGroupBy = function () {
+          return instance.toggleGroupBy(column.id);
+        };
+      }
+
+      column.Aggregated = column.Aggregated || column.Cell;
+    });
+    var toggleGroupBy = React.useCallback(function (columnId, value) {
+      dispatch({
+        type: actions.toggleGroupBy,
+        columnId: columnId,
+        value: value
+      });
+    }, [dispatch]);
+    var setGroupBy = React.useCallback(function (value) {
+      dispatch({
+        type: actions.setGroupBy,
+        value: value
+      });
+    }, [dispatch]);
+    flatHeaders.forEach(function (header) {
+      header.getGroupByToggleProps = makePropGetter(getHooks().getGroupByToggleProps, {
+        instance: getInstance(),
+        header: header
+      });
+    });
+
+    var _React$useMemo = React.useMemo(function () {
+      if (manualGroupBy || !groupBy.length) {
+        return [rows, flatRows, rowsById, emptyArray, emptyObject, flatRows, rowsById];
+      } // Ensure that the list of filtered columns exist
+
+
+      var existingGroupBy = groupBy.filter(function (g) {
+        return allColumns.find(function (col) {
+          return col.id === g;
+        });
+      }); // Find the columns that can or are aggregating
+      // Uses each column to aggregate rows into a single value
+
+      var aggregateRowsToValues = function aggregateRowsToValues(leafRows, groupedRows, depth) {
+        var values = {};
+        allColumns.forEach(function (column) {
+          // Don't aggregate columns that are in the groupBy
+          if (existingGroupBy.includes(column.id)) {
+            values[column.id] = groupedRows[0] ? groupedRows[0].values[column.id] : null;
+            return;
+          } // Aggregate the values
+
+
+          var aggregateFn = typeof column.aggregate === 'function' ? column.aggregate : userAggregations[column.aggregate] || aggregations[column.aggregate];
+
+          if (aggregateFn) {
+            // Get the columnValues to aggregate
+            var groupedValues = groupedRows.map(function (row) {
+              return row.values[column.id];
+            }); // Get the columnValues to aggregate
+
+            var leafValues = leafRows.map(function (row) {
+              var columnValue = row.values[column.id];
+
+              if (!depth && column.aggregateValue) {
+                var aggregateValueFn = typeof column.aggregateValue === 'function' ? column.aggregateValue : userAggregations[column.aggregateValue] || aggregations[column.aggregateValue];
+
+                if (!aggregateValueFn) {
+                  console.info({
+                    column: column
+                  });
+                  throw new Error("React Table: Invalid column.aggregateValue option for column listed above");
+                }
+
+                columnValue = aggregateValueFn(columnValue, row, column);
+              }
+
+              return columnValue;
+            });
+            values[column.id] = aggregateFn(leafValues, groupedValues);
+          } else if (column.aggregate) {
+            console.info({
+              column: column
+            });
+            throw new Error("React Table: Invalid column.aggregate option for column listed above");
+          } else {
+            values[column.id] = null;
+          }
+        });
+        return values;
+      };
+
+      var groupedFlatRows = [];
+      var groupedRowsById = {};
+      var onlyGroupedFlatRows = [];
+      var onlyGroupedRowsById = {};
+      var nonGroupedFlatRows = [];
+      var nonGroupedRowsById = {}; // Recursively group the data
+
+      var groupUpRecursively = function groupUpRecursively(rows, depth, parentId) {
+        if (depth === void 0) {
+          depth = 0;
+        }
+
+        // This is the last level, just return the rows
+        if (depth === existingGroupBy.length) {
+          return rows.map(function (row) {
+            return _extends({}, row, {
+              depth: depth
+            });
+          });
+        }
+
+        var columnId = existingGroupBy[depth]; // Group the rows together for this level
+
+        var rowGroupsMap = groupByFn(rows, columnId); // Peform aggregations for each group
+
+        var aggregatedGroupedRows = Object.entries(rowGroupsMap).map(function (_ref4, index) {
+          var groupByVal = _ref4[0],
+              groupedRows = _ref4[1];
+          var id = columnId + ":" + groupByVal;
+          id = parentId ? parentId + ">" + id : id; // First, Recurse to group sub rows before aggregation
+
+          var subRows = groupUpRecursively(groupedRows, depth + 1, id); // Flatten the leaf rows of the rows in this group
+
+          var leafRows = depth ? flattenBy(groupedRows, 'leafRows') : groupedRows;
+          var values = aggregateRowsToValues(leafRows, groupedRows, depth);
+          var row = {
+            id: id,
+            isGrouped: true,
+            groupByID: columnId,
+            groupByVal: groupByVal,
+            values: values,
+            subRows: subRows,
+            leafRows: leafRows,
+            depth: depth,
+            index: index
+          };
+          subRows.forEach(function (subRow) {
+            groupedFlatRows.push(subRow);
+            groupedRowsById[subRow.id] = subRow;
+
+            if (subRow.isGrouped) {
+              onlyGroupedFlatRows.push(subRow);
+              onlyGroupedRowsById[subRow.id] = subRow;
+            } else {
+              nonGroupedFlatRows.push(subRow);
+              nonGroupedRowsById[subRow.id] = subRow;
+            }
+          });
+          return row;
+        });
+        return aggregatedGroupedRows;
+      };
+
+      var groupedRows = groupUpRecursively(rows);
+      groupedRows.forEach(function (subRow) {
+        groupedFlatRows.push(subRow);
+        groupedRowsById[subRow.id] = subRow;
+
+        if (subRow.isGrouped) {
+          onlyGroupedFlatRows.push(subRow);
+          onlyGroupedRowsById[subRow.id] = subRow;
+        } else {
+          nonGroupedFlatRows.push(subRow);
+          nonGroupedRowsById[subRow.id] = subRow;
+        }
+      }); // Assign the new data
+
+      return [groupedRows, groupedFlatRows, groupedRowsById, onlyGroupedFlatRows, onlyGroupedRowsById, nonGroupedFlatRows, nonGroupedRowsById];
+    }, [manualGroupBy, groupBy, rows, flatRows, rowsById, allColumns, userAggregations, groupByFn]),
+        groupedRows = _React$useMemo[0],
+        groupedFlatRows = _React$useMemo[1],
+        groupedRowsById = _React$useMemo[2],
+        onlyGroupedFlatRows = _React$useMemo[3],
+        onlyGroupedRowsById = _React$useMemo[4],
+        nonGroupedFlatRows = _React$useMemo[5],
+        nonGroupedRowsById = _React$useMemo[6];
+
+    var getAutoResetGroupBy = useGetLatest(autoResetGroupBy);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetGroupBy()) {
+        dispatch({
+          type: actions.resetGroupBy
+        });
+      }
+    }, [dispatch, manualGroupBy ? null : data]);
+    Object.assign(instance, {
+      preGroupedRows: rows,
+      preGroupedFlatRow: flatRows,
+      preGroupedRowsById: rowsById,
+      groupedRows: groupedRows,
+      groupedFlatRows: groupedFlatRows,
+      groupedRowsById: groupedRowsById,
+      onlyGroupedFlatRows: onlyGroupedFlatRows,
+      onlyGroupedRowsById: onlyGroupedRowsById,
+      nonGroupedFlatRows: nonGroupedFlatRows,
+      nonGroupedRowsById: nonGroupedRowsById,
+      rows: groupedRows,
+      flatRows: groupedFlatRows,
+      rowsById: groupedRowsById,
+      toggleGroupBy: toggleGroupBy,
+      setGroupBy: setGroupBy
+    });
+  }
+
+  function prepareRow$1(row) {
+    row.allCells.forEach(function (cell) {
+      var _row$subRows;
+
+      // Grouped cells are in the groupBy and the pivot cell for the row
+      cell.isGrouped = cell.column.isGrouped && cell.column.id === row.groupByID; // Placeholder cells are any columns in the groupBy that are not grouped
+
+      cell.isPlaceholder = !cell.isGrouped && cell.column.isGrouped; // Aggregated cells are not grouped, not repeated, but still have subRows
+
+      cell.isAggregated = !cell.isGrouped && !cell.isPlaceholder && ((_row$subRows = row.subRows) == null ? void 0 : _row$subRows.length);
+    });
+  }
+
+  function defaultGroupByFn(rows, columnId) {
+    return rows.reduce(function (prev, row, i) {
+      // TODO: Might want to implement a key serializer here so
+      // irregular column values can still be grouped if needed?
+      var resKey = "" + row.values[columnId];
+      prev[resKey] = Array.isArray(prev[resKey]) ? prev[resKey] : [];
+      prev[resKey].push(row);
+      return prev;
+    }, {});
+  }
+
+  var reSplitAlphaNumeric = /([0-9]+)/gm; // Mixed sorting is slow, but very inclusive of many edge cases.
+  // It handles numbers, mixed alphanumeric combinations, and even
+  // null, undefined, and Infinity
+
+  var alphanumeric = function alphanumeric(rowA, rowB, columnId) {
+    var _getRowValuesByColumn = getRowValuesByColumnID(rowA, rowB, columnId),
+        a = _getRowValuesByColumn[0],
+        b = _getRowValuesByColumn[1]; // Force to strings (or "" for unsupported types)
+
+
+    a = toString(a);
+    b = toString(b); // Split on number groups, but keep the delimiter
+    // Then remove falsey split values
+
+    a = a.split(reSplitAlphaNumeric).filter(Boolean);
+    b = b.split(reSplitAlphaNumeric).filter(Boolean); // While
+
+    while (a.length && b.length) {
+      var aa = a.shift();
+      var bb = b.shift();
+      var an = parseInt(aa, 10);
+      var bn = parseInt(bb, 10);
+      var combo = [an, bn].sort(); // Both are string
+
+      if (isNaN(combo[0])) {
+        if (aa > bb) {
+          return 1;
+        }
+
+        if (bb > aa) {
+          return -1;
+        }
+
+        continue;
+      } // One is a string, one is a number
+
+
+      if (isNaN(combo[1])) {
+        return isNaN(an) ? -1 : 1;
+      } // Both are numbers
+
+
+      if (an > bn) {
+        return 1;
+      }
+
+      if (bn > an) {
+        return -1;
+      }
+    }
+
+    return a.length - b.length;
+  };
+  function datetime(rowA, rowB, columnId) {
+    var _getRowValuesByColumn2 = getRowValuesByColumnID(rowA, rowB, columnId),
+        a = _getRowValuesByColumn2[0],
+        b = _getRowValuesByColumn2[1];
+
+    a = a.getTime();
+    b = b.getTime();
+    return compareBasic(a, b);
+  }
+  function basic(rowA, rowB, columnId) {
+    var _getRowValuesByColumn3 = getRowValuesByColumnID(rowA, rowB, columnId),
+        a = _getRowValuesByColumn3[0],
+        b = _getRowValuesByColumn3[1];
+
+    return compareBasic(a, b);
+  }
+  function string(rowA, rowB, columnId) {
+    var _getRowValuesByColumn4 = getRowValuesByColumnID(rowA, rowB, columnId),
+        a = _getRowValuesByColumn4[0],
+        b = _getRowValuesByColumn4[1];
+
+    a = a.split('').filter(Boolean);
+    b = b.split('').filter(Boolean);
+
+    while (a.length && b.length) {
+      var aa = a.shift();
+      var bb = b.shift();
+      var alower = aa.toLowerCase();
+      var blower = bb.toLowerCase(); // Case insensitive comparison until characters match
+
+      if (alower > blower) {
+        return 1;
+      }
+
+      if (blower > alower) {
+        return -1;
+      } // If lowercase characters are identical
+
+
+      if (aa > bb) {
+        return 1;
+      }
+
+      if (bb > aa) {
+        return -1;
+      }
+
+      continue;
+    }
+
+    return a.length - b.length;
+  }
+  function number(rowA, rowB, columnId) {
+    var _getRowValuesByColumn5 = getRowValuesByColumnID(rowA, rowB, columnId),
+        a = _getRowValuesByColumn5[0],
+        b = _getRowValuesByColumn5[1];
+
+    var replaceNonNumeric = /[^0-9.]/gi;
+    a = Number(String(a).replace(replaceNonNumeric, ''));
+    b = Number(String(b).replace(replaceNonNumeric, ''));
+    return compareBasic(a, b);
+  } // Utils
+
+  function compareBasic(a, b) {
+    return a === b ? 0 : a > b ? 1 : -1;
+  }
+
+  function getRowValuesByColumnID(row1, row2, columnId) {
+    return [row1.values[columnId], row2.values[columnId]];
+  }
+
+  function toString(a) {
+    if (typeof a === 'number') {
+      if (isNaN(a) || a === Infinity || a === -Infinity) {
+        return '';
+      }
+
+      return String(a);
+    }
+
+    if (typeof a === 'string') {
+      return a;
+    }
+
+    return '';
+  }
+
+  var sortTypes = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    alphanumeric: alphanumeric,
+    datetime: datetime,
+    basic: basic,
+    string: string,
+    number: number
+  });
+
+  actions.resetSortBy = 'resetSortBy';
+  actions.setSortBy = 'setSortBy';
+  actions.toggleSortBy = 'toggleSortBy';
+  actions.clearSortBy = 'clearSortBy';
+  defaultColumn.sortType = 'alphanumeric';
+  defaultColumn.sortDescFirst = false;
+  var useSortBy = function useSortBy(hooks) {
+    hooks.getSortByToggleProps = [defaultGetSortByToggleProps];
+    hooks.stateReducers.push(reducer$5);
+    hooks.useInstance.push(useInstance$5);
+  };
+  useSortBy.pluginName = 'useSortBy';
+
+  var defaultGetSortByToggleProps = function defaultGetSortByToggleProps(props, _ref) {
+    var instance = _ref.instance,
+        column = _ref.column;
+    var _instance$isMultiSort = instance.isMultiSortEvent,
+        isMultiSortEvent = _instance$isMultiSort === void 0 ? function (e) {
+      return e.shiftKey;
+    } : _instance$isMultiSort;
+    return [props, {
+      onClick: column.canSort ? function (e) {
+        e.persist();
+        column.toggleSortBy(undefined, !instance.disableMultiSort && isMultiSortEvent(e));
+      } : undefined,
+      style: {
+        cursor: column.canSort ? 'pointer' : undefined
+      },
+      title: column.canSort ? 'Toggle SortBy' : undefined
+    }];
+  }; // Reducer
+
+
+  function reducer$5(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        sortBy: []
+      }, state);
+    }
+
+    if (action.type === actions.resetSortBy) {
+      return _extends({}, state, {
+        sortBy: instance.initialState.sortBy || []
+      });
+    }
+
+    if (action.type === actions.clearSortBy) {
+      var sortBy = state.sortBy;
+      var newSortBy = sortBy.filter(function (d) {
+        return d.id !== action.columnId;
+      });
+      return _extends({}, state, {
+        sortBy: newSortBy
+      });
+    }
+
+    if (action.type === actions.setSortBy) {
+      var _sortBy = action.sortBy;
+      return _extends({}, state, {
+        sortBy: _sortBy
+      });
+    }
+
+    if (action.type === actions.toggleSortBy) {
+      var columnId = action.columnId,
+          desc = action.desc,
+          multi = action.multi;
+      var allColumns = instance.allColumns,
+          disableMultiSort = instance.disableMultiSort,
+          disableSortRemove = instance.disableSortRemove,
+          disableMultiRemove = instance.disableMultiRemove,
+          _instance$maxMultiSor = instance.maxMultiSortColCount,
+          maxMultiSortColCount = _instance$maxMultiSor === void 0 ? Number.MAX_SAFE_INTEGER : _instance$maxMultiSor;
+      var _sortBy2 = state.sortBy; // Find the column for this columnId
+
+      var column = allColumns.find(function (d) {
+        return d.id === columnId;
+      });
+      var sortDescFirst = column.sortDescFirst; // Find any existing sortBy for this column
+
+      var existingSortBy = _sortBy2.find(function (d) {
+        return d.id === columnId;
+      });
+
+      var existingIndex = _sortBy2.findIndex(function (d) {
+        return d.id === columnId;
+      });
+
+      var hasDescDefined = typeof desc !== 'undefined' && desc !== null;
+      var _newSortBy = []; // What should we do with this sort action?
+
+      var sortAction;
+
+      if (!disableMultiSort && multi) {
+        if (existingSortBy) {
+          sortAction = 'toggle';
+        } else {
+          sortAction = 'add';
+        }
+      } else {
+        // Normal mode
+        if (existingIndex !== _sortBy2.length - 1 || _sortBy2.length !== 1) {
+          sortAction = 'replace';
+        } else if (existingSortBy) {
+          sortAction = 'toggle';
+        } else {
+          sortAction = 'replace';
+        }
+      } // Handle toggle states that will remove the sortBy
+
+
+      if (sortAction === 'toggle' && // Must be toggling
+      !disableSortRemove && // If disableSortRemove, disable in general
+      !hasDescDefined && ( // Must not be setting desc
+      multi ? !disableMultiRemove : true) && ( // If multi, don't allow if disableMultiRemove
+      existingSortBy && // Finally, detect if it should indeed be removed
+      existingSortBy.desc && !sortDescFirst || !existingSortBy.desc && sortDescFirst)) {
+        sortAction = 'remove';
+      }
+
+      if (sortAction === 'replace') {
+        _newSortBy = [{
+          id: columnId,
+          desc: hasDescDefined ? desc : sortDescFirst
+        }];
+      } else if (sortAction === 'add') {
+        _newSortBy = [].concat(_sortBy2, [{
+          id: columnId,
+          desc: hasDescDefined ? desc : sortDescFirst
+        }]); // Take latest n columns
+
+        _newSortBy.splice(0, _newSortBy.length - maxMultiSortColCount);
+      } else if (sortAction === 'toggle') {
+        // This flips (or sets) the
+        _newSortBy = _sortBy2.map(function (d) {
+          if (d.id === columnId) {
+            return _extends({}, d, {
+              desc: hasDescDefined ? desc : !existingSortBy.desc
+            });
+          }
+
+          return d;
+        });
+      } else if (sortAction === 'remove') {
+        _newSortBy = _sortBy2.filter(function (d) {
+          return d.id !== columnId;
+        });
+      }
+
+      return _extends({}, state, {
+        sortBy: _newSortBy
+      });
+    }
+  }
+
+  function useInstance$5(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        flatRows = instance.flatRows,
+        allColumns = instance.allColumns,
+        _instance$orderByFn = instance.orderByFn,
+        orderByFn = _instance$orderByFn === void 0 ? defaultOrderByFn : _instance$orderByFn,
+        userSortTypes = instance.sortTypes,
+        manualSortBy = instance.manualSortBy,
+        defaultCanSort = instance.defaultCanSort,
+        disableSortBy = instance.disableSortBy,
+        flatHeaders = instance.flatHeaders,
+        sortBy = instance.state.sortBy,
+        dispatch = instance.dispatch,
+        plugins = instance.plugins,
+        getHooks = instance.getHooks,
+        _instance$autoResetSo = instance.autoResetSortBy,
+        autoResetSortBy = _instance$autoResetSo === void 0 ? true : _instance$autoResetSo;
+    ensurePluginOrder(plugins, ['useFilters', 'useGlobalFilter', 'useGroupBy', 'usePivotColumns'], 'useSortBy');
+    var setSortBy = React.useCallback(function (sortBy) {
+      dispatch({
+        type: actions.setSortBy,
+        sortBy: sortBy
+      });
+    }, [dispatch]); // Updates sorting based on a columnId, desc flag and multi flag
+
+    var toggleSortBy = React.useCallback(function (columnId, desc, multi) {
+      dispatch({
+        type: actions.toggleSortBy,
+        columnId: columnId,
+        desc: desc,
+        multi: multi
+      });
+    }, [dispatch]); // use reference to avoid memory leak in #1608
+
+    var getInstance = useGetLatest(instance); // Add the getSortByToggleProps method to columns and headers
+
+    flatHeaders.forEach(function (column) {
+      var accessor = column.accessor,
+          defaultColumnCanSort = column.canSort,
+          columnDisableSortBy = column.disableSortBy,
+          id = column.id;
+      var canSort = accessor ? getFirstDefined(columnDisableSortBy === true ? false : undefined, disableSortBy === true ? false : undefined, true) : getFirstDefined(defaultCanSort, defaultColumnCanSort, false);
+      column.canSort = canSort;
+
+      if (column.canSort) {
+        column.toggleSortBy = function (desc, multi) {
+          return toggleSortBy(column.id, desc, multi);
+        };
+
+        column.clearSortBy = function () {
+          dispatch({
+            type: actions.clearSortBy,
+            columnId: column.id
+          });
+        };
+      }
+
+      column.getSortByToggleProps = makePropGetter(getHooks().getSortByToggleProps, {
+        instance: getInstance(),
+        column: column
+      });
+      var columnSort = sortBy.find(function (d) {
+        return d.id === id;
+      });
+      column.isSorted = !!columnSort;
+      column.sortedIndex = sortBy.findIndex(function (d) {
+        return d.id === id;
+      });
+      column.isSortedDesc = column.isSorted ? columnSort.desc : undefined;
+    });
+
+    var _React$useMemo = React.useMemo(function () {
+      if (manualSortBy || !sortBy.length) {
+        return [rows, flatRows];
+      }
+
+      var sortedFlatRows = []; // Filter out sortBys that correspond to non existing columns
+
+      var availableSortBy = sortBy.filter(function (sort) {
+        return allColumns.find(function (col) {
+          return col.id === sort.id;
+        });
+      });
+
+      var sortData = function sortData(rows) {
+        // Use the orderByFn to compose multiple sortBy's together.
+        // This will also perform a stable sorting using the row index
+        // if needed.
+        var sortedData = orderByFn(rows, availableSortBy.map(function (sort) {
+          // Support custom sorting methods for each column
+          var column = allColumns.find(function (d) {
+            return d.id === sort.id;
+          });
+
+          if (!column) {
+            throw new Error("React-Table: Could not find a column with id: " + sort.id + " while sorting");
+          }
+
+          var sortType = column.sortType; // Look up sortBy functions in this order:
+          // column function
+          // column string lookup on user sortType
+          // column string lookup on built-in sortType
+          // default function
+          // default string lookup on user sortType
+          // default string lookup on built-in sortType
+
+          var sortMethod = isFunction(sortType) || (userSortTypes || {})[sortType] || sortTypes[sortType];
+
+          if (!sortMethod) {
+            throw new Error("React-Table: Could not find a valid sortType of '" + sortType + "' for column '" + sort.id + "'.");
+          } // Return the correct sortFn.
+          // This function should always return in ascending order
+
+
+          return function (a, b) {
+            return sortMethod(a, b, sort.id, sort.desc);
+          };
+        }), // Map the directions
+        availableSortBy.map(function (sort) {
+          // Detect and use the sortInverted option
+          var column = allColumns.find(function (d) {
+            return d.id === sort.id;
+          });
+
+          if (column && column.sortInverted) {
+            return sort.desc;
+          }
+
+          return !sort.desc;
+        })); // If there are sub-rows, sort them
+
+        sortedData.forEach(function (row) {
+          sortedFlatRows.push(row);
+
+          if (!row.subRows || row.subRows.length === 0) {
+            return;
+          }
+
+          row.subRows = sortData(row.subRows);
+        });
+        return sortedData;
+      };
+
+      return [sortData(rows), sortedFlatRows];
+    }, [manualSortBy, sortBy, rows, flatRows, allColumns, orderByFn, userSortTypes]),
+        sortedRows = _React$useMemo[0],
+        sortedFlatRows = _React$useMemo[1];
+
+    var getAutoResetSortBy = useGetLatest(autoResetSortBy);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetSortBy()) {
+        dispatch({
+          type: actions.resetSortBy
+        });
+      }
+    }, [manualSortBy ? null : data]);
+    Object.assign(instance, {
+      preSortedRows: rows,
+      preSortedFlatRows: flatRows,
+      sortedRows: sortedRows,
+      sortedFlatRows: sortedFlatRows,
+      rows: sortedRows,
+      flatRows: sortedFlatRows,
+      setSortBy: setSortBy,
+      toggleSortBy: toggleSortBy
+    });
+  }
+
+  function defaultOrderByFn(arr, funcs, dirs) {
+    return [].concat(arr).sort(function (rowA, rowB) {
+      for (var i = 0; i < funcs.length; i += 1) {
+        var sortFn = funcs[i];
+        var desc = dirs[i] === false || dirs[i] === 'desc';
+        var sortInt = sortFn(rowA, rowB);
+
+        if (sortInt !== 0) {
+          return desc ? -sortInt : sortInt;
+        }
+      }
+
+      return dirs[0] ? rowA.index - rowB.index : rowB.index - rowA.index;
+    });
+  }
+
+  var pluginName = 'usePagination'; // Actions
+
+  actions.resetPage = 'resetPage';
+  actions.gotoPage = 'gotoPage';
+  actions.setPageSize = 'setPageSize';
+  var usePagination = function usePagination(hooks) {
+    hooks.stateReducers.push(reducer$6);
+    hooks.useInstance.push(useInstance$6);
+  };
+  usePagination.pluginName = pluginName;
+
+  function reducer$6(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        pageSize: 10,
+        pageIndex: 0
+      }, state);
+    }
+
+    if (action.type === actions.resetPage) {
+      return _extends({}, state, {
+        pageIndex: instance.initialState.pageIndex || 0
+      });
+    }
+
+    if (action.type === actions.gotoPage) {
+      var pageCount = instance.pageCount,
+          page = instance.page;
+      var newPageIndex = functionalUpdate(action.pageIndex, state.pageIndex);
+      var canNavigate = false;
+
+      if (newPageIndex > state.pageIndex) {
+        // next page
+        canNavigate = pageCount === -1 ? page.length >= state.pageSize : newPageIndex < pageCount;
+      } else if (newPageIndex < state.pageIndex) {
+        // prev page
+        canNavigate = newPageIndex > -1;
+      }
+
+      if (!canNavigate) {
+        return state;
+      }
+
+      return _extends({}, state, {
+        pageIndex: newPageIndex
+      });
+    }
+
+    if (action.type === actions.setPageSize) {
+      var pageSize = action.pageSize;
+      var topRowIndex = state.pageSize * state.pageIndex;
+      var pageIndex = Math.floor(topRowIndex / pageSize);
+      return _extends({}, state, {
+        pageIndex: pageIndex,
+        pageSize: pageSize
+      });
+    }
+  }
+
+  function useInstance$6(instance) {
+    var rows = instance.rows,
+        _instance$autoResetPa = instance.autoResetPage,
+        autoResetPage = _instance$autoResetPa === void 0 ? true : _instance$autoResetPa,
+        _instance$manualExpan = instance.manualExpandedKey,
+        manualExpandedKey = _instance$manualExpan === void 0 ? 'expanded' : _instance$manualExpan,
+        plugins = instance.plugins,
+        userPageCount = instance.pageCount,
+        _instance$paginateExp = instance.paginateExpandedRows,
+        paginateExpandedRows = _instance$paginateExp === void 0 ? true : _instance$paginateExp,
+        _instance$expandSubRo = instance.expandSubRows,
+        expandSubRows = _instance$expandSubRo === void 0 ? true : _instance$expandSubRo,
+        _instance$state = instance.state,
+        pageSize = _instance$state.pageSize,
+        pageIndex = _instance$state.pageIndex,
+        expanded = _instance$state.expanded,
+        globalFilter = _instance$state.globalFilter,
+        filters = _instance$state.filters,
+        groupBy = _instance$state.groupBy,
+        sortBy = _instance$state.sortBy,
+        dispatch = instance.dispatch,
+        data = instance.data,
+        manualPagination = instance.manualPagination;
+    ensurePluginOrder(plugins, ['useGlobalFilter', 'useFilters', 'useGroupBy', 'useSortBy', 'useExpanded'], 'usePagination');
+    var getAutoResetPage = useGetLatest(autoResetPage);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetPage()) {
+        dispatch({
+          type: actions.resetPage
+        });
+      }
+    }, [dispatch, manualPagination ? null : data, globalFilter, filters, groupBy, sortBy]);
+    var pageCount = manualPagination ? userPageCount : Math.ceil(rows.length / pageSize);
+    var pageOptions = React.useMemo(function () {
+      return pageCount > 0 ? [].concat(new Array(pageCount)).fill(null).map(function (d, i) {
+        return i;
+      }) : [];
+    }, [pageCount]);
+    var page = React.useMemo(function () {
+      var page;
+
+      if (manualPagination) {
+        page = rows;
+      } else {
+        var pageStart = pageSize * pageIndex;
+        var pageEnd = pageStart + pageSize;
+        page = rows.slice(pageStart, pageEnd);
+      }
+
+      if (paginateExpandedRows) {
+        return page;
+      }
+
+      return expandRows(page, {
+        manualExpandedKey: manualExpandedKey,
+        expanded: expanded,
+        expandSubRows: expandSubRows
+      });
+    }, [expandSubRows, expanded, manualExpandedKey, manualPagination, pageIndex, pageSize, paginateExpandedRows, rows]);
+    var canPreviousPage = pageIndex > 0;
+    var canNextPage = pageCount === -1 ? page.length >= pageSize : pageIndex < pageCount - 1;
+    var gotoPage = React.useCallback(function (pageIndex) {
+      dispatch({
+        type: actions.gotoPage,
+        pageIndex: pageIndex
+      });
+    }, [dispatch]);
+    var previousPage = React.useCallback(function () {
+      return gotoPage(function (old) {
+        return old - 1;
+      });
+    }, [gotoPage]);
+    var nextPage = React.useCallback(function () {
+      return gotoPage(function (old) {
+        return old + 1;
+      });
+    }, [gotoPage]);
+    var setPageSize = React.useCallback(function (pageSize) {
+      dispatch({
+        type: actions.setPageSize,
+        pageSize: pageSize
+      });
+    }, [dispatch]);
+    Object.assign(instance, {
+      pageOptions: pageOptions,
+      pageCount: pageCount,
+      page: page,
+      canPreviousPage: canPreviousPage,
+      canNextPage: canNextPage,
+      gotoPage: gotoPage,
+      previousPage: previousPage,
+      nextPage: nextPage,
+      setPageSize: setPageSize
+    });
+  }
+
+  actions.resetPivot = 'resetPivot';
+  actions.togglePivot = 'togglePivot';
+  var _UNSTABLE_usePivotColumns = function _UNSTABLE_usePivotColumns(hooks) {
+    hooks.getPivotToggleProps = [defaultGetPivotToggleProps];
+    hooks.stateReducers.push(reducer$7);
+    hooks.useInstanceAfterData.push(useInstanceAfterData);
+    hooks.allColumns.push(allColumns);
+    hooks.accessValue.push(accessValue);
+    hooks.materializedColumns.push(materializedColumns);
+    hooks.materializedColumnsDeps.push(materializedColumnsDeps);
+    hooks.visibleColumns.push(visibleColumns$1);
+    hooks.visibleColumnsDeps.push(visibleColumnsDeps);
+    hooks.useInstance.push(useInstance$7);
+    hooks.prepareRow.push(prepareRow$2);
+  };
+  _UNSTABLE_usePivotColumns.pluginName = 'usePivotColumns';
+  var defaultPivotColumns = [];
+
+  var defaultGetPivotToggleProps = function defaultGetPivotToggleProps(props, _ref) {
+    var header = _ref.header;
+    return [props, {
+      onClick: header.canPivot ? function (e) {
+        e.persist();
+        header.togglePivot();
+      } : undefined,
+      style: {
+        cursor: header.canPivot ? 'pointer' : undefined
+      },
+      title: 'Toggle Pivot'
+    }];
+  }; // Reducer
+
+
+  function reducer$7(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        pivotColumns: defaultPivotColumns
+      }, state);
+    }
+
+    if (action.type === actions.resetPivot) {
+      return _extends({}, state, {
+        pivotColumns: instance.initialState.pivotColumns || defaultPivotColumns
+      });
+    }
+
+    if (action.type === actions.togglePivot) {
+      var columnId = action.columnId,
+          setPivot = action.value;
+      var resolvedPivot = typeof setPivot !== 'undefined' ? setPivot : !state.pivotColumns.includes(columnId);
+
+      if (resolvedPivot) {
+        return _extends({}, state, {
+          pivotColumns: [].concat(state.pivotColumns, [columnId])
+        });
+      }
+
+      return _extends({}, state, {
+        pivotColumns: state.pivotColumns.filter(function (d) {
+          return d !== columnId;
+        })
+      });
+    }
+  }
+
+  function useInstanceAfterData(instance) {
+    instance.allColumns.forEach(function (column) {
+      column.isPivotSource = instance.state.pivotColumns.includes(column.id);
+    });
+  }
+
+  function allColumns(columns, _ref2) {
+    var instance = _ref2.instance;
+    columns.forEach(function (column) {
+      column.isPivotSource = instance.state.pivotColumns.includes(column.id);
+      column.uniqueValues = new Set();
+    });
+    return columns;
+  }
+
+  function accessValue(value, _ref3) {
+    var column = _ref3.column;
+
+    if (column.uniqueValues && typeof value !== 'undefined') {
+      column.uniqueValues.add(value);
+    }
+
+    return value;
+  }
+
+  function materializedColumns(materialized, _ref4) {
+    var instance = _ref4.instance;
+    var allColumns = instance.allColumns,
+        state = instance.state;
+
+    if (!state.pivotColumns.length || !state.groupBy || !state.groupBy.length) {
+      return materialized;
+    }
+
+    var pivotColumns = state.pivotColumns.map(function (id) {
+      return allColumns.find(function (d) {
+        return d.id === id;
+      });
+    }).filter(Boolean);
+    var sourceColumns = allColumns.filter(function (d) {
+      return !d.isPivotSource && !state.groupBy.includes(d.id) && !state.pivotColumns.includes(d.id);
+    });
+
+    var buildPivotColumns = function buildPivotColumns(depth, parent, pivotFilters) {
+      if (depth === void 0) {
+        depth = 0;
+      }
+
+      if (pivotFilters === void 0) {
+        pivotFilters = [];
+      }
+
+      var pivotColumn = pivotColumns[depth];
+
+      if (!pivotColumn) {
+        return sourceColumns.map(function (sourceColumn) {
+          // TODO: We could offer support here for renesting pivoted
+          // columns inside copies of their header groups. For now,
+          // that seems like it would be (1) overkill on nesting, considering
+          // you already get nesting for every pivot level and (2)
+          // really hard. :)
+          return _extends({}, sourceColumn, {
+            canPivot: false,
+            isPivoted: true,
+            parent: parent,
+            depth: depth,
+            id: "" + (parent ? parent.id + "." + sourceColumn.id : sourceColumn.id),
+            accessor: function accessor(originalRow, i, row) {
+              if (pivotFilters.every(function (filter) {
+                return filter(row);
+              })) {
+                return row.values[sourceColumn.id];
+              }
+            }
+          });
+        });
+      }
+
+      var uniqueValues = Array.from(pivotColumn.uniqueValues).sort();
+      return uniqueValues.map(function (uniqueValue) {
+        var columnGroup = _extends({}, pivotColumn, {
+          Header: pivotColumn.PivotHeader || typeof pivotColumn.header === 'string' ? pivotColumn.Header + ": " + uniqueValue : uniqueValue,
+          isPivotGroup: true,
+          parent: parent,
+          depth: depth,
+          id: parent ? parent.id + "." + pivotColumn.id + "." + uniqueValue : pivotColumn.id + "." + uniqueValue,
+          pivotValue: uniqueValue
+        });
+
+        columnGroup.columns = buildPivotColumns(depth + 1, columnGroup, [].concat(pivotFilters, [function (row) {
+          return row.values[pivotColumn.id] === uniqueValue;
+        }]));
+        return columnGroup;
+      });
+    };
+
+    var newMaterialized = flattenColumns(buildPivotColumns());
+    return [].concat(materialized, newMaterialized);
+  }
+
+  function materializedColumnsDeps(deps, _ref5) {
+    var _ref5$instance$state = _ref5.instance.state,
+        pivotColumns = _ref5$instance$state.pivotColumns,
+        groupBy = _ref5$instance$state.groupBy;
+    return [].concat(deps, [pivotColumns, groupBy]);
+  }
+
+  function visibleColumns$1(visibleColumns, _ref6) {
+    var state = _ref6.instance.state;
+    visibleColumns = visibleColumns.filter(function (d) {
+      return !d.isPivotSource;
+    });
+
+    if (state.pivotColumns.length && state.groupBy && state.groupBy.length) {
+      visibleColumns = visibleColumns.filter(function (column) {
+        return column.isGrouped || column.isPivoted;
+      });
+    }
+
+    return visibleColumns;
+  }
+
+  function visibleColumnsDeps(deps, _ref7) {
+    var instance = _ref7.instance;
+    return [].concat(deps, [instance.state.pivotColumns, instance.state.groupBy]);
+  }
+
+  function useInstance$7(instance) {
+    var columns = instance.columns,
+        allColumns = instance.allColumns,
+        flatHeaders = instance.flatHeaders,
+        getHooks = instance.getHooks,
+        plugins = instance.plugins,
+        dispatch = instance.dispatch,
+        _instance$autoResetPi = instance.autoResetPivot,
+        autoResetPivot = _instance$autoResetPi === void 0 ? true : _instance$autoResetPi,
+        manaulPivot = instance.manaulPivot,
+        disablePivot = instance.disablePivot,
+        defaultCanPivot = instance.defaultCanPivot;
+    ensurePluginOrder(plugins, ['useGroupBy'], 'usePivotColumns');
+    var getInstance = useGetLatest(instance);
+    allColumns.forEach(function (column) {
+      var accessor = column.accessor,
+          defaultColumnPivot = column.defaultPivot,
+          columnDisablePivot = column.disablePivot;
+      column.canPivot = accessor ? getFirstDefined(column.canPivot, columnDisablePivot === true ? false : undefined, disablePivot === true ? false : undefined, true) : getFirstDefined(column.canPivot, defaultColumnPivot, defaultCanPivot, false);
+
+      if (column.canPivot) {
+        column.togglePivot = function () {
+          return instance.togglePivot(column.id);
+        };
+      }
+
+      column.Aggregated = column.Aggregated || column.Cell;
+    });
+
+    var togglePivot = function togglePivot(columnId, value) {
+      dispatch({
+        type: actions.togglePivot,
+        columnId: columnId,
+        value: value
+      });
+    };
+
+    flatHeaders.forEach(function (header) {
+      header.getPivotToggleProps = makePropGetter(getHooks().getPivotToggleProps, {
+        instance: getInstance(),
+        header: header
+      });
+    });
+    var getAutoResetPivot = useGetLatest(autoResetPivot);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetPivot()) {
+        dispatch({
+          type: actions.resetPivot
+        });
+      }
+    }, [dispatch, manaulPivot ? null : columns]);
+    Object.assign(instance, {
+      togglePivot: togglePivot
+    });
+  }
+
+  function prepareRow$2(row) {
+    row.allCells.forEach(function (cell) {
+      // Grouped cells are in the pivotColumns and the pivot cell for the row
+      cell.isPivoted = cell.column.isPivoted;
+    });
+  }
+
+  var pluginName$1 = 'useRowSelect'; // Actions
+
+  actions.resetSelectedRows = 'resetSelectedRows';
+  actions.toggleAllRowsSelected = 'toggleAllRowsSelected';
+  actions.toggleRowSelected = 'toggleRowSelected';
+  actions.toggleAllPageRowsSelected = 'toggleAllPageRowsSelected';
+  var useRowSelect = function useRowSelect(hooks) {
+    hooks.getToggleRowSelectedProps = [defaultGetToggleRowSelectedProps];
+    hooks.getToggleAllRowsSelectedProps = [defaultGetToggleAllRowsSelectedProps];
+    hooks.getToggleAllPageRowsSelectedProps = [defaultGetToggleAllPageRowsSelectedProps];
+    hooks.stateReducers.push(reducer$8);
+    hooks.useInstance.push(useInstance$8);
+    hooks.prepareRow.push(prepareRow$3);
+  };
+  useRowSelect.pluginName = pluginName$1;
+
+  var defaultGetToggleRowSelectedProps = function defaultGetToggleRowSelectedProps(props, _ref) {
+    var instance = _ref.instance,
+        row = _ref.row;
+    var _instance$manualRowSe = instance.manualRowSelectedKey,
+        manualRowSelectedKey = _instance$manualRowSe === void 0 ? 'isSelected' : _instance$manualRowSe;
+    var checked = false;
+
+    if (row.original && row.original[manualRowSelectedKey]) {
+      checked = true;
+    } else {
+      checked = row.isSelected;
+    }
+
+    return [props, {
+      onChange: function onChange(e) {
+        row.toggleRowSelected(e.target.checked);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      checked: checked,
+      title: 'Toggle Row Selected',
+      indeterminate: row.isSomeSelected
+    }];
+  };
+
+  var defaultGetToggleAllRowsSelectedProps = function defaultGetToggleAllRowsSelectedProps(props, _ref2) {
+    var instance = _ref2.instance;
+    return [props, {
+      onChange: function onChange(e) {
+        instance.toggleAllRowsSelected(e.target.checked);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      checked: instance.isAllRowsSelected,
+      title: 'Toggle All Rows Selected',
+      indeterminate: Boolean(!instance.isAllRowsSelected && Object.keys(instance.state.selectedRowIds).length)
+    }];
+  };
+
+  var defaultGetToggleAllPageRowsSelectedProps = function defaultGetToggleAllPageRowsSelectedProps(props, _ref3) {
+    var instance = _ref3.instance;
+    return [props, {
+      onChange: function onChange(e) {
+        instance.toggleAllPageRowsSelected(e.target.checked);
+      },
+      style: {
+        cursor: 'pointer'
+      },
+      checked: instance.isAllPageRowsSelected,
+      title: 'Toggle All Current Page Rows Selected',
+      indeterminate: Boolean(!instance.isAllPageRowsSelected && instance.page.some(function (_ref4) {
+        var id = _ref4.id;
+        return instance.state.selectedRowIds[id];
+      }))
+    }];
+  }; // eslint-disable-next-line max-params
+
+
+  function reducer$8(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        selectedRowIds: {}
+      }, state);
+    }
+
+    if (action.type === actions.resetSelectedRows) {
+      return _extends({}, state, {
+        selectedRowIds: instance.initialState.selectedRowIds || {}
+      });
+    }
+
+    if (action.type === actions.toggleAllRowsSelected) {
+      var setSelected = action.value;
+      var isAllRowsSelected = instance.isAllRowsSelected,
+          rowsById = instance.rowsById,
+          _instance$nonGroupedR = instance.nonGroupedRowsById,
+          nonGroupedRowsById = _instance$nonGroupedR === void 0 ? rowsById : _instance$nonGroupedR;
+      var selectAll = typeof setSelected !== 'undefined' ? setSelected : !isAllRowsSelected; // Only remove/add the rows that are visible on the screen
+      //  Leave all the other rows that are selected alone.
+
+      var selectedRowIds = Object.assign({}, state.selectedRowIds);
+
+      if (selectAll) {
+        Object.keys(nonGroupedRowsById).forEach(function (rowId) {
+          selectedRowIds[rowId] = true;
+        });
+      } else {
+        Object.keys(nonGroupedRowsById).forEach(function (rowId) {
+          delete selectedRowIds[rowId];
+        });
+      }
+
+      return _extends({}, state, {
+        selectedRowIds: selectedRowIds
+      });
+    }
+
+    if (action.type === actions.toggleRowSelected) {
+      var id = action.id,
+          _setSelected = action.value;
+      var _rowsById = instance.rowsById,
+          _instance$selectSubRo = instance.selectSubRows,
+          selectSubRows = _instance$selectSubRo === void 0 ? true : _instance$selectSubRo,
+          getSubRows = instance.getSubRows;
+      var isSelected = state.selectedRowIds[id];
+      var shouldExist = typeof _setSelected !== 'undefined' ? _setSelected : !isSelected;
+
+      if (isSelected === shouldExist) {
+        return state;
+      }
+
+      var newSelectedRowIds = _extends({}, state.selectedRowIds);
+
+      var handleRowById = function handleRowById(id) {
+        var row = _rowsById[id];
+
+        if (row) {
+          if (!row.isGrouped) {
+            if (shouldExist) {
+              newSelectedRowIds[id] = true;
+            } else {
+              delete newSelectedRowIds[id];
+            }
+          }
+
+          if (selectSubRows && getSubRows(row)) {
+            return getSubRows(row).forEach(function (row) {
+              return handleRowById(row.id);
+            });
+          }
+        }
+      };
+
+      handleRowById(id);
+      return _extends({}, state, {
+        selectedRowIds: newSelectedRowIds
+      });
+    }
+
+    if (action.type === actions.toggleAllPageRowsSelected) {
+      var _setSelected2 = action.value;
+
+      var page = instance.page,
+          _rowsById2 = instance.rowsById,
+          _instance$selectSubRo2 = instance.selectSubRows,
+          _selectSubRows = _instance$selectSubRo2 === void 0 ? true : _instance$selectSubRo2,
+          isAllPageRowsSelected = instance.isAllPageRowsSelected,
+          _getSubRows = instance.getSubRows;
+
+      var _selectAll = typeof _setSelected2 !== 'undefined' ? _setSelected2 : !isAllPageRowsSelected;
+
+      var _newSelectedRowIds = _extends({}, state.selectedRowIds);
+
+      var _handleRowById = function _handleRowById(id) {
+        var row = _rowsById2[id];
+
+        if (!row.isGrouped) {
+          if (_selectAll) {
+            _newSelectedRowIds[id] = true;
+          } else {
+            delete _newSelectedRowIds[id];
+          }
+        }
+
+        if (_selectSubRows && _getSubRows(row)) {
+          return _getSubRows(row).forEach(function (row) {
+            return _handleRowById(row.id);
+          });
+        }
+      };
+
+      page.forEach(function (row) {
+        return _handleRowById(row.id);
+      });
+      return _extends({}, state, {
+        selectedRowIds: _newSelectedRowIds
+      });
+    }
+
+    return state;
+  }
+
+  function useInstance$8(instance) {
+    var data = instance.data,
+        rows = instance.rows,
+        getHooks = instance.getHooks,
+        plugins = instance.plugins,
+        rowsById = instance.rowsById,
+        _instance$nonGroupedR2 = instance.nonGroupedRowsById,
+        nonGroupedRowsById = _instance$nonGroupedR2 === void 0 ? rowsById : _instance$nonGroupedR2,
+        _instance$autoResetSe = instance.autoResetSelectedRows,
+        autoResetSelectedRows = _instance$autoResetSe === void 0 ? true : _instance$autoResetSe,
+        selectedRowIds = instance.state.selectedRowIds,
+        _instance$selectSubRo3 = instance.selectSubRows,
+        selectSubRows = _instance$selectSubRo3 === void 0 ? true : _instance$selectSubRo3,
+        dispatch = instance.dispatch,
+        page = instance.page,
+        getSubRows = instance.getSubRows;
+    ensurePluginOrder(plugins, ['useFilters', 'useGroupBy', 'useSortBy', 'useExpanded', 'usePagination'], 'useRowSelect');
+    var selectedFlatRows = React.useMemo(function () {
+      var selectedFlatRows = [];
+      rows.forEach(function (row) {
+        var isSelected = selectSubRows ? getRowIsSelected(row, selectedRowIds, getSubRows) : !!selectedRowIds[row.id];
+        row.isSelected = !!isSelected;
+        row.isSomeSelected = isSelected === null;
+
+        if (isSelected) {
+          selectedFlatRows.push(row);
+        }
+      });
+      return selectedFlatRows;
+    }, [rows, selectSubRows, selectedRowIds, getSubRows]);
+    var isAllRowsSelected = Boolean(Object.keys(nonGroupedRowsById).length && Object.keys(selectedRowIds).length);
+    var isAllPageRowsSelected = isAllRowsSelected;
+
+    if (isAllRowsSelected) {
+      if (Object.keys(nonGroupedRowsById).some(function (id) {
+        return !selectedRowIds[id];
+      })) {
+        isAllRowsSelected = false;
+      }
+    }
+
+    if (!isAllRowsSelected) {
+      if (page && page.length && page.some(function (_ref5) {
+        var id = _ref5.id;
+        return !selectedRowIds[id];
+      })) {
+        isAllPageRowsSelected = false;
+      }
+    }
+
+    var getAutoResetSelectedRows = useGetLatest(autoResetSelectedRows);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetSelectedRows()) {
+        dispatch({
+          type: actions.resetSelectedRows
+        });
+      }
+    }, [dispatch, data]);
+    var toggleAllRowsSelected = React.useCallback(function (value) {
+      return dispatch({
+        type: actions.toggleAllRowsSelected,
+        value: value
+      });
+    }, [dispatch]);
+    var toggleAllPageRowsSelected = React.useCallback(function (value) {
+      return dispatch({
+        type: actions.toggleAllPageRowsSelected,
+        value: value
+      });
+    }, [dispatch]);
+    var toggleRowSelected = React.useCallback(function (id, value) {
+      return dispatch({
+        type: actions.toggleRowSelected,
+        id: id,
+        value: value
+      });
+    }, [dispatch]);
+    var getInstance = useGetLatest(instance);
+    var getToggleAllRowsSelectedProps = makePropGetter(getHooks().getToggleAllRowsSelectedProps, {
+      instance: getInstance()
+    });
+    var getToggleAllPageRowsSelectedProps = makePropGetter(getHooks().getToggleAllPageRowsSelectedProps, {
+      instance: getInstance()
+    });
+    Object.assign(instance, {
+      selectedFlatRows: selectedFlatRows,
+      isAllRowsSelected: isAllRowsSelected,
+      isAllPageRowsSelected: isAllPageRowsSelected,
+      toggleRowSelected: toggleRowSelected,
+      toggleAllRowsSelected: toggleAllRowsSelected,
+      getToggleAllRowsSelectedProps: getToggleAllRowsSelectedProps,
+      getToggleAllPageRowsSelectedProps: getToggleAllPageRowsSelectedProps,
+      toggleAllPageRowsSelected: toggleAllPageRowsSelected
+    });
+  }
+
+  function prepareRow$3(row, _ref6) {
+    var instance = _ref6.instance;
+
+    row.toggleRowSelected = function (set) {
+      return instance.toggleRowSelected(row.id, set);
+    };
+
+    row.getToggleRowSelectedProps = makePropGetter(instance.getHooks().getToggleRowSelectedProps, {
+      instance: instance,
+      row: row
+    });
+  }
+
+  function getRowIsSelected(row, selectedRowIds, getSubRows) {
+    if (selectedRowIds[row.id]) {
+      return true;
+    }
+
+    var subRows = getSubRows(row);
+
+    if (subRows && subRows.length) {
+      var allChildrenSelected = true;
+      var someSelected = false;
+      subRows.forEach(function (subRow) {
+        // Bail out early if we know both of these
+        if (someSelected && !allChildrenSelected) {
+          return;
+        }
+
+        if (getRowIsSelected(subRow, selectedRowIds, getSubRows)) {
+          someSelected = true;
+        } else {
+          allChildrenSelected = false;
+        }
+      });
+      return allChildrenSelected ? true : someSelected ? null : false;
+    }
+
+    return false;
+  }
+
+  var defaultInitialRowStateAccessor = function defaultInitialRowStateAccessor(row) {
+    return {};
+  };
+
+  var defaultInitialCellStateAccessor = function defaultInitialCellStateAccessor(cell) {
+    return {};
+  }; // Actions
+
+
+  actions.setRowState = 'setRowState';
+  actions.setCellState = 'setCellState';
+  actions.resetRowState = 'resetRowState';
+  var useRowState = function useRowState(hooks) {
+    hooks.stateReducers.push(reducer$9);
+    hooks.useInstance.push(useInstance$9);
+    hooks.prepareRow.push(prepareRow$4);
+  };
+  useRowState.pluginName = 'useRowState';
+
+  function reducer$9(state, action, previousState, instance) {
+    var _instance$initialRowS = instance.initialRowStateAccessor,
+        initialRowStateAccessor = _instance$initialRowS === void 0 ? defaultInitialRowStateAccessor : _instance$initialRowS,
+        _instance$initialCell = instance.initialCellStateAccessor,
+        initialCellStateAccessor = _instance$initialCell === void 0 ? defaultInitialCellStateAccessor : _instance$initialCell,
+        rowsById = instance.rowsById;
+
+    if (action.type === actions.init) {
+      return _extends({
+        rowState: {}
+      }, state);
+    }
+
+    if (action.type === actions.resetRowState) {
+      return _extends({}, state, {
+        rowState: instance.initialState.rowState || {}
+      });
+    }
+
+    if (action.type === actions.setRowState) {
+      var _extends2;
+
+      var rowId = action.rowId,
+          value = action.value;
+      var oldRowState = typeof state.rowState[rowId] !== 'undefined' ? state.rowState[rowId] : initialRowStateAccessor(rowsById[rowId]);
+      return _extends({}, state, {
+        rowState: _extends({}, state.rowState, (_extends2 = {}, _extends2[rowId] = functionalUpdate(value, oldRowState), _extends2))
+      });
+    }
+
+    if (action.type === actions.setCellState) {
+      var _oldRowState$cellStat, _rowsById$_rowId, _rowsById$_rowId$cell, _extends3, _extends4;
+
+      var _rowId = action.rowId,
+          columnId = action.columnId,
+          _value = action.value;
+
+      var _oldRowState = typeof state.rowState[_rowId] !== 'undefined' ? state.rowState[_rowId] : initialRowStateAccessor(rowsById[_rowId]);
+
+      var oldCellState = typeof (_oldRowState == null ? void 0 : (_oldRowState$cellStat = _oldRowState.cellState) == null ? void 0 : _oldRowState$cellStat[columnId]) !== 'undefined' ? _oldRowState.cellState[columnId] : initialCellStateAccessor((_rowsById$_rowId = rowsById[_rowId]) == null ? void 0 : (_rowsById$_rowId$cell = _rowsById$_rowId.cells) == null ? void 0 : _rowsById$_rowId$cell.find(function (cell) {
+        return cell.column.id === columnId;
+      }));
+      return _extends({}, state, {
+        rowState: _extends({}, state.rowState, (_extends4 = {}, _extends4[_rowId] = _extends({}, _oldRowState, {
+          cellState: _extends({}, _oldRowState.cellState || {}, (_extends3 = {}, _extends3[columnId] = functionalUpdate(_value, oldCellState), _extends3))
+        }), _extends4))
+      });
+    }
+  }
+
+  function useInstance$9(instance) {
+    var _instance$autoResetRo = instance.autoResetRowState,
+        autoResetRowState = _instance$autoResetRo === void 0 ? true : _instance$autoResetRo,
+        data = instance.data,
+        dispatch = instance.dispatch;
+    var setRowState = React.useCallback(function (rowId, value) {
+      return dispatch({
+        type: actions.setRowState,
+        rowId: rowId,
+        value: value
+      });
+    }, [dispatch]);
+    var setCellState = React.useCallback(function (rowId, columnId, value) {
+      return dispatch({
+        type: actions.setCellState,
+        rowId: rowId,
+        columnId: columnId,
+        value: value
+      });
+    }, [dispatch]);
+    var getAutoResetRowState = useGetLatest(autoResetRowState);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetRowState()) {
+        dispatch({
+          type: actions.resetRowState
+        });
+      }
+    }, [data]);
+    Object.assign(instance, {
+      setRowState: setRowState,
+      setCellState: setCellState
+    });
+  }
+
+  function prepareRow$4(row, _ref) {
+    var instance = _ref.instance;
+    var _instance$initialRowS2 = instance.initialRowStateAccessor,
+        initialRowStateAccessor = _instance$initialRowS2 === void 0 ? defaultInitialRowStateAccessor : _instance$initialRowS2,
+        _instance$initialCell2 = instance.initialCellStateAccessor,
+        initialCellStateAccessor = _instance$initialCell2 === void 0 ? defaultInitialCellStateAccessor : _instance$initialCell2,
+        rowState = instance.state.rowState;
+
+    if (row) {
+      row.state = typeof rowState[row.id] !== 'undefined' ? rowState[row.id] : initialRowStateAccessor(row);
+
+      row.setState = function (updater) {
+        return instance.setRowState(row.id, updater);
+      };
+
+      row.cells.forEach(function (cell) {
+        if (!row.state.cellState) {
+          row.state.cellState = {};
+        }
+
+        cell.state = typeof row.state.cellState[cell.column.id] !== 'undefined' ? row.state.cellState[cell.column.id] : initialCellStateAccessor(cell);
+
+        cell.setState = function (updater) {
+          return instance.setCellState(row.id, cell.column.id, updater);
+        };
+      });
+    }
+  }
+
+  actions.resetColumnOrder = 'resetColumnOrder';
+  actions.setColumnOrder = 'setColumnOrder';
+  var useColumnOrder = function useColumnOrder(hooks) {
+    hooks.stateReducers.push(reducer$a);
+    hooks.visibleColumnsDeps.push(function (deps, _ref) {
+      var instance = _ref.instance;
+      return [].concat(deps, [instance.state.columnOrder]);
+    });
+    hooks.visibleColumns.push(visibleColumns$2);
+    hooks.useInstance.push(useInstance$a);
+  };
+  useColumnOrder.pluginName = 'useColumnOrder';
+
+  function reducer$a(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        columnOrder: []
+      }, state);
+    }
+
+    if (action.type === actions.resetColumnOrder) {
+      return _extends({}, state, {
+        columnOrder: instance.initialState.columnOrder || []
+      });
+    }
+
+    if (action.type === actions.setColumnOrder) {
+      return _extends({}, state, {
+        columnOrder: functionalUpdate(action.columnOrder, state.columnOrder)
+      });
+    }
+  }
+
+  function visibleColumns$2(columns, _ref2) {
+    var columnOrder = _ref2.instance.state.columnOrder;
+
+    // If there is no order, return the normal columns
+    if (!columnOrder || !columnOrder.length) {
+      return columns;
+    }
+
+    var columnOrderCopy = [].concat(columnOrder); // If there is an order, make a copy of the columns
+
+    var columnsCopy = [].concat(columns); // And make a new ordered array of the columns
+
+    var columnsInOrder = []; // Loop over the columns and place them in order into the new array
+
+    var _loop = function _loop() {
+      var targetColumnId = columnOrderCopy.shift();
+      var foundIndex = columnsCopy.findIndex(function (d) {
+        return d.id === targetColumnId;
+      });
+
+      if (foundIndex > -1) {
+        columnsInOrder.push(columnsCopy.splice(foundIndex, 1)[0]);
+      }
+    };
+
+    while (columnsCopy.length && columnOrderCopy.length) {
+      _loop();
+    } // If there are any columns left, add them to the end
+
+
+    return [].concat(columnsInOrder, columnsCopy);
+  }
+
+  function useInstance$a(instance) {
+    var dispatch = instance.dispatch;
+    instance.setColumnOrder = React.useCallback(function (columnOrder) {
+      return dispatch({
+        type: actions.setColumnOrder,
+        columnOrder: columnOrder
+      });
+    }, [dispatch]);
+  }
+
+  defaultColumn.canResize = true; // Actions
+
+  actions.columnStartResizing = 'columnStartResizing';
+  actions.columnResizing = 'columnResizing';
+  actions.columnDoneResizing = 'columnDoneResizing';
+  actions.resetResize = 'resetResize';
+  var useResizeColumns = function useResizeColumns(hooks) {
+    hooks.getResizerProps = [defaultGetResizerProps];
+    hooks.getHeaderProps.push({
+      style: {
+        position: 'relative'
+      }
+    });
+    hooks.stateReducers.push(reducer$b);
+    hooks.useInstance.push(useInstance$b);
+    hooks.useInstanceBeforeDimensions.push(useInstanceBeforeDimensions$1);
+  };
+
+  var defaultGetResizerProps = function defaultGetResizerProps(props, _ref) {
+    var instance = _ref.instance,
+        header = _ref.header;
+    var dispatch = instance.dispatch;
+
+    var onResizeStart = function onResizeStart(e, header) {
+      var isTouchEvent = false;
+
+      if (e.type === 'touchstart') {
+        // lets not respond to multiple touches (e.g. 2 or 3 fingers)
+        if (e.touches && e.touches.length > 1) {
+          return;
+        }
+
+        isTouchEvent = true;
+      }
+
+      var headersToResize = getLeafHeaders(header);
+      var headerIdWidths = headersToResize.map(function (d) {
+        return [d.id, d.totalWidth];
+      });
+      var clientX = isTouchEvent ? Math.round(e.touches[0].clientX) : e.clientX;
+      var raf;
+      var mostRecentClientX;
+
+      var dispatchEnd = function dispatchEnd() {
+        window.cancelAnimationFrame(raf);
+        raf = null;
+        dispatch({
+          type: actions.columnDoneResizing
+        });
+      };
+
+      var dispatchMove = function dispatchMove() {
+        window.cancelAnimationFrame(raf);
+        raf = null;
+        dispatch({
+          type: actions.columnResizing,
+          clientX: mostRecentClientX
+        });
+      };
+
+      var scheduleDispatchMoveOnNextAnimationFrame = function scheduleDispatchMoveOnNextAnimationFrame(clientXPos) {
+        mostRecentClientX = clientXPos;
+
+        if (!raf) {
+          raf = window.requestAnimationFrame(dispatchMove);
+        }
+      };
+
+      var handlersAndEvents = {
+        mouse: {
+          moveEvent: 'mousemove',
+          moveHandler: function moveHandler(e) {
+            return scheduleDispatchMoveOnNextAnimationFrame(e.clientX);
+          },
+          upEvent: 'mouseup',
+          upHandler: function upHandler(e) {
+            document.removeEventListener('mousemove', handlersAndEvents.mouse.moveHandler);
+            document.removeEventListener('mouseup', handlersAndEvents.mouse.upHandler);
+            dispatchEnd();
+          }
+        },
+        touch: {
+          moveEvent: 'touchmove',
+          moveHandler: function moveHandler(e) {
+            if (e.cancelable) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+
+            scheduleDispatchMoveOnNextAnimationFrame(e.touches[0].clientX);
+            return false;
+          },
+          upEvent: 'touchend',
+          upHandler: function upHandler(e) {
+            document.removeEventListener(handlersAndEvents.touch.moveEvent, handlersAndEvents.touch.moveHandler);
+            document.removeEventListener(handlersAndEvents.touch.upEvent, handlersAndEvents.touch.moveHandler);
+            dispatchEnd();
+          }
+        }
+      };
+      var events = isTouchEvent ? handlersAndEvents.touch : handlersAndEvents.mouse;
+      var passiveIfSupported = passiveEventSupported() ? {
+        passive: false
+      } : false;
+      document.addEventListener(events.moveEvent, events.moveHandler, passiveIfSupported);
+      document.addEventListener(events.upEvent, events.upHandler, passiveIfSupported);
+      dispatch({
+        type: actions.columnStartResizing,
+        columnId: header.id,
+        columnWidth: header.totalWidth,
+        headerIdWidths: headerIdWidths,
+        clientX: clientX
+      });
+    };
+
+    return [props, {
+      onMouseDown: function onMouseDown(e) {
+        return e.persist() || onResizeStart(e, header);
+      },
+      onTouchStart: function onTouchStart(e) {
+        return e.persist() || onResizeStart(e, header);
+      },
+      style: {
+        cursor: 'col-resize'
+      },
+      draggable: false,
+      role: 'separator'
+    }];
+  };
+
+  useResizeColumns.pluginName = 'useResizeColumns';
+
+  function reducer$b(state, action) {
+    if (action.type === actions.init) {
+      return _extends({
+        columnResizing: {
+          columnWidths: {}
+        }
+      }, state);
+    }
+
+    if (action.type === actions.resetResize) {
+      return _extends({}, state, {
+        columnResizing: {
+          columnWidths: {}
+        }
+      });
+    }
+
+    if (action.type === actions.columnStartResizing) {
+      var clientX = action.clientX,
+          columnId = action.columnId,
+          columnWidth = action.columnWidth,
+          headerIdWidths = action.headerIdWidths;
+      return _extends({}, state, {
+        columnResizing: _extends({}, state.columnResizing, {
+          startX: clientX,
+          headerIdWidths: headerIdWidths,
+          columnWidth: columnWidth,
+          isResizingColumn: columnId
+        })
+      });
+    }
+
+    if (action.type === actions.columnResizing) {
+      var _clientX = action.clientX;
+
+      var _state$columnResizing = state.columnResizing,
+          startX = _state$columnResizing.startX,
+          _columnWidth = _state$columnResizing.columnWidth,
+          _state$columnResizing2 = _state$columnResizing.headerIdWidths,
+          _headerIdWidths = _state$columnResizing2 === void 0 ? [] : _state$columnResizing2;
+
+      var deltaX = _clientX - startX;
+      var percentageDeltaX = deltaX / _columnWidth;
+      var newColumnWidths = {};
+
+      _headerIdWidths.forEach(function (_ref2) {
+        var headerId = _ref2[0],
+            headerWidth = _ref2[1];
+        newColumnWidths[headerId] = Math.max(headerWidth + headerWidth * percentageDeltaX, 0);
+      });
+
+      return _extends({}, state, {
+        columnResizing: _extends({}, state.columnResizing, {
+          columnWidths: _extends({}, state.columnResizing.columnWidths, {}, newColumnWidths)
+        })
+      });
+    }
+
+    if (action.type === actions.columnDoneResizing) {
+      return _extends({}, state, {
+        columnResizing: _extends({}, state.columnResizing, {
+          startX: null,
+          isResizingColumn: null
+        })
+      });
+    }
+  }
+
+  var useInstanceBeforeDimensions$1 = function useInstanceBeforeDimensions(instance) {
+    var flatHeaders = instance.flatHeaders,
+        disableResizing = instance.disableResizing,
+        getHooks = instance.getHooks,
+        columnResizing = instance.state.columnResizing;
+    var getInstance = useGetLatest(instance);
+    flatHeaders.forEach(function (header) {
+      var canResize = getFirstDefined(header.disableResizing === true ? false : undefined, disableResizing === true ? false : undefined, true);
+      header.canResize = canResize;
+      header.width = columnResizing.columnWidths[header.id] || header.originalWidth || header.width;
+      header.isResizing = columnResizing.isResizingColumn === header.id;
+
+      if (canResize) {
+        header.getResizerProps = makePropGetter(getHooks().getResizerProps, {
+          instance: getInstance(),
+          header: header
+        });
+      }
+    });
+  };
+
+  function useInstance$b(instance) {
+    var plugins = instance.plugins,
+        dispatch = instance.dispatch,
+        _instance$autoResetRe = instance.autoResetResize,
+        autoResetResize = _instance$autoResetRe === void 0 ? true : _instance$autoResetRe,
+        columns = instance.columns;
+    ensurePluginOrder(plugins, ['useAbsoluteLayout'], 'useResizeColumns');
+    var getAutoResetResize = useGetLatest(autoResetResize);
+    useMountedLayoutEffect(function () {
+      if (getAutoResetResize()) {
+        dispatch({
+          type: actions.resetResize
+        });
+      }
+    }, [columns]);
+    var resetResizing = React.useCallback(function () {
+      return dispatch({
+        type: actions.resetResize
+      });
+    }, [dispatch]);
+    Object.assign(instance, {
+      resetResizing: resetResizing
+    });
+  }
+
+  function getLeafHeaders(header) {
+    var leafHeaders = [];
+
+    var recurseHeader = function recurseHeader(header) {
+      if (header.columns && header.columns.length) {
+        header.columns.map(recurseHeader);
+      }
+
+      leafHeaders.push(header);
+    };
+
+    recurseHeader(header);
+    return leafHeaders;
+  }
+
+  var cellStyles = {
+    position: 'absolute',
+    top: 0
+  };
+  var useAbsoluteLayout = function useAbsoluteLayout(hooks) {
+    hooks.getTableBodyProps.push(getRowStyles);
+    hooks.getRowProps.push(getRowStyles);
+    hooks.getHeaderGroupProps.push(getRowStyles);
+    hooks.getFooterGroupProps.push(getRowStyles);
+    hooks.getHeaderProps.push(function (props, _ref) {
+      var column = _ref.column;
+      return [props, {
+        style: _extends({}, cellStyles, {
+          left: column.totalLeft + "px",
+          width: column.totalWidth + "px"
+        })
+      }];
+    });
+    hooks.getCellProps.push(function (props, _ref2) {
+      var cell = _ref2.cell;
+      return [props, {
+        style: _extends({}, cellStyles, {
+          left: cell.column.totalLeft + "px",
+          width: cell.column.totalWidth + "px"
+        })
+      }];
+    });
+    hooks.getFooterProps.push(function (props, _ref3) {
+      var column = _ref3.column;
+      return [props, {
+        style: _extends({}, cellStyles, {
+          left: column.totalLeft + "px",
+          width: column.totalWidth + "px"
+        })
+      }];
+    });
+  };
+  useAbsoluteLayout.pluginName = 'useAbsoluteLayout';
+
+  var getRowStyles = function getRowStyles(props, _ref4) {
+    var instance = _ref4.instance;
+    return [props, {
+      style: {
+        position: 'relative',
+        width: instance.totalColumnsWidth + "px"
+      }
+    }];
+  };
+
+  var cellStyles$1 = {
+    display: 'inline-block',
+    boxSizing: 'border-box'
+  };
+
+  var getRowStyles$1 = function getRowStyles(props, _ref) {
+    var instance = _ref.instance;
+    return [props, {
+      style: {
+        display: 'flex',
+        width: instance.totalColumnsWidth + "px"
+      }
+    }];
+  };
+
+  var useBlockLayout = function useBlockLayout(hooks) {
+    hooks.getRowProps.push(getRowStyles$1);
+    hooks.getHeaderGroupProps.push(getRowStyles$1);
+    hooks.getFooterGroupProps.push(getRowStyles$1);
+    hooks.getHeaderProps.push(function (props, _ref2) {
+      var column = _ref2.column;
+      return [props, {
+        style: _extends({}, cellStyles$1, {
+          width: column.totalWidth + "px"
+        })
+      }];
+    });
+    hooks.getCellProps.push(function (props, _ref3) {
+      var cell = _ref3.cell;
+      return [props, {
+        style: _extends({}, cellStyles$1, {
+          width: cell.column.totalWidth + "px"
+        })
+      }];
+    });
+    hooks.getFooterProps.push(function (props, _ref4) {
+      var column = _ref4.column;
+      return [props, {
+        style: _extends({}, cellStyles$1, {
+          width: column.totalWidth + "px"
+        })
+      }];
+    });
+  };
+  useBlockLayout.pluginName = 'useBlockLayout';
+
+  function useFlexLayout(hooks) {
+    hooks.getTableProps.push(getTableProps);
+    hooks.getRowProps.push(getRowStyles$2);
+    hooks.getHeaderGroupProps.push(getRowStyles$2);
+    hooks.getFooterGroupProps.push(getRowStyles$2);
+    hooks.getHeaderProps.push(getHeaderProps);
+    hooks.getCellProps.push(getCellProps);
+    hooks.getFooterProps.push(getFooterProps);
+  }
+  useFlexLayout.pluginName = 'useFlexLayout';
+
+  var getTableProps = function getTableProps(props, _ref) {
+    var instance = _ref.instance;
+    return [props, {
+      style: {
+        minWidth: instance.totalColumnsMinWidth + "px"
+      }
+    }];
+  };
+
+  var getRowStyles$2 = function getRowStyles(props, _ref2) {
+    var instance = _ref2.instance;
+    return [props, {
+      style: {
+        display: 'flex',
+        flex: '1 0 auto',
+        minWidth: instance.totalColumnsMinWidth + "px"
+      }
+    }];
+  };
+
+  var getHeaderProps = function getHeaderProps(props, _ref3) {
+    var column = _ref3.column;
+    return [props, {
+      style: {
+        boxSizing: 'border-box',
+        flex: column.totalFlexWidth ? column.totalFlexWidth + " 0 auto" : undefined,
+        minWidth: column.totalMinWidth + "px",
+        width: column.totalWidth + "px"
+      }
+    }];
+  };
+
+  var getCellProps = function getCellProps(props, _ref4) {
+    var cell = _ref4.cell;
+    return [props, {
+      style: {
+        boxSizing: 'border-box',
+        flex: cell.column.totalFlexWidth + " 0 auto",
+        minWidth: cell.column.totalMinWidth + "px",
+        width: cell.column.totalWidth + "px"
+      }
+    }];
+  };
+
+  var getFooterProps = function getFooterProps(props, _ref5) {
+    var column = _ref5.column;
+    return [props, {
+      style: {
+        boxSizing: 'border-box',
+        flex: column.totalFlexWidth ? column.totalFlexWidth + " 0 auto" : undefined,
+        minWidth: column.totalMinWidth + "px",
+        width: column.totalWidth + "px"
+      }
+    }];
+  };
+
+  actions.columnStartResizing = 'columnStartResizing';
+  actions.columnResizing = 'columnResizing';
+  actions.columnDoneResizing = 'columnDoneResizing';
+  actions.resetResize = 'resetResize';
+  function useGridLayout(hooks) {
+    hooks.stateReducers.push(reducer$c);
+    hooks.getTableProps.push(getTableProps$1);
+    hooks.getHeaderProps.push(getHeaderProps$1);
+    hooks.getRowProps.push(getRowProps);
+  }
+  useGridLayout.pluginName = 'useGridLayout';
+
+  var getTableProps$1 = function getTableProps(props, _ref) {
+    var instance = _ref.instance;
+    var gridTemplateColumns = instance.visibleColumns.map(function (column) {
+      var _instance$state$colum;
+
+      if (instance.state.gridLayout.columnWidths[column.id]) return instance.state.gridLayout.columnWidths[column.id] + "px"; // When resizing, lock the width of all unset columns
+      // instead of using user-provided width or defaultColumn width,
+      // which could potentially be 'auto' or 'fr' units that don't scale linearly
+
+      if ((_instance$state$colum = instance.state.columnResizing) == null ? void 0 : _instance$state$colum.isResizingColumn) return instance.state.gridLayout.startWidths[column.id] + "px";
+      if (typeof column.width === 'number') return column.width + "px";
+      return column.width;
+    });
+    return [props, {
+      style: {
+        display: "grid",
+        gridTemplateColumns: gridTemplateColumns.join(" ")
+      }
+    }];
+  };
+
+  var getHeaderProps$1 = function getHeaderProps(props, _ref2) {
+    var column = _ref2.column;
+    return [props, {
+      id: "header-cell-" + column.id,
+      style: {
+        position: "sticky",
+        //enables a scroll wrapper to be placed around the table and have sticky headers
+        gridColumn: "span " + column.totalVisibleHeaderCount
+      }
+    }];
+  };
+
+  var getRowProps = function getRowProps(props, _ref3) {
+    var row = _ref3.row;
+
+    if (row.isExpanded) {
+      return [props, {
+        style: {
+          gridColumn: "1 / " + (row.cells.length + 1)
+        }
+      }];
+    }
+
+    return [props, {}];
+  };
+
+  function reducer$c(state, action, previousState, instance) {
+    if (action.type === actions.init) {
+      return _extends({
+        gridLayout: {
+          columnWidths: {}
+        }
+      }, state);
+    }
+
+    if (action.type === actions.resetResize) {
+      return _extends({}, state, {
+        gridLayout: {
+          columnWidths: {}
+        }
+      });
+    }
+
+    if (action.type === actions.columnStartResizing) {
+      var columnId = action.columnId,
+          headerIdWidths = action.headerIdWidths;
+      var columnWidth = getElementWidth(columnId);
+
+      if (columnWidth !== undefined) {
+        var startWidths = instance.visibleColumns.reduce(function (acc, column) {
+          var _extends2;
+
+          return _extends({}, acc, (_extends2 = {}, _extends2[column.id] = getElementWidth(column.id), _extends2));
+        }, {});
+        var minWidths = instance.visibleColumns.reduce(function (acc, column) {
+          var _extends3;
+
+          return _extends({}, acc, (_extends3 = {}, _extends3[column.id] = column.minWidth, _extends3));
+        }, {});
+        var maxWidths = instance.visibleColumns.reduce(function (acc, column) {
+          var _extends4;
+
+          return _extends({}, acc, (_extends4 = {}, _extends4[column.id] = column.maxWidth, _extends4));
+        }, {});
+        var headerIdGridWidths = headerIdWidths.map(function (_ref4) {
+          var headerId = _ref4[0];
+          return [headerId, getElementWidth(headerId)];
+        });
+        return _extends({}, state, {
+          gridLayout: _extends({}, state.gridLayout, {
+            startWidths: startWidths,
+            minWidths: minWidths,
+            maxWidths: maxWidths,
+            headerIdGridWidths: headerIdGridWidths,
+            columnWidth: columnWidth
+          })
+        });
+      } else {
+        return state;
+      }
+    }
+
+    if (action.type === actions.columnResizing) {
+      var clientX = action.clientX;
+      var startX = state.columnResizing.startX;
+
+      var _state$gridLayout = state.gridLayout,
+          _columnWidth = _state$gridLayout.columnWidth,
+          _minWidths = _state$gridLayout.minWidths,
+          _maxWidths = _state$gridLayout.maxWidths,
+          _state$gridLayout$hea = _state$gridLayout.headerIdGridWidths,
+          _headerIdGridWidths = _state$gridLayout$hea === void 0 ? [] : _state$gridLayout$hea;
+
+      var deltaX = clientX - startX;
+      var percentageDeltaX = deltaX / _columnWidth;
+      var newColumnWidths = {};
+
+      _headerIdGridWidths.forEach(function (_ref5) {
+        var headerId = _ref5[0],
+            headerWidth = _ref5[1];
+        newColumnWidths[headerId] = Math.min(Math.max(_minWidths[headerId], headerWidth + headerWidth * percentageDeltaX), _maxWidths[headerId]);
+      });
+
+      return _extends({}, state, {
+        gridLayout: _extends({}, state.gridLayout, {
+          columnWidths: _extends({}, state.gridLayout.columnWidths, {}, newColumnWidths)
+        })
+      });
+    }
+
+    if (action.type === actions.columnDoneResizing) {
+      return _extends({}, state, {
+        gridLayout: _extends({}, state.gridLayout, {
+          startWidths: {},
+          minWidths: {},
+          maxWidths: {}
+        })
+      });
+    }
+  }
+
+  function getElementWidth(columnId) {
+    var _document$getElementB;
+
+    var width = (_document$getElementB = document.getElementById("header-cell-" + columnId)) == null ? void 0 : _document$getElementB.offsetWidth;
+
+    if (width !== undefined) {
+      return width;
+    }
+  }
+
+  exports._UNSTABLE_usePivotColumns = _UNSTABLE_usePivotColumns;
+  exports.actions = actions;
+  exports.defaultColumn = defaultColumn;
+  exports.defaultGroupByFn = defaultGroupByFn;
+  exports.defaultOrderByFn = defaultOrderByFn;
+  exports.defaultRenderer = defaultRenderer;
+  exports.emptyRenderer = emptyRenderer;
+  exports.ensurePluginOrder = ensurePluginOrder;
+  exports.flexRender = flexRender;
+  exports.functionalUpdate = functionalUpdate;
+  exports.loopHooks = loopHooks;
+  exports.makePropGetter = makePropGetter;
+  exports.makeRenderer = makeRenderer;
+  exports.reduceHooks = reduceHooks;
+  exports.safeUseLayoutEffect = safeUseLayoutEffect;
+  exports.useAbsoluteLayout = useAbsoluteLayout;
+  exports.useAsyncDebounce = useAsyncDebounce;
+  exports.useBlockLayout = useBlockLayout;
+  exports.useColumnOrder = useColumnOrder;
+  exports.useExpanded = useExpanded;
+  exports.useFilters = useFilters;
+  exports.useFlexLayout = useFlexLayout;
+  exports.useGetLatest = useGetLatest;
+  exports.useGlobalFilter = useGlobalFilter;
+  exports.useGridLayout = useGridLayout;
+  exports.useGroupBy = useGroupBy;
+  exports.useMountedLayoutEffect = useMountedLayoutEffect;
+  exports.usePagination = usePagination;
+  exports.useResizeColumns = useResizeColumns;
+  exports.useRowSelect = useRowSelect;
+  exports.useRowState = useRowState;
+  exports.useSortBy = useSortBy;
+  exports.useTable = useTable;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+//# sourceMappingURL=react-table.development.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/react-table/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/react-table/index.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./dist/react-table.development.js */ "./node_modules/react-table/dist/react-table.development.js")
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
@@ -59127,6 +63961,4039 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/sweetalert2/dist/sweetalert2.all.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/sweetalert2/dist/sweetalert2.all.js ***!
+  \**********************************************************/
+/***/ (function(module) {
+
+/*!
+* sweetalert2 v11.7.3
+* Released under the MIT License.
+*/
+(function (global, factory) {
+   true ? module.exports = factory() :
+  0;
+})(this, (function () { 'use strict';
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+
+  var privateProps = {
+    awaitingPromise: new WeakMap(),
+    promise: new WeakMap(),
+    innerParams: new WeakMap(),
+    domCache: new WeakMap()
+  };
+
+  const swalPrefix = 'swal2-';
+
+  /**
+   * @param {string[]} items
+   * @returns {object}
+   */
+  const prefix = items => {
+    const result = {};
+    for (const i in items) {
+      result[items[i]] = swalPrefix + items[i];
+    }
+    return result;
+  };
+  const swalClasses = prefix(['container', 'shown', 'height-auto', 'iosfix', 'popup', 'modal', 'no-backdrop', 'no-transition', 'toast', 'toast-shown', 'show', 'hide', 'close', 'title', 'html-container', 'actions', 'confirm', 'deny', 'cancel', 'default-outline', 'footer', 'icon', 'icon-content', 'image', 'input', 'file', 'range', 'select', 'radio', 'checkbox', 'label', 'textarea', 'inputerror', 'input-label', 'validation-message', 'progress-steps', 'active-progress-step', 'progress-step', 'progress-step-line', 'loader', 'loading', 'styled', 'top', 'top-start', 'top-end', 'top-left', 'top-right', 'center', 'center-start', 'center-end', 'center-left', 'center-right', 'bottom', 'bottom-start', 'bottom-end', 'bottom-left', 'bottom-right', 'grow-row', 'grow-column', 'grow-fullscreen', 'rtl', 'timer-progress-bar', 'timer-progress-bar-container', 'scrollbar-measure', 'icon-success', 'icon-warning', 'icon-info', 'icon-question', 'icon-error']);
+  const iconTypes = prefix(['success', 'warning', 'info', 'question', 'error']);
+
+  const consolePrefix = 'SweetAlert2:';
+
+  /**
+   * Filter the unique values into a new array
+   *
+   * @param {Array} arr
+   * @returns {Array}
+   */
+  const uniqueArray = arr => {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (result.indexOf(arr[i]) === -1) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  };
+
+  /**
+   * Capitalize the first letter of a string
+   *
+   * @param {string} str
+   * @returns {string}
+   */
+  const capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+  /**
+   * Standardize console warnings
+   *
+   * @param {string | Array} message
+   */
+  const warn = message => {
+    console.warn(`${consolePrefix} ${typeof message === 'object' ? message.join(' ') : message}`);
+  };
+
+  /**
+   * Standardize console errors
+   *
+   * @param {string} message
+   */
+  const error = message => {
+    console.error(`${consolePrefix} ${message}`);
+  };
+
+  /**
+   * Private global state for `warnOnce`
+   *
+   * @type {Array}
+   * @private
+   */
+  const previousWarnOnceMessages = [];
+
+  /**
+   * Show a console warning, but only if it hasn't already been shown
+   *
+   * @param {string} message
+   */
+  const warnOnce = message => {
+    if (!previousWarnOnceMessages.includes(message)) {
+      previousWarnOnceMessages.push(message);
+      warn(message);
+    }
+  };
+
+  /**
+   * Show a one-time console warning about deprecated params/methods
+   *
+   * @param {string} deprecatedParam
+   * @param {string} useInstead
+   */
+  const warnAboutDeprecation = (deprecatedParam, useInstead) => {
+    warnOnce(`"${deprecatedParam}" is deprecated and will be removed in the next major release. Please use "${useInstead}" instead.`);
+  };
+
+  /**
+   * If `arg` is a function, call it (with no arguments or context) and return the result.
+   * Otherwise, just pass the value through
+   *
+   * @param {Function | any} arg
+   * @returns {any}
+   */
+  const callIfFunction = arg => typeof arg === 'function' ? arg() : arg;
+
+  /**
+   * @param {any} arg
+   * @returns {boolean}
+   */
+  const hasToPromiseFn = arg => arg && typeof arg.toPromise === 'function';
+
+  /**
+   * @param {any} arg
+   * @returns {Promise}
+   */
+  const asPromise = arg => hasToPromiseFn(arg) ? arg.toPromise() : Promise.resolve(arg);
+
+  /**
+   * @param {any} arg
+   * @returns {boolean}
+   */
+  const isPromise = arg => arg && Promise.resolve(arg) === arg;
+
+  /**
+   * Gets the popup container which contains the backdrop and the popup itself.
+   *
+   * @returns {HTMLElement | null}
+   */
+  const getContainer = () => document.body.querySelector(`.${swalClasses.container}`);
+
+  /**
+   * @param {string} selectorString
+   * @returns {HTMLElement | null}
+   */
+  const elementBySelector = selectorString => {
+    const container = getContainer();
+    return container ? container.querySelector(selectorString) : null;
+  };
+
+  /**
+   * @param {string} className
+   * @returns {HTMLElement | null}
+   */
+  const elementByClass = className => {
+    return elementBySelector(`.${className}`);
+  };
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getPopup = () => elementByClass(swalClasses.popup);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getIcon = () => elementByClass(swalClasses.icon);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getIconContent = () => elementByClass(swalClasses['icon-content']);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getTitle = () => elementByClass(swalClasses.title);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getHtmlContainer = () => elementByClass(swalClasses['html-container']);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getImage = () => elementByClass(swalClasses.image);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getProgressSteps = () => elementByClass(swalClasses['progress-steps']);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getValidationMessage = () => elementByClass(swalClasses['validation-message']);
+
+  /**
+   * @returns {HTMLButtonElement | null}
+   */
+  const getConfirmButton = () => /** @type {HTMLButtonElement} */elementBySelector(`.${swalClasses.actions} .${swalClasses.confirm}`);
+
+  /**
+   * @returns {HTMLButtonElement | null}
+   */
+  const getCancelButton = () => /** @type {HTMLButtonElement} */elementBySelector(`.${swalClasses.actions} .${swalClasses.cancel}`);
+
+  /**
+   * @returns {HTMLButtonElement | null}
+   */
+  const getDenyButton = () => /** @type {HTMLButtonElement} */elementBySelector(`.${swalClasses.actions} .${swalClasses.deny}`);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getInputLabel = () => elementByClass(swalClasses['input-label']);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getLoader = () => elementBySelector(`.${swalClasses.loader}`);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getActions = () => elementByClass(swalClasses.actions);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getFooter = () => elementByClass(swalClasses.footer);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getTimerProgressBar = () => elementByClass(swalClasses['timer-progress-bar']);
+
+  /**
+   * @returns {HTMLElement | null}
+   */
+  const getCloseButton = () => elementByClass(swalClasses.close);
+
+  // https://github.com/jkup/focusable/blob/master/index.js
+  const focusable = `
+  a[href],
+  area[href],
+  input:not([disabled]),
+  select:not([disabled]),
+  textarea:not([disabled]),
+  button:not([disabled]),
+  iframe,
+  object,
+  embed,
+  [tabindex="0"],
+  [contenteditable],
+  audio[controls],
+  video[controls],
+  summary
+`;
+  /**
+   * @returns {HTMLElement[]}
+   */
+  const getFocusableElements = () => {
+    const focusableElementsWithTabindex = Array.from(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])'))
+    // sort according to tabindex
+    .sort((a, b) => {
+      const tabindexA = parseInt(a.getAttribute('tabindex'));
+      const tabindexB = parseInt(b.getAttribute('tabindex'));
+      if (tabindexA > tabindexB) {
+        return 1;
+      } else if (tabindexA < tabindexB) {
+        return -1;
+      }
+      return 0;
+    });
+    const otherFocusableElements = Array.from(getPopup().querySelectorAll(focusable)).filter(el => el.getAttribute('tabindex') !== '-1');
+    return uniqueArray(focusableElementsWithTabindex.concat(otherFocusableElements)).filter(el => isVisible$1(el));
+  };
+
+  /**
+   * @returns {boolean}
+   */
+  const isModal = () => {
+    return hasClass(document.body, swalClasses.shown) && !hasClass(document.body, swalClasses['toast-shown']) && !hasClass(document.body, swalClasses['no-backdrop']);
+  };
+
+  /**
+   * @returns {boolean}
+   */
+  const isToast = () => {
+    return getPopup() && hasClass(getPopup(), swalClasses.toast);
+  };
+
+  /**
+   * @returns {boolean}
+   */
+  const isLoading = () => {
+    return getPopup().hasAttribute('data-loading');
+  };
+
+  // Remember state in cases where opening and handling a modal will fiddle with it.
+  const states = {
+    previousBodyPadding: null
+  };
+
+  /**
+   * Securely set innerHTML of an element
+   * https://github.com/sweetalert2/sweetalert2/issues/1926
+   *
+   * @param {HTMLElement} elem
+   * @param {string} html
+   */
+  const setInnerHtml = (elem, html) => {
+    elem.textContent = '';
+    if (html) {
+      const parser = new DOMParser();
+      const parsed = parser.parseFromString(html, `text/html`);
+      Array.from(parsed.querySelector('head').childNodes).forEach(child => {
+        elem.appendChild(child);
+      });
+      Array.from(parsed.querySelector('body').childNodes).forEach(child => {
+        if (child instanceof HTMLVideoElement || child instanceof HTMLAudioElement) {
+          elem.appendChild(child.cloneNode(true)); // https://github.com/sweetalert2/sweetalert2/issues/2507
+        } else {
+          elem.appendChild(child);
+        }
+      });
+    }
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} className
+   * @returns {boolean}
+   */
+  const hasClass = (elem, className) => {
+    if (!className) {
+      return false;
+    }
+    const classList = className.split(/\s+/);
+    for (let i = 0; i < classList.length; i++) {
+      if (!elem.classList.contains(classList[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {SweetAlertOptions} params
+   */
+  const removeCustomClasses = (elem, params) => {
+    Array.from(elem.classList).forEach(className => {
+      if (!Object.values(swalClasses).includes(className) && !Object.values(iconTypes).includes(className) && !Object.values(params.showClass).includes(className)) {
+        elem.classList.remove(className);
+      }
+    });
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {SweetAlertOptions} params
+   * @param {string} className
+   */
+  const applyCustomClass = (elem, params, className) => {
+    removeCustomClasses(elem, params);
+    if (params.customClass && params.customClass[className]) {
+      if (typeof params.customClass[className] !== 'string' && !params.customClass[className].forEach) {
+        warn(`Invalid type of customClass.${className}! Expected string or iterable object, got "${typeof params.customClass[className]}"`);
+        return;
+      }
+      addClass(elem, params.customClass[className]);
+    }
+  };
+
+  /**
+   * @param {HTMLElement} popup
+   * @param {import('./renderers/renderInput').InputClass} inputClass
+   * @returns {HTMLInputElement | null}
+   */
+  const getInput$1 = (popup, inputClass) => {
+    if (!inputClass) {
+      return null;
+    }
+    switch (inputClass) {
+      case 'select':
+      case 'textarea':
+      case 'file':
+        return popup.querySelector(`.${swalClasses.popup} > .${swalClasses[inputClass]}`);
+      case 'checkbox':
+        return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.checkbox} input`);
+      case 'radio':
+        return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:checked`) || popup.querySelector(`.${swalClasses.popup} > .${swalClasses.radio} input:first-child`);
+      case 'range':
+        return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.range} input`);
+      default:
+        return popup.querySelector(`.${swalClasses.popup} > .${swalClasses.input}`);
+    }
+  };
+
+  /**
+   * @param {HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement} input
+   */
+  const focusInput = input => {
+    input.focus();
+
+    // place cursor at end of text in text input
+    if (input.type !== 'file') {
+      // http://stackoverflow.com/a/2345915
+      const val = input.value;
+      input.value = '';
+      input.value = val;
+    }
+  };
+
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   * @param {boolean} condition
+   */
+  const toggleClass = (target, classList, condition) => {
+    if (!target || !classList) {
+      return;
+    }
+    if (typeof classList === 'string') {
+      classList = classList.split(/\s+/).filter(Boolean);
+    }
+    classList.forEach(className => {
+      if (Array.isArray(target)) {
+        target.forEach(elem => {
+          condition ? elem.classList.add(className) : elem.classList.remove(className);
+        });
+      } else {
+        condition ? target.classList.add(className) : target.classList.remove(className);
+      }
+    });
+  };
+
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   */
+  const addClass = (target, classList) => {
+    toggleClass(target, classList, true);
+  };
+
+  /**
+   * @param {HTMLElement | HTMLElement[] | null} target
+   * @param {string | string[] | readonly string[]} classList
+   */
+  const removeClass = (target, classList) => {
+    toggleClass(target, classList, false);
+  };
+
+  /**
+   * Get direct child of an element by class name
+   *
+   * @param {HTMLElement} elem
+   * @param {string} className
+   * @returns {HTMLElement | undefined}
+   */
+  const getDirectChildByClass = (elem, className) => {
+    const children = Array.from(elem.children);
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (child instanceof HTMLElement && hasClass(child, className)) {
+        return child;
+      }
+    }
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} property
+   * @param {*} value
+   */
+  const applyNumericalStyle = (elem, property, value) => {
+    if (value === `${parseInt(value)}`) {
+      value = parseInt(value);
+    }
+    if (value || parseInt(value) === 0) {
+      elem.style[property] = typeof value === 'number' ? `${value}px` : value;
+    } else {
+      elem.style.removeProperty(property);
+    }
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {string} display
+   */
+  const show = function (elem) {
+    let display = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'flex';
+    elem.style.display = display;
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   */
+  const hide = elem => {
+    elem.style.display = 'none';
+  };
+
+  /**
+   * @param {HTMLElement} parent
+   * @param {string} selector
+   * @param {string} property
+   * @param {string} value
+   */
+  const setStyle = (parent, selector, property, value) => {
+    /** @type {HTMLElement} */
+    const el = parent.querySelector(selector);
+    if (el) {
+      el.style[property] = value;
+    }
+  };
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {any} condition
+   * @param {string} display
+   */
+  const toggle = function (elem, condition) {
+    let display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'flex';
+    condition ? show(elem, display) : hide(elem);
+  };
+
+  /**
+   * borrowed from jquery $(elem).is(':visible') implementation
+   *
+   * @param {HTMLElement} elem
+   * @returns {boolean}
+   */
+  const isVisible$1 = elem => !!(elem && (elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length));
+
+  /**
+   * @returns {boolean}
+   */
+  const allButtonsAreHidden = () => !isVisible$1(getConfirmButton()) && !isVisible$1(getDenyButton()) && !isVisible$1(getCancelButton());
+
+  /**
+   * @param {HTMLElement} elem
+   * @returns {boolean}
+   */
+  const isScrollable = elem => !!(elem.scrollHeight > elem.clientHeight);
+
+  /**
+   * borrowed from https://stackoverflow.com/a/46352119
+   *
+   * @param {HTMLElement} elem
+   * @returns {boolean}
+   */
+  const hasCssAnimation = elem => {
+    const style = window.getComputedStyle(elem);
+    const animDuration = parseFloat(style.getPropertyValue('animation-duration') || '0');
+    const transDuration = parseFloat(style.getPropertyValue('transition-duration') || '0');
+    return animDuration > 0 || transDuration > 0;
+  };
+
+  /**
+   * @param {number} timer
+   * @param {boolean} reset
+   */
+  const animateTimerProgressBar = function (timer) {
+    let reset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    const timerProgressBar = getTimerProgressBar();
+    if (isVisible$1(timerProgressBar)) {
+      if (reset) {
+        timerProgressBar.style.transition = 'none';
+        timerProgressBar.style.width = '100%';
+      }
+      setTimeout(() => {
+        timerProgressBar.style.transition = `width ${timer / 1000}s linear`;
+        timerProgressBar.style.width = '0%';
+      }, 10);
+    }
+  };
+  const stopTimerProgressBar = () => {
+    const timerProgressBar = getTimerProgressBar();
+    const timerProgressBarWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    timerProgressBar.style.removeProperty('transition');
+    timerProgressBar.style.width = '100%';
+    const timerProgressBarFullWidth = parseInt(window.getComputedStyle(timerProgressBar).width);
+    const timerProgressBarPercent = timerProgressBarWidth / timerProgressBarFullWidth * 100;
+    timerProgressBar.style.width = `${timerProgressBarPercent}%`;
+  };
+
+  const RESTORE_FOCUS_TIMEOUT = 100;
+
+  /** @type {GlobalState} */
+  const globalState = {};
+  const focusPreviousActiveElement = () => {
+    if (globalState.previousActiveElement instanceof HTMLElement) {
+      globalState.previousActiveElement.focus();
+      globalState.previousActiveElement = null;
+    } else if (document.body) {
+      document.body.focus();
+    }
+  };
+
+  /**
+   * Restore previous active (focused) element
+   *
+   * @param {boolean} returnFocus
+   * @returns {Promise}
+   */
+  const restoreActiveElement = returnFocus => {
+    return new Promise(resolve => {
+      if (!returnFocus) {
+        return resolve();
+      }
+      const x = window.scrollX;
+      const y = window.scrollY;
+      globalState.restoreFocusTimeout = setTimeout(() => {
+        focusPreviousActiveElement();
+        resolve();
+      }, RESTORE_FOCUS_TIMEOUT); // issues/900
+
+      window.scrollTo(x, y);
+    });
+  };
+
+  /**
+   * Detect Node env
+   *
+   * @returns {boolean}
+   */
+  const isNodeEnv = () => typeof window === 'undefined' || typeof document === 'undefined';
+
+  const sweetHTML = `
+ <div aria-labelledby="${swalClasses.title}" aria-describedby="${swalClasses['html-container']}" class="${swalClasses.popup}" tabindex="-1">
+   <button type="button" class="${swalClasses.close}"></button>
+   <ul class="${swalClasses['progress-steps']}"></ul>
+   <div class="${swalClasses.icon}"></div>
+   <img class="${swalClasses.image}" />
+   <h2 class="${swalClasses.title}" id="${swalClasses.title}"></h2>
+   <div class="${swalClasses['html-container']}" id="${swalClasses['html-container']}"></div>
+   <input class="${swalClasses.input}" />
+   <input type="file" class="${swalClasses.file}" />
+   <div class="${swalClasses.range}">
+     <input type="range" />
+     <output></output>
+   </div>
+   <select class="${swalClasses.select}"></select>
+   <div class="${swalClasses.radio}"></div>
+   <label for="${swalClasses.checkbox}" class="${swalClasses.checkbox}">
+     <input type="checkbox" />
+     <span class="${swalClasses.label}"></span>
+   </label>
+   <textarea class="${swalClasses.textarea}"></textarea>
+   <div class="${swalClasses['validation-message']}" id="${swalClasses['validation-message']}"></div>
+   <div class="${swalClasses.actions}">
+     <div class="${swalClasses.loader}"></div>
+     <button type="button" class="${swalClasses.confirm}"></button>
+     <button type="button" class="${swalClasses.deny}"></button>
+     <button type="button" class="${swalClasses.cancel}"></button>
+   </div>
+   <div class="${swalClasses.footer}"></div>
+   <div class="${swalClasses['timer-progress-bar-container']}">
+     <div class="${swalClasses['timer-progress-bar']}"></div>
+   </div>
+ </div>
+`.replace(/(^|\n)\s*/g, '');
+
+  /**
+   * @returns {boolean}
+   */
+  const resetOldContainer = () => {
+    const oldContainer = getContainer();
+    if (!oldContainer) {
+      return false;
+    }
+    oldContainer.remove();
+    removeClass([document.documentElement, document.body], [swalClasses['no-backdrop'], swalClasses['toast-shown'], swalClasses['has-column']]);
+    return true;
+  };
+  const resetValidationMessage$1 = () => {
+    globalState.currentInstance.resetValidationMessage();
+  };
+  const addInputChangeListeners = () => {
+    const popup = getPopup();
+    const input = getDirectChildByClass(popup, swalClasses.input);
+    const file = getDirectChildByClass(popup, swalClasses.file);
+    /** @type {HTMLInputElement} */
+    const range = popup.querySelector(`.${swalClasses.range} input`);
+    /** @type {HTMLOutputElement} */
+    const rangeOutput = popup.querySelector(`.${swalClasses.range} output`);
+    const select = getDirectChildByClass(popup, swalClasses.select);
+    /** @type {HTMLInputElement} */
+    const checkbox = popup.querySelector(`.${swalClasses.checkbox} input`);
+    const textarea = getDirectChildByClass(popup, swalClasses.textarea);
+    input.oninput = resetValidationMessage$1;
+    file.onchange = resetValidationMessage$1;
+    select.onchange = resetValidationMessage$1;
+    checkbox.onchange = resetValidationMessage$1;
+    textarea.oninput = resetValidationMessage$1;
+    range.oninput = () => {
+      resetValidationMessage$1();
+      rangeOutput.value = range.value;
+    };
+    range.onchange = () => {
+      resetValidationMessage$1();
+      rangeOutput.value = range.value;
+    };
+  };
+
+  /**
+   * @param {string | HTMLElement} target
+   * @returns {HTMLElement}
+   */
+  const getTarget = target => typeof target === 'string' ? document.querySelector(target) : target;
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+  const setupAccessibility = params => {
+    const popup = getPopup();
+    popup.setAttribute('role', params.toast ? 'alert' : 'dialog');
+    popup.setAttribute('aria-live', params.toast ? 'polite' : 'assertive');
+    if (!params.toast) {
+      popup.setAttribute('aria-modal', 'true');
+    }
+  };
+
+  /**
+   * @param {HTMLElement} targetElement
+   */
+  const setupRTL = targetElement => {
+    if (window.getComputedStyle(targetElement).direction === 'rtl') {
+      addClass(getContainer(), swalClasses.rtl);
+    }
+  };
+
+  /**
+   * Add modal + backdrop + no-war message for Russians to DOM
+   *
+   * @param {SweetAlertOptions} params
+   */
+  const init = params => {
+    // Clean up the old popup container if it exists
+    const oldContainerExisted = resetOldContainer();
+
+    /* istanbul ignore if */
+    if (isNodeEnv()) {
+      error('SweetAlert2 requires document to initialize');
+      return;
+    }
+    const container = document.createElement('div');
+    container.className = swalClasses.container;
+    if (oldContainerExisted) {
+      addClass(container, swalClasses['no-transition']);
+    }
+    setInnerHtml(container, sweetHTML);
+    const targetElement = getTarget(params.target);
+    targetElement.appendChild(container);
+    setupAccessibility(params);
+    setupRTL(targetElement);
+    addInputChangeListeners();
+  };
+
+  /**
+   * @param {HTMLElement | object | string} param
+   * @param {HTMLElement} target
+   */
+  const parseHtmlToContainer = (param, target) => {
+    // DOM element
+    if (param instanceof HTMLElement) {
+      target.appendChild(param);
+    }
+
+    // Object
+    else if (typeof param === 'object') {
+      handleObject(param, target);
+    }
+
+    // Plain string
+    else if (param) {
+      setInnerHtml(target, param);
+    }
+  };
+
+  /**
+   * @param {object} param
+   * @param {HTMLElement} target
+   */
+  const handleObject = (param, target) => {
+    // JQuery element(s)
+    if (param.jquery) {
+      handleJqueryElem(target, param);
+    }
+
+    // For other objects use their string representation
+    else {
+      setInnerHtml(target, param.toString());
+    }
+  };
+
+  /**
+   * @param {HTMLElement} target
+   * @param {HTMLElement} elem
+   */
+  const handleJqueryElem = (target, elem) => {
+    target.textContent = '';
+    if (0 in elem) {
+      for (let i = 0; (i in elem); i++) {
+        target.appendChild(elem[i].cloneNode(true));
+      }
+    } else {
+      target.appendChild(elem.cloneNode(true));
+    }
+  };
+
+  /**
+   * @returns {'webkitAnimationEnd' | 'animationend' | false}
+   */
+  const animationEndEvent = (() => {
+    // Prevent run in Node env
+    /* istanbul ignore if */
+    if (isNodeEnv()) {
+      return false;
+    }
+    const testEl = document.createElement('div');
+    const transEndEventNames = {
+      WebkitAnimation: 'webkitAnimationEnd',
+      // Chrome, Safari and Opera
+      animation: 'animationend' // Standard syntax
+    };
+
+    for (const i in transEndEventNames) {
+      if (Object.prototype.hasOwnProperty.call(transEndEventNames, i) && typeof testEl.style[i] !== 'undefined') {
+        return transEndEventNames[i];
+      }
+    }
+    return false;
+  })();
+
+  /**
+   * Measure scrollbar width for padding body during modal show/hide
+   * https://github.com/twbs/bootstrap/blob/master/js/src/modal.js
+   *
+   * @returns {number}
+   */
+  const measureScrollbar = () => {
+    const scrollDiv = document.createElement('div');
+    scrollDiv.className = swalClasses['scrollbar-measure'];
+    document.body.appendChild(scrollDiv);
+    const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderActions = (instance, params) => {
+    const actions = getActions();
+    const loader = getLoader();
+
+    // Actions (buttons) wrapper
+    if (!params.showConfirmButton && !params.showDenyButton && !params.showCancelButton) {
+      hide(actions);
+    } else {
+      show(actions);
+    }
+
+    // Custom class
+    applyCustomClass(actions, params, 'actions');
+
+    // Render all the buttons
+    renderButtons(actions, loader, params);
+
+    // Loader
+    setInnerHtml(loader, params.loaderHtml);
+    applyCustomClass(loader, params, 'loader');
+  };
+
+  /**
+   * @param {HTMLElement} actions
+   * @param {HTMLElement} loader
+   * @param {SweetAlertOptions} params
+   */
+  function renderButtons(actions, loader, params) {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton();
+
+    // Render buttons
+    renderButton(confirmButton, 'confirm', params);
+    renderButton(denyButton, 'deny', params);
+    renderButton(cancelButton, 'cancel', params);
+    handleButtonsStyling(confirmButton, denyButton, cancelButton, params);
+    if (params.reverseButtons) {
+      if (params.toast) {
+        actions.insertBefore(cancelButton, confirmButton);
+        actions.insertBefore(denyButton, confirmButton);
+      } else {
+        actions.insertBefore(cancelButton, loader);
+        actions.insertBefore(denyButton, loader);
+        actions.insertBefore(confirmButton, loader);
+      }
+    }
+  }
+
+  /**
+   * @param {HTMLElement} confirmButton
+   * @param {HTMLElement} denyButton
+   * @param {HTMLElement} cancelButton
+   * @param {SweetAlertOptions} params
+   */
+  function handleButtonsStyling(confirmButton, denyButton, cancelButton, params) {
+    if (!params.buttonsStyling) {
+      removeClass([confirmButton, denyButton, cancelButton], swalClasses.styled);
+      return;
+    }
+    addClass([confirmButton, denyButton, cancelButton], swalClasses.styled);
+
+    // Buttons background colors
+    if (params.confirmButtonColor) {
+      confirmButton.style.backgroundColor = params.confirmButtonColor;
+      addClass(confirmButton, swalClasses['default-outline']);
+    }
+    if (params.denyButtonColor) {
+      denyButton.style.backgroundColor = params.denyButtonColor;
+      addClass(denyButton, swalClasses['default-outline']);
+    }
+    if (params.cancelButtonColor) {
+      cancelButton.style.backgroundColor = params.cancelButtonColor;
+      addClass(cancelButton, swalClasses['default-outline']);
+    }
+  }
+
+  /**
+   * @param {HTMLElement} button
+   * @param {'confirm' | 'deny' | 'cancel'} buttonType
+   * @param {SweetAlertOptions} params
+   */
+  function renderButton(button, buttonType, params) {
+    toggle(button, params[`show${capitalizeFirstLetter(buttonType)}Button`], 'inline-block');
+    setInnerHtml(button, params[`${buttonType}ButtonText`]); // Set caption text
+    button.setAttribute('aria-label', params[`${buttonType}ButtonAriaLabel`]); // ARIA label
+
+    // Add buttons custom classes
+    button.className = swalClasses[buttonType];
+    applyCustomClass(button, params, `${buttonType}Button`);
+    addClass(button, params[`${buttonType}ButtonClass`]);
+  }
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderCloseButton = (instance, params) => {
+    const closeButton = getCloseButton();
+    setInnerHtml(closeButton, params.closeButtonHtml);
+
+    // Custom class
+    applyCustomClass(closeButton, params, 'closeButton');
+    toggle(closeButton, params.showCloseButton);
+    closeButton.setAttribute('aria-label', params.closeButtonAriaLabel);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderContainer = (instance, params) => {
+    const container = getContainer();
+    if (!container) {
+      return;
+    }
+    handleBackdropParam(container, params.backdrop);
+    handlePositionParam(container, params.position);
+    handleGrowParam(container, params.grow);
+
+    // Custom class
+    applyCustomClass(container, params, 'container');
+  };
+
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['backdrop']} backdrop
+   */
+  function handleBackdropParam(container, backdrop) {
+    if (typeof backdrop === 'string') {
+      container.style.background = backdrop;
+    } else if (!backdrop) {
+      addClass([document.documentElement, document.body], swalClasses['no-backdrop']);
+    }
+  }
+
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['position']} position
+   */
+  function handlePositionParam(container, position) {
+    if (position in swalClasses) {
+      addClass(container, swalClasses[position]);
+    } else {
+      warn('The "position" parameter is not valid, defaulting to "center"');
+      addClass(container, swalClasses.center);
+    }
+  }
+
+  /**
+   * @param {HTMLElement} container
+   * @param {SweetAlertOptions['grow']} grow
+   */
+  function handleGrowParam(container, grow) {
+    if (grow && typeof grow === 'string') {
+      const growClass = `grow-${grow}`;
+      if (growClass in swalClasses) {
+        addClass(container, swalClasses[growClass]);
+      }
+    }
+  }
+
+  /// <reference path="../../../../sweetalert2.d.ts"/>
+
+  /** @type {InputClass[]} */
+  const inputClasses = ['input', 'file', 'range', 'select', 'radio', 'checkbox', 'textarea'];
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderInput = (instance, params) => {
+    const popup = getPopup();
+    const innerParams = privateProps.innerParams.get(instance);
+    const rerender = !innerParams || params.input !== innerParams.input;
+    inputClasses.forEach(inputClass => {
+      const inputContainer = getDirectChildByClass(popup, swalClasses[inputClass]);
+
+      // set attributes
+      setAttributes(inputClass, params.inputAttributes);
+
+      // set class
+      inputContainer.className = swalClasses[inputClass];
+      if (rerender) {
+        hide(inputContainer);
+      }
+    });
+    if (params.input) {
+      if (rerender) {
+        showInput(params);
+      }
+      // set custom class
+      setCustomClass(params);
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+  const showInput = params => {
+    if (!renderInputType[params.input]) {
+      error(`Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "${params.input}"`);
+      return;
+    }
+    const inputContainer = getInputContainer(params.input);
+    const input = renderInputType[params.input](inputContainer, params);
+    show(inputContainer);
+
+    // input autofocus
+    if (params.inputAutoFocus) {
+      setTimeout(() => {
+        focusInput(input);
+      });
+    }
+  };
+
+  /**
+   * @param {HTMLInputElement} input
+   */
+  const removeAttributes = input => {
+    for (let i = 0; i < input.attributes.length; i++) {
+      const attrName = input.attributes[i].name;
+      if (!['type', 'value', 'style'].includes(attrName)) {
+        input.removeAttribute(attrName);
+      }
+    }
+  };
+
+  /**
+   * @param {InputClass} inputClass
+   * @param {SweetAlertOptions['inputAttributes']} inputAttributes
+   */
+  const setAttributes = (inputClass, inputAttributes) => {
+    const input = getInput$1(getPopup(), inputClass);
+    if (!input) {
+      return;
+    }
+    removeAttributes(input);
+    for (const attr in inputAttributes) {
+      input.setAttribute(attr, inputAttributes[attr]);
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+  const setCustomClass = params => {
+    const inputContainer = getInputContainer(params.input);
+    if (typeof params.customClass === 'object') {
+      addClass(inputContainer, params.customClass.input);
+    }
+  };
+
+  /**
+   * @param {HTMLInputElement | HTMLTextAreaElement} input
+   * @param {SweetAlertOptions} params
+   */
+  const setInputPlaceholder = (input, params) => {
+    if (!input.placeholder || params.inputPlaceholder) {
+      input.placeholder = params.inputPlaceholder;
+    }
+  };
+
+  /**
+   * @param {Input} input
+   * @param {Input} prependTo
+   * @param {SweetAlertOptions} params
+   */
+  const setInputLabel = (input, prependTo, params) => {
+    if (params.inputLabel) {
+      input.id = swalClasses.input;
+      const label = document.createElement('label');
+      const labelClass = swalClasses['input-label'];
+      label.setAttribute('for', input.id);
+      label.className = labelClass;
+      if (typeof params.customClass === 'object') {
+        addClass(label, params.customClass.inputLabel);
+      }
+      label.innerText = params.inputLabel;
+      prependTo.insertAdjacentElement('beforebegin', label);
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions['input']} inputType
+   * @returns {HTMLElement}
+   */
+  const getInputContainer = inputType => {
+    return getDirectChildByClass(getPopup(), swalClasses[inputType] || swalClasses.input);
+  };
+
+  /**
+   * @param {HTMLInputElement | HTMLOutputElement | HTMLTextAreaElement} input
+   * @param {SweetAlertOptions['inputValue']} inputValue
+   */
+  const checkAndSetInputValue = (input, inputValue) => {
+    if (['string', 'number'].includes(typeof inputValue)) {
+      input.value = `${inputValue}`;
+    } else if (!isPromise(inputValue)) {
+      warn(`Unexpected type of inputValue! Expected "string", "number" or "Promise", got "${typeof inputValue}"`);
+    }
+  };
+
+  /** @type {Record<string, (input: Input | HTMLElement, params: SweetAlertOptions) => Input>} */
+  const renderInputType = {};
+
+  /**
+   * @param {HTMLInputElement} input
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+  renderInputType.text = renderInputType.email = renderInputType.password = renderInputType.number = renderInputType.tel = renderInputType.url = (input, params) => {
+    checkAndSetInputValue(input, params.inputValue);
+    setInputLabel(input, input, params);
+    setInputPlaceholder(input, params);
+    input.type = params.input;
+    return input;
+  };
+
+  /**
+   * @param {HTMLInputElement} input
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+  renderInputType.file = (input, params) => {
+    setInputLabel(input, input, params);
+    setInputPlaceholder(input, params);
+    return input;
+  };
+
+  /**
+   * @param {HTMLInputElement} range
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+  renderInputType.range = (range, params) => {
+    const rangeInput = range.querySelector('input');
+    const rangeOutput = range.querySelector('output');
+    checkAndSetInputValue(rangeInput, params.inputValue);
+    rangeInput.type = params.input;
+    checkAndSetInputValue(rangeOutput, params.inputValue);
+    setInputLabel(rangeInput, range, params);
+    return range;
+  };
+
+  /**
+   * @param {HTMLSelectElement} select
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLSelectElement}
+   */
+  renderInputType.select = (select, params) => {
+    select.textContent = '';
+    if (params.inputPlaceholder) {
+      const placeholder = document.createElement('option');
+      setInnerHtml(placeholder, params.inputPlaceholder);
+      placeholder.value = '';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+    }
+    setInputLabel(select, select, params);
+    return select;
+  };
+
+  /**
+   * @param {HTMLInputElement} radio
+   * @returns {HTMLInputElement}
+   */
+  renderInputType.radio = radio => {
+    radio.textContent = '';
+    return radio;
+  };
+
+  /**
+   * @param {HTMLLabelElement} checkboxContainer
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLInputElement}
+   */
+  renderInputType.checkbox = (checkboxContainer, params) => {
+    const checkbox = getInput$1(getPopup(), 'checkbox');
+    checkbox.value = '1';
+    checkbox.id = swalClasses.checkbox;
+    checkbox.checked = Boolean(params.inputValue);
+    const label = checkboxContainer.querySelector('span');
+    setInnerHtml(label, params.inputPlaceholder);
+    return checkbox;
+  };
+
+  /**
+   * @param {HTMLTextAreaElement} textarea
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLTextAreaElement}
+   */
+  renderInputType.textarea = (textarea, params) => {
+    checkAndSetInputValue(textarea, params.inputValue);
+    setInputPlaceholder(textarea, params);
+    setInputLabel(textarea, textarea, params);
+
+    /**
+     * @param {HTMLElement} el
+     * @returns {number}
+     */
+    const getMargin = el => parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight);
+
+    // https://github.com/sweetalert2/sweetalert2/issues/2291
+    setTimeout(() => {
+      // https://github.com/sweetalert2/sweetalert2/issues/1699
+      if ('MutationObserver' in window) {
+        const initialPopupWidth = parseInt(window.getComputedStyle(getPopup()).width);
+        const textareaResizeHandler = () => {
+          const textareaWidth = textarea.offsetWidth + getMargin(textarea);
+          if (textareaWidth > initialPopupWidth) {
+            getPopup().style.width = `${textareaWidth}px`;
+          } else {
+            getPopup().style.width = null;
+          }
+        };
+        new MutationObserver(textareaResizeHandler).observe(textarea, {
+          attributes: true,
+          attributeFilter: ['style']
+        });
+      }
+    });
+    return textarea;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderContent = (instance, params) => {
+    const htmlContainer = getHtmlContainer();
+    applyCustomClass(htmlContainer, params, 'htmlContainer');
+
+    // Content as HTML
+    if (params.html) {
+      parseHtmlToContainer(params.html, htmlContainer);
+      show(htmlContainer, 'block');
+    }
+
+    // Content as plain text
+    else if (params.text) {
+      htmlContainer.textContent = params.text;
+      show(htmlContainer, 'block');
+    }
+
+    // No content
+    else {
+      hide(htmlContainer);
+    }
+    renderInput(instance, params);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderFooter = (instance, params) => {
+    const footer = getFooter();
+    toggle(footer, params.footer);
+    if (params.footer) {
+      parseHtmlToContainer(params.footer, footer);
+    }
+
+    // Custom class
+    applyCustomClass(footer, params, 'footer');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderIcon = (instance, params) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    const icon = getIcon();
+
+    // if the given icon already rendered, apply the styling without re-rendering the icon
+    if (innerParams && params.icon === innerParams.icon) {
+      // Custom or default content
+      setContent(icon, params);
+      applyStyles(icon, params);
+      return;
+    }
+    if (!params.icon && !params.iconHtml) {
+      hide(icon);
+      return;
+    }
+    if (params.icon && Object.keys(iconTypes).indexOf(params.icon) === -1) {
+      error(`Unknown icon! Expected "success", "error", "warning", "info" or "question", got "${params.icon}"`);
+      hide(icon);
+      return;
+    }
+    show(icon);
+
+    // Custom or default content
+    setContent(icon, params);
+    applyStyles(icon, params);
+
+    // Animate icon
+    addClass(icon, params.showClass.icon);
+  };
+
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+  const applyStyles = (icon, params) => {
+    for (const iconType in iconTypes) {
+      if (params.icon !== iconType) {
+        removeClass(icon, iconTypes[iconType]);
+      }
+    }
+    addClass(icon, iconTypes[params.icon]);
+
+    // Icon color
+    setColor(icon, params);
+
+    // Success icon background color
+    adjustSuccessIconBackgroundColor();
+
+    // Custom class
+    applyCustomClass(icon, params, 'icon');
+  };
+
+  // Adjust success icon background color to match the popup background color
+  const adjustSuccessIconBackgroundColor = () => {
+    const popup = getPopup();
+    const popupBackgroundColor = window.getComputedStyle(popup).getPropertyValue('background-color');
+    /** @type {NodeListOf<HTMLElement>} */
+    const successIconParts = popup.querySelectorAll('[class^=swal2-success-circular-line], .swal2-success-fix');
+    for (let i = 0; i < successIconParts.length; i++) {
+      successIconParts[i].style.backgroundColor = popupBackgroundColor;
+    }
+  };
+  const successIconHtml = `
+  <div class="swal2-success-circular-line-left"></div>
+  <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+  <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>
+  <div class="swal2-success-circular-line-right"></div>
+`;
+  const errorIconHtml = `
+  <span class="swal2-x-mark">
+    <span class="swal2-x-mark-line-left"></span>
+    <span class="swal2-x-mark-line-right"></span>
+  </span>
+`;
+
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+  const setContent = (icon, params) => {
+    let oldContent = icon.innerHTML;
+    let newContent;
+    if (params.iconHtml) {
+      newContent = iconContent(params.iconHtml);
+    } else if (params.icon === 'success') {
+      newContent = successIconHtml;
+      oldContent = oldContent.replace(/ style=".*?"/g, ''); // undo adjustSuccessIconBackgroundColor()
+    } else if (params.icon === 'error') {
+      newContent = errorIconHtml;
+    } else {
+      const defaultIconHtml = {
+        question: '?',
+        warning: '!',
+        info: 'i'
+      };
+      newContent = iconContent(defaultIconHtml[params.icon]);
+    }
+    if (oldContent.trim() !== newContent.trim()) {
+      setInnerHtml(icon, newContent);
+    }
+  };
+
+  /**
+   * @param {HTMLElement} icon
+   * @param {SweetAlertOptions} params
+   */
+  const setColor = (icon, params) => {
+    if (!params.iconColor) {
+      return;
+    }
+    icon.style.color = params.iconColor;
+    icon.style.borderColor = params.iconColor;
+    for (const sel of ['.swal2-success-line-tip', '.swal2-success-line-long', '.swal2-x-mark-line-left', '.swal2-x-mark-line-right']) {
+      setStyle(icon, sel, 'backgroundColor', params.iconColor);
+    }
+    setStyle(icon, '.swal2-success-ring', 'borderColor', params.iconColor);
+  };
+
+  /**
+   * @param {string} content
+   * @returns {string}
+   */
+  const iconContent = content => `<div class="${swalClasses['icon-content']}">${content}</div>`;
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderImage = (instance, params) => {
+    const image = getImage();
+    if (!params.imageUrl) {
+      hide(image);
+      return;
+    }
+    show(image, '');
+
+    // Src, alt
+    image.setAttribute('src', params.imageUrl);
+    image.setAttribute('alt', params.imageAlt);
+
+    // Width, height
+    applyNumericalStyle(image, 'width', params.imageWidth);
+    applyNumericalStyle(image, 'height', params.imageHeight);
+
+    // Class
+    image.className = swalClasses.image;
+    applyCustomClass(image, params, 'image');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderPopup = (instance, params) => {
+    const container = getContainer();
+    const popup = getPopup();
+
+    // Width
+    // https://github.com/sweetalert2/sweetalert2/issues/2170
+    if (params.toast) {
+      applyNumericalStyle(container, 'width', params.width);
+      popup.style.width = '100%';
+      popup.insertBefore(getLoader(), getIcon());
+    } else {
+      applyNumericalStyle(popup, 'width', params.width);
+    }
+
+    // Padding
+    applyNumericalStyle(popup, 'padding', params.padding);
+
+    // Color
+    if (params.color) {
+      popup.style.color = params.color;
+    }
+
+    // Background
+    if (params.background) {
+      popup.style.background = params.background;
+    }
+    hide(getValidationMessage());
+
+    // Classes
+    addClasses$1(popup, params);
+  };
+
+  /**
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} params
+   */
+  const addClasses$1 = (popup, params) => {
+    // Default Class + showClass when updating Swal.update({})
+    popup.className = `${swalClasses.popup} ${isVisible$1(popup) ? params.showClass.popup : ''}`;
+    if (params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['toast-shown']);
+      addClass(popup, swalClasses.toast);
+    } else {
+      addClass(popup, swalClasses.modal);
+    }
+
+    // Custom class
+    applyCustomClass(popup, params, 'popup');
+    if (typeof params.customClass === 'string') {
+      addClass(popup, params.customClass);
+    }
+
+    // Icon class (#1842)
+    if (params.icon) {
+      addClass(popup, swalClasses[`icon-${params.icon}`]);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderProgressSteps = (instance, params) => {
+    const progressStepsContainer = getProgressSteps();
+    if (!params.progressSteps || params.progressSteps.length === 0) {
+      hide(progressStepsContainer);
+      return;
+    }
+    show(progressStepsContainer);
+    progressStepsContainer.textContent = '';
+    if (params.currentProgressStep >= params.progressSteps.length) {
+      warn('Invalid currentProgressStep parameter, it should be less than progressSteps.length ' + '(currentProgressStep like JS arrays starts from 0)');
+    }
+    params.progressSteps.forEach((step, index) => {
+      const stepEl = createStepElement(step);
+      progressStepsContainer.appendChild(stepEl);
+      if (index === params.currentProgressStep) {
+        addClass(stepEl, swalClasses['active-progress-step']);
+      }
+      if (index !== params.progressSteps.length - 1) {
+        const lineEl = createLineElement(params);
+        progressStepsContainer.appendChild(lineEl);
+      }
+    });
+  };
+
+  /**
+   * @param {string} step
+   * @returns {HTMLLIElement}
+   */
+  const createStepElement = step => {
+    const stepEl = document.createElement('li');
+    addClass(stepEl, swalClasses['progress-step']);
+    setInnerHtml(stepEl, step);
+    return stepEl;
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   * @returns {HTMLLIElement}
+   */
+  const createLineElement = params => {
+    const lineEl = document.createElement('li');
+    addClass(lineEl, swalClasses['progress-step-line']);
+    if (params.progressStepsDistance) {
+      applyNumericalStyle(lineEl, 'width', params.progressStepsDistance);
+    }
+    return lineEl;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const renderTitle = (instance, params) => {
+    const title = getTitle();
+    toggle(title, params.title || params.titleText, 'block');
+    if (params.title) {
+      parseHtmlToContainer(params.title, title);
+    }
+    if (params.titleText) {
+      title.innerText = params.titleText;
+    }
+
+    // Custom class
+    applyCustomClass(title, params, 'title');
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const render = (instance, params) => {
+    renderPopup(instance, params);
+    renderContainer(instance, params);
+    renderProgressSteps(instance, params);
+    renderIcon(instance, params);
+    renderImage(instance, params);
+    renderTitle(instance, params);
+    renderCloseButton(instance, params);
+    renderContent(instance, params);
+    renderActions(instance, params);
+    renderFooter(instance, params);
+    if (typeof params.didRender === 'function') {
+      params.didRender(getPopup());
+    }
+  };
+
+  /**
+   * Hides loader and shows back the button which was hidden by .showLoading()
+   */
+  function hideLoading() {
+    // do nothing if popup is closed
+    const innerParams = privateProps.innerParams.get(this);
+    if (!innerParams) {
+      return;
+    }
+    const domCache = privateProps.domCache.get(this);
+    hide(domCache.loader);
+    if (isToast()) {
+      if (innerParams.icon) {
+        show(getIcon());
+      }
+    } else {
+      showRelatedButton(domCache);
+    }
+    removeClass([domCache.popup, domCache.actions], swalClasses.loading);
+    domCache.popup.removeAttribute('aria-busy');
+    domCache.popup.removeAttribute('data-loading');
+    domCache.confirmButton.disabled = false;
+    domCache.denyButton.disabled = false;
+    domCache.cancelButton.disabled = false;
+  }
+  const showRelatedButton = domCache => {
+    const buttonToReplace = domCache.popup.getElementsByClassName(domCache.loader.getAttribute('data-button-to-replace'));
+    if (buttonToReplace.length) {
+      show(buttonToReplace[0], 'inline-block');
+    } else if (allButtonsAreHidden()) {
+      hide(domCache.actions);
+    }
+  };
+
+  /**
+   * Gets the input DOM node, this method works with input parameter.
+   *
+   * @param {SweetAlert2} instance
+   * @returns {HTMLElement | null}
+   */
+  function getInput(instance) {
+    const innerParams = privateProps.innerParams.get(instance || this);
+    const domCache = privateProps.domCache.get(instance || this);
+    if (!domCache) {
+      return null;
+    }
+    return getInput$1(domCache.popup, innerParams.input);
+  }
+
+  /*
+   * Global function to determine if SweetAlert2 popup is shown
+   */
+  const isVisible = () => {
+    return isVisible$1(getPopup());
+  };
+
+  /*
+   * Global function to click 'Confirm' button
+   */
+  const clickConfirm = () => getConfirmButton() && getConfirmButton().click();
+
+  /*
+   * Global function to click 'Deny' button
+   */
+  const clickDeny = () => getDenyButton() && getDenyButton().click();
+
+  /*
+   * Global function to click 'Cancel' button
+   */
+  const clickCancel = () => getCancelButton() && getCancelButton().click();
+
+  const DismissReason = Object.freeze({
+    cancel: 'cancel',
+    backdrop: 'backdrop',
+    close: 'close',
+    esc: 'esc',
+    timer: 'timer'
+  });
+
+  /**
+   * @param {GlobalState} globalState
+   */
+  const removeKeydownHandler = globalState => {
+    if (globalState.keydownTarget && globalState.keydownHandlerAdded) {
+      globalState.keydownTarget.removeEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = false;
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {GlobalState} globalState
+   * @param {SweetAlertOptions} innerParams
+   * @param {*} dismissWith
+   */
+  const addKeydownHandler = (instance, globalState, innerParams, dismissWith) => {
+    removeKeydownHandler(globalState);
+    if (!innerParams.toast) {
+      globalState.keydownHandler = e => keydownHandler(instance, e, dismissWith);
+      globalState.keydownTarget = innerParams.keydownListenerCapture ? window : getPopup();
+      globalState.keydownListenerCapture = innerParams.keydownListenerCapture;
+      globalState.keydownTarget.addEventListener('keydown', globalState.keydownHandler, {
+        capture: globalState.keydownListenerCapture
+      });
+      globalState.keydownHandlerAdded = true;
+    }
+  };
+
+  /**
+   * @param {number} index
+   * @param {number} increment
+   */
+  const setFocus = (index, increment) => {
+    const focusableElements = getFocusableElements();
+    // search for visible elements and select the next possible match
+    if (focusableElements.length) {
+      index = index + increment;
+
+      // rollover to first item
+      if (index === focusableElements.length) {
+        index = 0;
+
+        // go to last item
+      } else if (index === -1) {
+        index = focusableElements.length - 1;
+      }
+      focusableElements[index].focus();
+      return;
+    }
+    // no visible focusable elements, focus the popup
+    getPopup().focus();
+  };
+  const arrowKeysNextButton = ['ArrowRight', 'ArrowDown'];
+  const arrowKeysPreviousButton = ['ArrowLeft', 'ArrowUp'];
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} event
+   * @param {Function} dismissWith
+   */
+  const keydownHandler = (instance, event, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    if (!innerParams) {
+      return; // This instance has already been destroyed
+    }
+
+    // Ignore keydown during IME composition
+    // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event#ignoring_keydown_during_ime_composition
+    // https://github.com/sweetalert2/sweetalert2/issues/720
+    // https://github.com/sweetalert2/sweetalert2/issues/2406
+    if (event.isComposing || event.keyCode === 229) {
+      return;
+    }
+    if (innerParams.stopKeydownPropagation) {
+      event.stopPropagation();
+    }
+
+    // ENTER
+    if (event.key === 'Enter') {
+      handleEnter(instance, event, innerParams);
+    }
+
+    // TAB
+    else if (event.key === 'Tab') {
+      handleTab(event);
+    }
+
+    // ARROWS - switch focus between buttons
+    else if ([...arrowKeysNextButton, ...arrowKeysPreviousButton].includes(event.key)) {
+      handleArrows(event.key);
+    }
+
+    // ESC
+    else if (event.key === 'Escape') {
+      handleEsc(event, innerParams, dismissWith);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {KeyboardEvent} event
+   * @param {SweetAlertOptions} innerParams
+   */
+  const handleEnter = (instance, event, innerParams) => {
+    // https://github.com/sweetalert2/sweetalert2/issues/2386
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      return;
+    }
+    if (event.target && instance.getInput() && event.target instanceof HTMLElement && event.target.outerHTML === instance.getInput().outerHTML) {
+      if (['textarea', 'file'].includes(innerParams.input)) {
+        return; // do not submit
+      }
+
+      clickConfirm();
+      event.preventDefault();
+    }
+  };
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  const handleTab = event => {
+    const targetElement = event.target;
+    const focusableElements = getFocusableElements();
+    let btnIndex = -1;
+    for (let i = 0; i < focusableElements.length; i++) {
+      if (targetElement === focusableElements[i]) {
+        btnIndex = i;
+        break;
+      }
+    }
+
+    // Cycle to the next button
+    if (!event.shiftKey) {
+      setFocus(btnIndex, 1);
+    }
+
+    // Cycle to the prev button
+    else {
+      setFocus(btnIndex, -1);
+    }
+    event.stopPropagation();
+    event.preventDefault();
+  };
+
+  /**
+   * @param {string} key
+   */
+  const handleArrows = key => {
+    const confirmButton = getConfirmButton();
+    const denyButton = getDenyButton();
+    const cancelButton = getCancelButton();
+    /** @type HTMLElement[] */
+    const buttons = [confirmButton, denyButton, cancelButton];
+    if (document.activeElement instanceof HTMLElement && !buttons.includes(document.activeElement)) {
+      return;
+    }
+    const sibling = arrowKeysNextButton.includes(key) ? 'nextElementSibling' : 'previousElementSibling';
+    let buttonToFocus = document.activeElement;
+    for (let i = 0; i < getActions().children.length; i++) {
+      buttonToFocus = buttonToFocus[sibling];
+      if (!buttonToFocus) {
+        return;
+      }
+      if (buttonToFocus instanceof HTMLButtonElement && isVisible$1(buttonToFocus)) {
+        break;
+      }
+    }
+    if (buttonToFocus instanceof HTMLButtonElement) {
+      buttonToFocus.focus();
+    }
+  };
+
+  /**
+   * @param {KeyboardEvent} event
+   * @param {SweetAlertOptions} innerParams
+   * @param {Function} dismissWith
+   */
+  const handleEsc = (event, innerParams, dismissWith) => {
+    if (callIfFunction(innerParams.allowEscapeKey)) {
+      event.preventDefault();
+      dismissWith(DismissReason.esc);
+    }
+  };
+
+  /**
+   * This module contains `WeakMap`s for each effectively-"private  property" that a `Swal` has.
+   * For example, to set the private property "foo" of `this` to "bar", you can `privateProps.foo.set(this, 'bar')`
+   * This is the approach that Babel will probably take to implement private methods/fields
+   *   https://github.com/tc39/proposal-private-methods
+   *   https://github.com/babel/babel/pull/7555
+   * Once we have the changes from that PR in Babel, and our core class fits reasonable in *one module*
+   *   then we can use that language feature.
+   */
+
+  var privateMethods = {
+    swalPromiseResolve: new WeakMap(),
+    swalPromiseReject: new WeakMap()
+  };
+
+  // From https://developer.paciellogroup.com/blog/2018/06/the-current-state-of-modal-dialog-accessibility/
+  // Adding aria-hidden="true" to elements outside of the active modal dialog ensures that
+  // elements not within the active modal dialog will not be surfaced if a user opens a screen
+  // reader’s list of elements (headings, form controls, landmarks, etc.) in the document.
+
+  const setAriaHidden = () => {
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(el => {
+      if (el === getContainer() || el.contains(getContainer())) {
+        return;
+      }
+      if (el.hasAttribute('aria-hidden')) {
+        el.setAttribute('data-previous-aria-hidden', el.getAttribute('aria-hidden'));
+      }
+      el.setAttribute('aria-hidden', 'true');
+    });
+  };
+  const unsetAriaHidden = () => {
+    const bodyChildren = Array.from(document.body.children);
+    bodyChildren.forEach(el => {
+      if (el.hasAttribute('data-previous-aria-hidden')) {
+        el.setAttribute('aria-hidden', el.getAttribute('data-previous-aria-hidden'));
+        el.removeAttribute('data-previous-aria-hidden');
+      } else {
+        el.removeAttribute('aria-hidden');
+      }
+    });
+  };
+
+  /* istanbul ignore file */
+
+  // Fix iOS scrolling http://stackoverflow.com/q/39626302
+
+  const iOSfix = () => {
+    const iOS =
+    // @ts-ignore
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+    if (iOS && !hasClass(document.body, swalClasses.iosfix)) {
+      const offset = document.body.scrollTop;
+      document.body.style.top = `${offset * -1}px`;
+      addClass(document.body, swalClasses.iosfix);
+      lockBodyScroll();
+      addBottomPaddingForTallPopups();
+    }
+  };
+
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1948
+   */
+  const addBottomPaddingForTallPopups = () => {
+    const ua = navigator.userAgent;
+    const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+    const webkit = !!ua.match(/WebKit/i);
+    const iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
+    if (iOSSafari) {
+      const bottomPanelHeight = 44;
+      if (getPopup().scrollHeight > window.innerHeight - bottomPanelHeight) {
+        getContainer().style.paddingBottom = `${bottomPanelHeight}px`;
+      }
+    }
+  };
+
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1246
+   */
+  const lockBodyScroll = () => {
+    const container = getContainer();
+    let preventTouchMove;
+    /**
+     * @param {TouchEvent} event
+     */
+    container.ontouchstart = event => {
+      preventTouchMove = shouldPreventTouchMove(event);
+    };
+    /**
+     * @param {TouchEvent} event
+     */
+    container.ontouchmove = event => {
+      if (preventTouchMove) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    };
+  };
+
+  /**
+   * @param {TouchEvent} event
+   * @returns {boolean}
+   */
+  const shouldPreventTouchMove = event => {
+    const target = event.target;
+    const container = getContainer();
+    if (isStylus(event) || isZoom(event)) {
+      return false;
+    }
+    if (target === container) {
+      return true;
+    }
+    if (!isScrollable(container) && target instanceof HTMLElement && target.tagName !== 'INPUT' &&
+    // #1603
+    target.tagName !== 'TEXTAREA' &&
+    // #2266
+    !(isScrollable(getHtmlContainer()) &&
+    // #1944
+    getHtmlContainer().contains(target))) {
+      return true;
+    }
+    return false;
+  };
+
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1786
+   *
+   * @param {*} event
+   * @returns {boolean}
+   */
+  const isStylus = event => {
+    return event.touches && event.touches.length && event.touches[0].touchType === 'stylus';
+  };
+
+  /**
+   * https://github.com/sweetalert2/sweetalert2/issues/1891
+   *
+   * @param {TouchEvent} event
+   * @returns {boolean}
+   */
+  const isZoom = event => {
+    return event.touches && event.touches.length > 1;
+  };
+  const undoIOSfix = () => {
+    if (hasClass(document.body, swalClasses.iosfix)) {
+      const offset = parseInt(document.body.style.top, 10);
+      removeClass(document.body, swalClasses.iosfix);
+      document.body.style.top = '';
+      document.body.scrollTop = offset * -1;
+    }
+  };
+
+  const fixScrollbar = () => {
+    // for queues, do not do this more than once
+    if (states.previousBodyPadding !== null) {
+      return;
+    }
+    // if the body has overflow
+    if (document.body.scrollHeight > window.innerHeight) {
+      // add padding so the content doesn't shift after removal of scrollbar
+      states.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue('padding-right'));
+      document.body.style.paddingRight = `${states.previousBodyPadding + measureScrollbar()}px`;
+    }
+  };
+  const undoScrollbar = () => {
+    if (states.previousBodyPadding !== null) {
+      document.body.style.paddingRight = `${states.previousBodyPadding}px`;
+      states.previousBodyPadding = null;
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {HTMLElement} container
+   * @param {boolean} returnFocus
+   * @param {Function} didClose
+   */
+  function removePopupAndResetState(instance, container, returnFocus, didClose) {
+    if (isToast()) {
+      triggerDidCloseAndDispose(instance, didClose);
+    } else {
+      restoreActiveElement(returnFocus).then(() => triggerDidCloseAndDispose(instance, didClose));
+      removeKeydownHandler(globalState);
+    }
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    // workaround for #2088
+    // for some reason removing the container in Safari will scroll the document to bottom
+    if (isSafari) {
+      container.setAttribute('style', 'display:none !important');
+      container.removeAttribute('class');
+      container.innerHTML = '';
+    } else {
+      container.remove();
+    }
+    if (isModal()) {
+      undoScrollbar();
+      undoIOSfix();
+      unsetAriaHidden();
+    }
+    removeBodyClasses();
+  }
+
+  /**
+   * Remove SweetAlert2 classes from body
+   */
+  function removeBodyClasses() {
+    removeClass([document.documentElement, document.body], [swalClasses.shown, swalClasses['height-auto'], swalClasses['no-backdrop'], swalClasses['toast-shown']]);
+  }
+
+  /**
+   * Instance method to close sweetAlert
+   *
+   * @param {any} resolveValue
+   */
+  function close(resolveValue) {
+    resolveValue = prepareResolveValue(resolveValue);
+    const swalPromiseResolve = privateMethods.swalPromiseResolve.get(this);
+    const didClose = triggerClosePopup(this);
+    if (this.isAwaitingPromise()) {
+      // A swal awaiting for a promise (after a click on Confirm or Deny) cannot be dismissed anymore #2335
+      if (!resolveValue.isDismissed) {
+        handleAwaitingPromise(this);
+        swalPromiseResolve(resolveValue);
+      }
+    } else if (didClose) {
+      // Resolve Swal promise
+      swalPromiseResolve(resolveValue);
+    }
+  }
+
+  /**
+   * @returns {boolean}
+   */
+  function isAwaitingPromise() {
+    return !!privateProps.awaitingPromise.get(this);
+  }
+  const triggerClosePopup = instance => {
+    const popup = getPopup();
+    if (!popup) {
+      return false;
+    }
+    const innerParams = privateProps.innerParams.get(instance);
+    if (!innerParams || hasClass(popup, innerParams.hideClass.popup)) {
+      return false;
+    }
+    removeClass(popup, innerParams.showClass.popup);
+    addClass(popup, innerParams.hideClass.popup);
+    const backdrop = getContainer();
+    removeClass(backdrop, innerParams.showClass.backdrop);
+    addClass(backdrop, innerParams.hideClass.backdrop);
+    handlePopupAnimation(instance, popup, innerParams);
+    return true;
+  };
+
+  /**
+   * @param {any} error
+   */
+  function rejectPromise(error) {
+    const rejectPromise = privateMethods.swalPromiseReject.get(this);
+    handleAwaitingPromise(this);
+    if (rejectPromise) {
+      // Reject Swal promise
+      rejectPromise(error);
+    }
+  }
+
+  /**
+   * @param {SweetAlert2} instance
+   */
+  const handleAwaitingPromise = instance => {
+    // @ts-ignore
+    if (instance.isAwaitingPromise()) {
+      privateProps.awaitingPromise.delete(instance);
+      // The instance might have been previously partly destroyed, we must resume the destroy process in this case #2335
+      if (!privateProps.innerParams.get(instance)) {
+        // @ts-ignore
+        instance._destroy();
+      }
+    }
+  };
+
+  /**
+   * @param {any} resolveValue
+   * @returns {SweetAlertResult}
+   */
+  const prepareResolveValue = resolveValue => {
+    // When user calls Swal.close()
+    if (typeof resolveValue === 'undefined') {
+      return {
+        isConfirmed: false,
+        isDenied: false,
+        isDismissed: true
+      };
+    }
+    return Object.assign({
+      isConfirmed: false,
+      isDenied: false,
+      isDismissed: false
+    }, resolveValue);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} innerParams
+   */
+  const handlePopupAnimation = (instance, popup, innerParams) => {
+    const container = getContainer();
+    // If animation is supported, animate
+    const animationIsSupported = animationEndEvent && hasCssAnimation(popup);
+    if (typeof innerParams.willClose === 'function') {
+      innerParams.willClose(popup);
+    }
+    if (animationIsSupported) {
+      animatePopup(instance, popup, container, innerParams.returnFocus, innerParams.didClose);
+    } else {
+      // Otherwise, remove immediately
+      removePopupAndResetState(instance, container, innerParams.returnFocus, innerParams.didClose);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {HTMLElement} popup
+   * @param {HTMLElement} container
+   * @param {boolean} returnFocus
+   * @param {Function} didClose
+   */
+  const animatePopup = (instance, popup, container, returnFocus, didClose) => {
+    globalState.swalCloseEventFinishedCallback = removePopupAndResetState.bind(null, instance, container, returnFocus, didClose);
+    popup.addEventListener(animationEndEvent, function (e) {
+      if (e.target === popup) {
+        globalState.swalCloseEventFinishedCallback();
+        delete globalState.swalCloseEventFinishedCallback;
+      }
+    });
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {Function} didClose
+   */
+  const triggerDidCloseAndDispose = (instance, didClose) => {
+    setTimeout(() => {
+      if (typeof didClose === 'function') {
+        // @ts-ignore
+        didClose.bind(instance.params)();
+      }
+      // @ts-ignore
+      instance._destroy();
+    });
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {string[]} buttons
+   * @param {boolean} disabled
+   */
+  function setButtonsDisabled(instance, buttons, disabled) {
+    const domCache = privateProps.domCache.get(instance);
+    buttons.forEach(button => {
+      domCache[button].disabled = disabled;
+    });
+  }
+
+  /**
+   * @param {HTMLInputElement} input
+   * @param {boolean} disabled
+   */
+  function setInputDisabled(input, disabled) {
+    if (!input) {
+      return;
+    }
+    if (input.type === 'radio') {
+      const radiosContainer = input.parentNode.parentNode;
+      const radios = radiosContainer.querySelectorAll('input');
+      for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = disabled;
+      }
+    } else {
+      input.disabled = disabled;
+    }
+  }
+  function enableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
+  }
+  function disableButtons() {
+    setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
+  }
+  function enableInput() {
+    setInputDisabled(this.getInput(), false);
+  }
+  function disableInput() {
+    setInputDisabled(this.getInput(), true);
+  }
+
+  /**
+   * Show block with validation message
+   *
+   * @param {string} error
+   */
+  function showValidationMessage(error) {
+    const domCache = privateProps.domCache.get(this);
+    const params = privateProps.innerParams.get(this);
+    setInnerHtml(domCache.validationMessage, error);
+    domCache.validationMessage.className = swalClasses['validation-message'];
+    if (params.customClass && params.customClass.validationMessage) {
+      addClass(domCache.validationMessage, params.customClass.validationMessage);
+    }
+    show(domCache.validationMessage);
+    const input = this.getInput();
+    if (input) {
+      input.setAttribute('aria-invalid', true);
+      input.setAttribute('aria-describedby', swalClasses['validation-message']);
+      focusInput(input);
+      addClass(input, swalClasses.inputerror);
+    }
+  }
+
+  /**
+   * Hide block with validation message
+   */
+  function resetValidationMessage() {
+    const domCache = privateProps.domCache.get(this);
+    if (domCache.validationMessage) {
+      hide(domCache.validationMessage);
+    }
+    const input = this.getInput();
+    if (input) {
+      input.removeAttribute('aria-invalid');
+      input.removeAttribute('aria-describedby');
+      removeClass(input, swalClasses.inputerror);
+    }
+  }
+
+  const defaultParams = {
+    title: '',
+    titleText: '',
+    text: '',
+    html: '',
+    footer: '',
+    icon: undefined,
+    iconColor: undefined,
+    iconHtml: undefined,
+    template: undefined,
+    toast: false,
+    showClass: {
+      popup: 'swal2-show',
+      backdrop: 'swal2-backdrop-show',
+      icon: 'swal2-icon-show'
+    },
+    hideClass: {
+      popup: 'swal2-hide',
+      backdrop: 'swal2-backdrop-hide',
+      icon: 'swal2-icon-hide'
+    },
+    customClass: {},
+    target: 'body',
+    color: undefined,
+    backdrop: true,
+    heightAuto: true,
+    allowOutsideClick: true,
+    allowEscapeKey: true,
+    allowEnterKey: true,
+    stopKeydownPropagation: true,
+    keydownListenerCapture: false,
+    showConfirmButton: true,
+    showDenyButton: false,
+    showCancelButton: false,
+    preConfirm: undefined,
+    preDeny: undefined,
+    confirmButtonText: 'OK',
+    confirmButtonAriaLabel: '',
+    confirmButtonColor: undefined,
+    denyButtonText: 'No',
+    denyButtonAriaLabel: '',
+    denyButtonColor: undefined,
+    cancelButtonText: 'Cancel',
+    cancelButtonAriaLabel: '',
+    cancelButtonColor: undefined,
+    buttonsStyling: true,
+    reverseButtons: false,
+    focusConfirm: true,
+    focusDeny: false,
+    focusCancel: false,
+    returnFocus: true,
+    showCloseButton: false,
+    closeButtonHtml: '&times;',
+    closeButtonAriaLabel: 'Close this dialog',
+    loaderHtml: '',
+    showLoaderOnConfirm: false,
+    showLoaderOnDeny: false,
+    imageUrl: undefined,
+    imageWidth: undefined,
+    imageHeight: undefined,
+    imageAlt: '',
+    timer: undefined,
+    timerProgressBar: false,
+    width: undefined,
+    padding: undefined,
+    background: undefined,
+    input: undefined,
+    inputPlaceholder: '',
+    inputLabel: '',
+    inputValue: '',
+    inputOptions: {},
+    inputAutoFocus: true,
+    inputAutoTrim: true,
+    inputAttributes: {},
+    inputValidator: undefined,
+    returnInputValueOnDeny: false,
+    validationMessage: undefined,
+    grow: false,
+    position: 'center',
+    progressSteps: [],
+    currentProgressStep: undefined,
+    progressStepsDistance: undefined,
+    willOpen: undefined,
+    didOpen: undefined,
+    didRender: undefined,
+    willClose: undefined,
+    didClose: undefined,
+    didDestroy: undefined,
+    scrollbarPadding: true
+  };
+  const updatableParams = ['allowEscapeKey', 'allowOutsideClick', 'background', 'buttonsStyling', 'cancelButtonAriaLabel', 'cancelButtonColor', 'cancelButtonText', 'closeButtonAriaLabel', 'closeButtonHtml', 'color', 'confirmButtonAriaLabel', 'confirmButtonColor', 'confirmButtonText', 'currentProgressStep', 'customClass', 'denyButtonAriaLabel', 'denyButtonColor', 'denyButtonText', 'didClose', 'didDestroy', 'footer', 'hideClass', 'html', 'icon', 'iconColor', 'iconHtml', 'imageAlt', 'imageHeight', 'imageUrl', 'imageWidth', 'preConfirm', 'preDeny', 'progressSteps', 'returnFocus', 'reverseButtons', 'showCancelButton', 'showCloseButton', 'showConfirmButton', 'showDenyButton', 'text', 'title', 'titleText', 'willClose'];
+  const deprecatedParams = {};
+  const toastIncompatibleParams = ['allowOutsideClick', 'allowEnterKey', 'backdrop', 'focusConfirm', 'focusDeny', 'focusCancel', 'returnFocus', 'heightAuto', 'keydownListenerCapture'];
+
+  /**
+   * Is valid parameter
+   *
+   * @param {string} paramName
+   * @returns {boolean}
+   */
+  const isValidParameter = paramName => {
+    return Object.prototype.hasOwnProperty.call(defaultParams, paramName);
+  };
+
+  /**
+   * Is valid parameter for Swal.update() method
+   *
+   * @param {string} paramName
+   * @returns {boolean}
+   */
+  const isUpdatableParameter = paramName => {
+    return updatableParams.indexOf(paramName) !== -1;
+  };
+
+  /**
+   * Is deprecated parameter
+   *
+   * @param {string} paramName
+   * @returns {string | undefined}
+   */
+  const isDeprecatedParameter = paramName => {
+    return deprecatedParams[paramName];
+  };
+
+  /**
+   * @param {string} param
+   */
+  const checkIfParamIsValid = param => {
+    if (!isValidParameter(param)) {
+      warn(`Unknown parameter "${param}"`);
+    }
+  };
+
+  /**
+   * @param {string} param
+   */
+  const checkIfToastParamIsValid = param => {
+    if (toastIncompatibleParams.includes(param)) {
+      warn(`The parameter "${param}" is incompatible with toasts`);
+    }
+  };
+
+  /**
+   * @param {string} param
+   */
+  const checkIfParamIsDeprecated = param => {
+    if (isDeprecatedParameter(param)) {
+      warnAboutDeprecation(param, isDeprecatedParameter(param));
+    }
+  };
+
+  /**
+   * Show relevant warnings for given params
+   *
+   * @param {SweetAlertOptions} params
+   */
+  const showWarningsForParams = params => {
+    if (params.backdrop === false && params.allowOutsideClick) {
+      warn('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`');
+    }
+    for (const param in params) {
+      checkIfParamIsValid(param);
+      if (params.toast) {
+        checkIfToastParamIsValid(param);
+      }
+      checkIfParamIsDeprecated(param);
+    }
+  };
+
+  /**
+   * Updates popup parameters.
+   *
+   * @param {SweetAlertOptions} params
+   */
+  function update(params) {
+    const popup = getPopup();
+    const innerParams = privateProps.innerParams.get(this);
+    if (!popup || hasClass(popup, innerParams.hideClass.popup)) {
+      warn(`You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.`);
+      return;
+    }
+    const validUpdatableParams = filterValidParams(params);
+    const updatedParams = Object.assign({}, innerParams, validUpdatableParams);
+    render(this, updatedParams);
+    privateProps.innerParams.set(this, updatedParams);
+    Object.defineProperties(this, {
+      params: {
+        value: Object.assign({}, this.params, params),
+        writable: false,
+        enumerable: true
+      }
+    });
+  }
+
+  /**
+   * @param {SweetAlertOptions} params
+   * @returns {SweetAlertOptions}
+   */
+  const filterValidParams = params => {
+    const validUpdatableParams = {};
+    Object.keys(params).forEach(param => {
+      if (isUpdatableParameter(param)) {
+        validUpdatableParams[param] = params[param];
+      } else {
+        warn(`Invalid parameter to update: ${param}`);
+      }
+    });
+    return validUpdatableParams;
+  };
+
+  /**
+   * Dispose the current SweetAlert2 instance
+   */
+  function _destroy() {
+    const domCache = privateProps.domCache.get(this);
+    const innerParams = privateProps.innerParams.get(this);
+    if (!innerParams) {
+      disposeWeakMaps(this); // The WeakMaps might have been partly destroyed, we must recall it to dispose any remaining WeakMaps #2335
+      return; // This instance has already been destroyed
+    }
+
+    // Check if there is another Swal closing
+    if (domCache.popup && globalState.swalCloseEventFinishedCallback) {
+      globalState.swalCloseEventFinishedCallback();
+      delete globalState.swalCloseEventFinishedCallback;
+    }
+    if (typeof innerParams.didDestroy === 'function') {
+      innerParams.didDestroy();
+    }
+    disposeSwal(this);
+  }
+
+  /**
+   * @param {SweetAlert2} instance
+   */
+  const disposeSwal = instance => {
+    disposeWeakMaps(instance);
+    // Unset this.params so GC will dispose it (#1569)
+    // @ts-ignore
+    delete instance.params;
+    // Unset globalState props so GC will dispose globalState (#1569)
+    delete globalState.keydownHandler;
+    delete globalState.keydownTarget;
+    // Unset currentInstance
+    delete globalState.currentInstance;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   */
+  const disposeWeakMaps = instance => {
+    // If the current instance is awaiting a promise result, we keep the privateMethods to call them once the promise result is retrieved #2335
+    // @ts-ignore
+    if (instance.isAwaitingPromise()) {
+      unsetWeakMaps(privateProps, instance);
+      privateProps.awaitingPromise.set(instance, true);
+    } else {
+      unsetWeakMaps(privateMethods, instance);
+      unsetWeakMaps(privateProps, instance);
+    }
+  };
+
+  /**
+   * @param {object} obj
+   * @param {SweetAlert2} instance
+   */
+  const unsetWeakMaps = (obj, instance) => {
+    for (const i in obj) {
+      obj[i].delete(instance);
+    }
+  };
+
+  var instanceMethods = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    _destroy: _destroy,
+    close: close,
+    closeModal: close,
+    closePopup: close,
+    closeToast: close,
+    disableButtons: disableButtons,
+    disableInput: disableInput,
+    disableLoading: hideLoading,
+    enableButtons: enableButtons,
+    enableInput: enableInput,
+    getInput: getInput,
+    handleAwaitingPromise: handleAwaitingPromise,
+    hideLoading: hideLoading,
+    isAwaitingPromise: isAwaitingPromise,
+    rejectPromise: rejectPromise,
+    resetValidationMessage: resetValidationMessage,
+    showValidationMessage: showValidationMessage,
+    update: update
+  });
+
+  /**
+   * Shows loader (spinner), this is useful with AJAX requests.
+   * By default the loader be shown instead of the "Confirm" button.
+   *
+   * @param {HTMLButtonElement} [buttonToReplace]
+   */
+  const showLoading = buttonToReplace => {
+    let popup = getPopup();
+    if (!popup) {
+      new Swal(); // eslint-disable-line no-new
+    }
+
+    popup = getPopup();
+    const loader = getLoader();
+    if (isToast()) {
+      hide(getIcon());
+    } else {
+      replaceButton(popup, buttonToReplace);
+    }
+    show(loader);
+    popup.setAttribute('data-loading', 'true');
+    popup.setAttribute('aria-busy', 'true');
+    popup.focus();
+  };
+
+  /**
+   * @param {HTMLElement} popup
+   * @param {HTMLButtonElement} [buttonToReplace]
+   */
+  const replaceButton = (popup, buttonToReplace) => {
+    const actions = getActions();
+    const loader = getLoader();
+    if (!buttonToReplace && isVisible$1(getConfirmButton())) {
+      buttonToReplace = getConfirmButton();
+    }
+    show(actions);
+    if (buttonToReplace) {
+      hide(buttonToReplace);
+      loader.setAttribute('data-button-to-replace', buttonToReplace.className);
+    }
+    loader.parentNode.insertBefore(loader, buttonToReplace);
+    addClass([popup, actions], swalClasses.loading);
+  };
+
+  /**
+   * @typedef { string | number | boolean } InputValue
+   */
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const handleInputOptionsAndValue = (instance, params) => {
+    if (params.input === 'select' || params.input === 'radio') {
+      handleInputOptions(instance, params);
+    } else if (['text', 'email', 'number', 'tel', 'textarea'].includes(params.input) && (hasToPromiseFn(params.inputValue) || isPromise(params.inputValue))) {
+      showLoading(getConfirmButton());
+      handleInputValue(instance, params);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} innerParams
+   * @returns {string | number | File | FileList | null}
+   */
+  const getInputValue = (instance, innerParams) => {
+    const input = instance.getInput();
+    if (!input) {
+      return null;
+    }
+    switch (innerParams.input) {
+      case 'checkbox':
+        return getCheckboxValue(input);
+      case 'radio':
+        return getRadioValue(input);
+      case 'file':
+        return getFileValue(input);
+      default:
+        return innerParams.inputAutoTrim ? input.value.trim() : input.value;
+    }
+  };
+
+  /**
+   * @param {HTMLInputElement} input
+   * @returns {number}
+   */
+  const getCheckboxValue = input => input.checked ? 1 : 0;
+
+  /**
+   * @param {HTMLInputElement} input
+   * @returns {string | null}
+   */
+  const getRadioValue = input => input.checked ? input.value : null;
+
+  /**
+   * @param {HTMLInputElement} input
+   * @returns {FileList | File | null}
+   */
+  const getFileValue = input => input.files.length ? input.getAttribute('multiple') !== null ? input.files : input.files[0] : null;
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const handleInputOptions = (instance, params) => {
+    const popup = getPopup();
+    /**
+     * @param {Record<string, any>} inputOptions
+     */
+    const processInputOptions = inputOptions => {
+      populateInputOptions[params.input](popup, formatInputOptions(inputOptions), params);
+    };
+    if (hasToPromiseFn(params.inputOptions) || isPromise(params.inputOptions)) {
+      showLoading(getConfirmButton());
+      asPromise(params.inputOptions).then(inputOptions => {
+        instance.hideLoading();
+        processInputOptions(inputOptions);
+      });
+    } else if (typeof params.inputOptions === 'object') {
+      processInputOptions(params.inputOptions);
+    } else {
+      error(`Unexpected type of inputOptions! Expected object, Map or Promise, got ${typeof params.inputOptions}`);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {SweetAlertOptions} params
+   */
+  const handleInputValue = (instance, params) => {
+    const input = instance.getInput();
+    hide(input);
+    asPromise(params.inputValue).then(inputValue => {
+      input.value = params.input === 'number' ? `${parseFloat(inputValue) || 0}` : `${inputValue}`;
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    }).catch(err => {
+      error(`Error in inputValue promise: ${err}`);
+      input.value = '';
+      show(input);
+      input.focus();
+      instance.hideLoading();
+    });
+  };
+  const populateInputOptions = {
+    /**
+     * @param {HTMLElement} popup
+     * @param {Record<string, any>} inputOptions
+     * @param {SweetAlertOptions} params
+     */
+    select: (popup, inputOptions, params) => {
+      const select = getDirectChildByClass(popup, swalClasses.select);
+      /**
+       * @param {HTMLElement} parent
+       * @param {string} optionLabel
+       * @param {string} optionValue
+       */
+      const renderOption = (parent, optionLabel, optionValue) => {
+        const option = document.createElement('option');
+        option.value = optionValue;
+        setInnerHtml(option, optionLabel);
+        option.selected = isSelected(optionValue, params.inputValue);
+        parent.appendChild(option);
+      };
+      inputOptions.forEach(inputOption => {
+        const optionValue = inputOption[0];
+        const optionLabel = inputOption[1];
+        // <optgroup> spec:
+        // https://www.w3.org/TR/html401/interact/forms.html#h-17.6
+        // "...all OPTGROUP elements must be specified directly within a SELECT element (i.e., groups may not be nested)..."
+        // check whether this is a <optgroup>
+        if (Array.isArray(optionLabel)) {
+          // if it is an array, then it is an <optgroup>
+          const optgroup = document.createElement('optgroup');
+          optgroup.label = optionValue;
+          optgroup.disabled = false; // not configurable for now
+          select.appendChild(optgroup);
+          optionLabel.forEach(o => renderOption(optgroup, o[1], o[0]));
+        } else {
+          // case of <option>
+          renderOption(select, optionLabel, optionValue);
+        }
+      });
+      select.focus();
+    },
+    /**
+     * @param {HTMLElement} popup
+     * @param {Record<string, any>} inputOptions
+     * @param {SweetAlertOptions} params
+     */
+    radio: (popup, inputOptions, params) => {
+      const radio = getDirectChildByClass(popup, swalClasses.radio);
+      inputOptions.forEach(inputOption => {
+        const radioValue = inputOption[0];
+        const radioLabel = inputOption[1];
+        const radioInput = document.createElement('input');
+        const radioLabelElement = document.createElement('label');
+        radioInput.type = 'radio';
+        radioInput.name = swalClasses.radio;
+        radioInput.value = radioValue;
+        if (isSelected(radioValue, params.inputValue)) {
+          radioInput.checked = true;
+        }
+        const label = document.createElement('span');
+        setInnerHtml(label, radioLabel);
+        label.className = swalClasses.label;
+        radioLabelElement.appendChild(radioInput);
+        radioLabelElement.appendChild(label);
+        radio.appendChild(radioLabelElement);
+      });
+      const radios = radio.querySelectorAll('input');
+      if (radios.length) {
+        radios[0].focus();
+      }
+    }
+  };
+
+  /**
+   * Converts `inputOptions` into an array of `[value, label]`s
+   *
+   * @param {Record<string, any>} inputOptions
+   * @returns {Array<Array<string>>}
+   */
+  const formatInputOptions = inputOptions => {
+    const result = [];
+    if (typeof Map !== 'undefined' && inputOptions instanceof Map) {
+      inputOptions.forEach((value, key) => {
+        let valueFormatted = value;
+        if (typeof valueFormatted === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+        result.push([key, valueFormatted]);
+      });
+    } else {
+      Object.keys(inputOptions).forEach(key => {
+        let valueFormatted = inputOptions[key];
+        if (typeof valueFormatted === 'object') {
+          // case of <optgroup>
+          valueFormatted = formatInputOptions(valueFormatted);
+        }
+        result.push([key, valueFormatted]);
+      });
+    }
+    return result;
+  };
+
+  /**
+   * @param {string} optionValue
+   * @param {InputValue | Promise<InputValue> | { toPromise: () => InputValue }} inputValue
+   * @returns {boolean}
+   */
+  const isSelected = (optionValue, inputValue) => {
+    return inputValue && inputValue.toString() === optionValue.toString();
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   */
+  const handleConfirmButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+    if (innerParams.input) {
+      handleConfirmOrDenyWithInput(instance, 'confirm');
+    } else {
+      confirm(instance, true);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   */
+  const handleDenyButtonClick = instance => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableButtons();
+    if (innerParams.returnInputValueOnDeny) {
+      handleConfirmOrDenyWithInput(instance, 'deny');
+    } else {
+      deny(instance, false);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {Function} dismissWith
+   */
+  const handleCancelButtonClick = (instance, dismissWith) => {
+    instance.disableButtons();
+    dismissWith(DismissReason.cancel);
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {'confirm' | 'deny'} type
+   */
+  const handleConfirmOrDenyWithInput = (instance, type) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    if (!innerParams.input) {
+      error(`The "input" parameter is needed to be set when using returnInputValueOn${capitalizeFirstLetter(type)}`);
+      return;
+    }
+    const inputValue = getInputValue(instance, innerParams);
+    if (innerParams.inputValidator) {
+      handleInputValidator(instance, inputValue, type);
+    } else if (!instance.getInput().checkValidity()) {
+      instance.enableButtons();
+      instance.showValidationMessage(innerParams.validationMessage);
+    } else if (type === 'deny') {
+      deny(instance, inputValue);
+    } else {
+      confirm(instance, inputValue);
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {string | number | File | FileList | null} inputValue
+   * @param {'confirm' | 'deny'} type
+   */
+  const handleInputValidator = (instance, inputValue, type) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    instance.disableInput();
+    const validationPromise = Promise.resolve().then(() => asPromise(innerParams.inputValidator(inputValue, innerParams.validationMessage)));
+    validationPromise.then(validationMessage => {
+      instance.enableButtons();
+      instance.enableInput();
+      if (validationMessage) {
+        instance.showValidationMessage(validationMessage);
+      } else if (type === 'deny') {
+        deny(instance, inputValue);
+      } else {
+        confirm(instance, inputValue);
+      }
+    });
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {any} value
+   */
+  const deny = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+    if (innerParams.showLoaderOnDeny) {
+      showLoading(getDenyButton());
+    }
+    if (innerParams.preDeny) {
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preDeny's promise is received
+      const preDenyPromise = Promise.resolve().then(() => asPromise(innerParams.preDeny(value, innerParams.validationMessage)));
+      preDenyPromise.then(preDenyValue => {
+        if (preDenyValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          instance.close({
+            isDenied: true,
+            value: typeof preDenyValue === 'undefined' ? value : preDenyValue
+          });
+        }
+      }).catch(error => rejectWith(instance || undefined, error));
+    } else {
+      instance.close({
+        isDenied: true,
+        value
+      });
+    }
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {any} value
+   */
+  const succeedWith = (instance, value) => {
+    instance.close({
+      isConfirmed: true,
+      value
+    });
+  };
+
+  /**
+   *
+   * @param {SweetAlert2} instance
+   * @param {string} error
+   */
+  const rejectWith = (instance, error) => {
+    // @ts-ignore
+    instance.rejectPromise(error);
+  };
+
+  /**
+   *
+   * @param {SweetAlert2} instance
+   * @param {any} value
+   */
+  const confirm = (instance, value) => {
+    const innerParams = privateProps.innerParams.get(instance || undefined);
+    if (innerParams.showLoaderOnConfirm) {
+      showLoading();
+    }
+    if (innerParams.preConfirm) {
+      instance.resetValidationMessage();
+      privateProps.awaitingPromise.set(instance || undefined, true); // Flagging the instance as awaiting a promise so it's own promise's reject/resolve methods doesn't get destroyed until the result from this preConfirm's promise is received
+      const preConfirmPromise = Promise.resolve().then(() => asPromise(innerParams.preConfirm(value, innerParams.validationMessage)));
+      preConfirmPromise.then(preConfirmValue => {
+        if (isVisible$1(getValidationMessage()) || preConfirmValue === false) {
+          instance.hideLoading();
+          handleAwaitingPromise(instance);
+        } else {
+          succeedWith(instance, typeof preConfirmValue === 'undefined' ? value : preConfirmValue);
+        }
+      }).catch(error => rejectWith(instance || undefined, error));
+    } else {
+      succeedWith(instance, value);
+    }
+  };
+
+  const handlePopupClick = (instance, domCache, dismissWith) => {
+    const innerParams = privateProps.innerParams.get(instance);
+    if (innerParams.toast) {
+      handleToastClick(instance, domCache, dismissWith);
+    } else {
+      // Ignore click events that had mousedown on the popup but mouseup on the container
+      // This can happen when the user drags a slider
+      handleModalMousedown(domCache);
+
+      // Ignore click events that had mousedown on the container but mouseup on the popup
+      handleContainerMousedown(domCache);
+      handleModalClick(instance, domCache, dismissWith);
+    }
+  };
+  const handleToastClick = (instance, domCache, dismissWith) => {
+    // Closing toast by internal click
+    domCache.popup.onclick = () => {
+      const innerParams = privateProps.innerParams.get(instance);
+      if (innerParams && (isAnyButtonShown(innerParams) || innerParams.timer || innerParams.input)) {
+        return;
+      }
+      dismissWith(DismissReason.close);
+    };
+  };
+
+  /**
+   * @param {*} innerParams
+   * @returns {boolean}
+   */
+  const isAnyButtonShown = innerParams => {
+    return innerParams.showConfirmButton || innerParams.showDenyButton || innerParams.showCancelButton || innerParams.showCloseButton;
+  };
+  let ignoreOutsideClick = false;
+  const handleModalMousedown = domCache => {
+    domCache.popup.onmousedown = () => {
+      domCache.container.onmouseup = function (e) {
+        domCache.container.onmouseup = undefined;
+        // We only check if the mouseup target is the container because usually it doesn't
+        // have any other direct children aside of the popup
+        if (e.target === domCache.container) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+  const handleContainerMousedown = domCache => {
+    domCache.container.onmousedown = () => {
+      domCache.popup.onmouseup = function (e) {
+        domCache.popup.onmouseup = undefined;
+        // We also need to check if the mouseup target is a child of the popup
+        if (e.target === domCache.popup || domCache.popup.contains(e.target)) {
+          ignoreOutsideClick = true;
+        }
+      };
+    };
+  };
+  const handleModalClick = (instance, domCache, dismissWith) => {
+    domCache.container.onclick = e => {
+      const innerParams = privateProps.innerParams.get(instance);
+      if (ignoreOutsideClick) {
+        ignoreOutsideClick = false;
+        return;
+      }
+      if (e.target === domCache.container && callIfFunction(innerParams.allowOutsideClick)) {
+        dismissWith(DismissReason.backdrop);
+      }
+    };
+  };
+
+  const isJqueryElement = elem => typeof elem === 'object' && elem.jquery;
+  const isElement = elem => elem instanceof Element || isJqueryElement(elem);
+  const argsToParams = args => {
+    const params = {};
+    if (typeof args[0] === 'object' && !isElement(args[0])) {
+      Object.assign(params, args[0]);
+    } else {
+      ['title', 'html', 'icon'].forEach((name, index) => {
+        const arg = args[index];
+        if (typeof arg === 'string' || isElement(arg)) {
+          params[name] = arg;
+        } else if (arg !== undefined) {
+          error(`Unexpected type of ${name}! Expected "string" or "Element", got ${typeof arg}`);
+        }
+      });
+    }
+    return params;
+  };
+
+  /**
+   * Main method to create a new SweetAlert2 popup
+   *
+   * @param  {...SweetAlertOptions} args
+   * @returns {Promise<SweetAlertResult>}
+   */
+  function fire() {
+    const Swal = this; // eslint-disable-line @typescript-eslint/no-this-alias
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    return new Swal(...args);
+  }
+
+  /**
+   * Returns an extended version of `Swal` containing `params` as defaults.
+   * Useful for reusing Swal configuration.
+   *
+   * For example:
+   *
+   * Before:
+   * const textPromptOptions = { input: 'text', showCancelButton: true }
+   * const {value: firstName} = await Swal.fire({ ...textPromptOptions, title: 'What is your first name?' })
+   * const {value: lastName} = await Swal.fire({ ...textPromptOptions, title: 'What is your last name?' })
+   *
+   * After:
+   * const TextPrompt = Swal.mixin({ input: 'text', showCancelButton: true })
+   * const {value: firstName} = await TextPrompt('What is your first name?')
+   * const {value: lastName} = await TextPrompt('What is your last name?')
+   *
+   * @param mixinParams
+   */
+  function mixin(mixinParams) {
+    class MixinSwal extends this {
+      _main(params, priorityMixinParams) {
+        return super._main(params, Object.assign({}, mixinParams, priorityMixinParams));
+      }
+    }
+    return MixinSwal;
+  }
+
+  /**
+   * If `timer` parameter is set, returns number of milliseconds of timer remained.
+   * Otherwise, returns undefined.
+   *
+   * @returns {number | undefined}
+   */
+  const getTimerLeft = () => {
+    return globalState.timeout && globalState.timeout.getTimerLeft();
+  };
+
+  /**
+   * Stop timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   *
+   * @returns {number | undefined}
+   */
+  const stopTimer = () => {
+    if (globalState.timeout) {
+      stopTimerProgressBar();
+      return globalState.timeout.stop();
+    }
+  };
+
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   *
+   * @returns {number | undefined}
+   */
+  const resumeTimer = () => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.start();
+      animateTimerProgressBar(remaining);
+      return remaining;
+    }
+  };
+
+  /**
+   * Resume timer. Returns number of milliseconds of timer remained.
+   * If `timer` parameter isn't set, returns undefined.
+   *
+   * @returns {number | undefined}
+   */
+  const toggleTimer = () => {
+    const timer = globalState.timeout;
+    return timer && (timer.running ? stopTimer() : resumeTimer());
+  };
+
+  /**
+   * Increase timer. Returns number of milliseconds of an updated timer.
+   * If `timer` parameter isn't set, returns undefined.
+   *
+   * @param {number} n
+   * @returns {number | undefined}
+   */
+  const increaseTimer = n => {
+    if (globalState.timeout) {
+      const remaining = globalState.timeout.increase(n);
+      animateTimerProgressBar(remaining, true);
+      return remaining;
+    }
+  };
+
+  /**
+   * Check if timer is running. Returns true if timer is running
+   * or false if timer is paused or stopped.
+   * If `timer` parameter isn't set, returns undefined
+   *
+   * @returns {boolean}
+   */
+  const isTimerRunning = () => {
+    return globalState.timeout && globalState.timeout.isRunning();
+  };
+
+  let bodyClickListenerAdded = false;
+  const clickHandlers = {};
+
+  /**
+   * @param {string} attr
+   */
+  function bindClickHandler() {
+    let attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
+    clickHandlers[attr] = this;
+    if (!bodyClickListenerAdded) {
+      document.body.addEventListener('click', bodyClickListener);
+      bodyClickListenerAdded = true;
+    }
+  }
+  const bodyClickListener = event => {
+    for (let el = event.target; el && el !== document; el = el.parentNode) {
+      for (const attr in clickHandlers) {
+        const template = el.getAttribute(attr);
+        if (template) {
+          clickHandlers[attr].fire({
+            template
+          });
+          return;
+        }
+      }
+    }
+  };
+
+  var staticMethods = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    argsToParams: argsToParams,
+    bindClickHandler: bindClickHandler,
+    clickCancel: clickCancel,
+    clickConfirm: clickConfirm,
+    clickDeny: clickDeny,
+    enableLoading: showLoading,
+    fire: fire,
+    getActions: getActions,
+    getCancelButton: getCancelButton,
+    getCloseButton: getCloseButton,
+    getConfirmButton: getConfirmButton,
+    getContainer: getContainer,
+    getDenyButton: getDenyButton,
+    getFocusableElements: getFocusableElements,
+    getFooter: getFooter,
+    getHtmlContainer: getHtmlContainer,
+    getIcon: getIcon,
+    getIconContent: getIconContent,
+    getImage: getImage,
+    getInputLabel: getInputLabel,
+    getLoader: getLoader,
+    getPopup: getPopup,
+    getProgressSteps: getProgressSteps,
+    getTimerLeft: getTimerLeft,
+    getTimerProgressBar: getTimerProgressBar,
+    getTitle: getTitle,
+    getValidationMessage: getValidationMessage,
+    increaseTimer: increaseTimer,
+    isDeprecatedParameter: isDeprecatedParameter,
+    isLoading: isLoading,
+    isTimerRunning: isTimerRunning,
+    isUpdatableParameter: isUpdatableParameter,
+    isValidParameter: isValidParameter,
+    isVisible: isVisible,
+    mixin: mixin,
+    resumeTimer: resumeTimer,
+    showLoading: showLoading,
+    stopTimer: stopTimer,
+    toggleTimer: toggleTimer
+  });
+
+  class Timer {
+    /**
+     * @param {Function} callback
+     * @param {number} delay
+     */
+    constructor(callback, delay) {
+      this.callback = callback;
+      this.remaining = delay;
+      this.running = false;
+      this.start();
+    }
+    start() {
+      if (!this.running) {
+        this.running = true;
+        this.started = new Date();
+        this.id = setTimeout(this.callback, this.remaining);
+      }
+      return this.remaining;
+    }
+    stop() {
+      if (this.running) {
+        this.running = false;
+        clearTimeout(this.id);
+        this.remaining -= new Date().getTime() - this.started.getTime();
+      }
+      return this.remaining;
+    }
+    increase(n) {
+      const running = this.running;
+      if (running) {
+        this.stop();
+      }
+      this.remaining += n;
+      if (running) {
+        this.start();
+      }
+      return this.remaining;
+    }
+    getTimerLeft() {
+      if (this.running) {
+        this.stop();
+        this.start();
+      }
+      return this.remaining;
+    }
+    isRunning() {
+      return this.running;
+    }
+  }
+
+  const swalStringParams = ['swal-title', 'swal-html', 'swal-footer'];
+
+  /**
+   * @param {SweetAlertOptions} params
+   * @returns {SweetAlertOptions}
+   */
+  const getTemplateParams = params => {
+    /** @type {HTMLTemplateElement} */
+    const template = typeof params.template === 'string' ? document.querySelector(params.template) : params.template;
+    if (!template) {
+      return {};
+    }
+    /** @type {DocumentFragment} */
+    const templateContent = template.content;
+    showWarningsForElements(templateContent);
+    const result = Object.assign(getSwalParams(templateContent), getSwalFunctionParams(templateContent), getSwalButtons(templateContent), getSwalImage(templateContent), getSwalIcon(templateContent), getSwalInput(templateContent), getSwalStringParams(templateContent, swalStringParams));
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalParams = templateContent => {
+    const result = {};
+    /** @type {HTMLElement[]} */
+    const swalParams = Array.from(templateContent.querySelectorAll('swal-param'));
+    swalParams.forEach(param => {
+      showWarningsForAttributes(param, ['name', 'value']);
+      const paramName = param.getAttribute('name');
+      const value = param.getAttribute('value');
+      if (typeof defaultParams[paramName] === 'boolean') {
+        result[paramName] = value !== 'false';
+      } else if (typeof defaultParams[paramName] === 'object') {
+        result[paramName] = JSON.parse(value);
+      } else {
+        result[paramName] = value;
+      }
+    });
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalFunctionParams = templateContent => {
+    const result = {};
+    /** @type {HTMLElement[]} */
+    const swalFunctions = Array.from(templateContent.querySelectorAll('swal-function-param'));
+    swalFunctions.forEach(param => {
+      const paramName = param.getAttribute('name');
+      const value = param.getAttribute('value');
+      result[paramName] = new Function(`return ${value}`)();
+    });
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalButtons = templateContent => {
+    const result = {};
+    /** @type {HTMLElement[]} */
+    const swalButtons = Array.from(templateContent.querySelectorAll('swal-button'));
+    swalButtons.forEach(button => {
+      showWarningsForAttributes(button, ['type', 'color', 'aria-label']);
+      const type = button.getAttribute('type');
+      result[`${type}ButtonText`] = button.innerHTML;
+      result[`show${capitalizeFirstLetter(type)}Button`] = true;
+      if (button.hasAttribute('color')) {
+        result[`${type}ButtonColor`] = button.getAttribute('color');
+      }
+      if (button.hasAttribute('aria-label')) {
+        result[`${type}ButtonAriaLabel`] = button.getAttribute('aria-label');
+      }
+    });
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalImage = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+    const image = templateContent.querySelector('swal-image');
+    if (image) {
+      showWarningsForAttributes(image, ['src', 'width', 'height', 'alt']);
+      if (image.hasAttribute('src')) {
+        result.imageUrl = image.getAttribute('src');
+      }
+      if (image.hasAttribute('width')) {
+        result.imageWidth = image.getAttribute('width');
+      }
+      if (image.hasAttribute('height')) {
+        result.imageHeight = image.getAttribute('height');
+      }
+      if (image.hasAttribute('alt')) {
+        result.imageAlt = image.getAttribute('alt');
+      }
+    }
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalIcon = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+    const icon = templateContent.querySelector('swal-icon');
+    if (icon) {
+      showWarningsForAttributes(icon, ['type', 'color']);
+      if (icon.hasAttribute('type')) {
+        /** @type {SweetAlertIcon} */
+        // @ts-ignore
+        result.icon = icon.getAttribute('type');
+      }
+      if (icon.hasAttribute('color')) {
+        result.iconColor = icon.getAttribute('color');
+      }
+      result.iconHtml = icon.innerHTML;
+    }
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalInput = templateContent => {
+    const result = {};
+    /** @type {HTMLElement} */
+    const input = templateContent.querySelector('swal-input');
+    if (input) {
+      showWarningsForAttributes(input, ['type', 'label', 'placeholder', 'value']);
+      /** @type {SweetAlertInput} */
+      // @ts-ignore
+      result.input = input.getAttribute('type') || 'text';
+      if (input.hasAttribute('label')) {
+        result.inputLabel = input.getAttribute('label');
+      }
+      if (input.hasAttribute('placeholder')) {
+        result.inputPlaceholder = input.getAttribute('placeholder');
+      }
+      if (input.hasAttribute('value')) {
+        result.inputValue = input.getAttribute('value');
+      }
+    }
+    /** @type {HTMLElement[]} */
+    const inputOptions = Array.from(templateContent.querySelectorAll('swal-input-option'));
+    if (inputOptions.length) {
+      result.inputOptions = {};
+      inputOptions.forEach(option => {
+        showWarningsForAttributes(option, ['value']);
+        const optionValue = option.getAttribute('value');
+        const optionName = option.innerHTML;
+        result.inputOptions[optionValue] = optionName;
+      });
+    }
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   * @param {string[]} paramNames
+   * @returns {SweetAlertOptions}
+   */
+  const getSwalStringParams = (templateContent, paramNames) => {
+    const result = {};
+    for (const i in paramNames) {
+      const paramName = paramNames[i];
+      /** @type {HTMLElement} */
+      const tag = templateContent.querySelector(paramName);
+      if (tag) {
+        showWarningsForAttributes(tag, []);
+        result[paramName.replace(/^swal-/, '')] = tag.innerHTML.trim();
+      }
+    }
+    return result;
+  };
+
+  /**
+   * @param {DocumentFragment} templateContent
+   */
+  const showWarningsForElements = templateContent => {
+    const allowedElements = swalStringParams.concat(['swal-param', 'swal-function-param', 'swal-button', 'swal-image', 'swal-icon', 'swal-input', 'swal-input-option']);
+    Array.from(templateContent.children).forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      if (!allowedElements.includes(tagName)) {
+        warn(`Unrecognized element <${tagName}>`);
+      }
+    });
+  };
+
+  /**
+   * @param {HTMLElement} el
+   * @param {string[]} allowedAttributes
+   */
+  const showWarningsForAttributes = (el, allowedAttributes) => {
+    Array.from(el.attributes).forEach(attribute => {
+      if (allowedAttributes.indexOf(attribute.name) === -1) {
+        warn([`Unrecognized attribute "${attribute.name}" on <${el.tagName.toLowerCase()}>.`, `${allowedAttributes.length ? `Allowed attributes are: ${allowedAttributes.join(', ')}` : 'To set the value, use HTML within the element.'}`]);
+      }
+    });
+  };
+
+  const SHOW_CLASS_TIMEOUT = 10;
+
+  /**
+   * Open popup, add necessary classes and styles, fix scrollbar
+   *
+   * @param {SweetAlertOptions} params
+   */
+  const openPopup = params => {
+    const container = getContainer();
+    const popup = getPopup();
+    if (typeof params.willOpen === 'function') {
+      params.willOpen(popup);
+    }
+    const bodyStyles = window.getComputedStyle(document.body);
+    const initialBodyOverflow = bodyStyles.overflowY;
+    addClasses(container, popup, params);
+
+    // scrolling is 'hidden' until animation is done, after that 'auto'
+    setTimeout(() => {
+      setScrollingVisibility(container, popup);
+    }, SHOW_CLASS_TIMEOUT);
+    if (isModal()) {
+      fixScrollContainer(container, params.scrollbarPadding, initialBodyOverflow);
+      setAriaHidden();
+    }
+    if (!isToast() && !globalState.previousActiveElement) {
+      globalState.previousActiveElement = document.activeElement;
+    }
+    if (typeof params.didOpen === 'function') {
+      setTimeout(() => params.didOpen(popup));
+    }
+    removeClass(container, swalClasses['no-transition']);
+  };
+
+  /**
+   * @param {AnimationEvent} event
+   */
+  const swalOpenAnimationFinished = event => {
+    const popup = getPopup();
+    if (event.target !== popup) {
+      return;
+    }
+    const container = getContainer();
+    popup.removeEventListener(animationEndEvent, swalOpenAnimationFinished);
+    container.style.overflowY = 'auto';
+  };
+
+  /**
+   * @param {HTMLElement} container
+   * @param {HTMLElement} popup
+   */
+  const setScrollingVisibility = (container, popup) => {
+    if (animationEndEvent && hasCssAnimation(popup)) {
+      container.style.overflowY = 'hidden';
+      popup.addEventListener(animationEndEvent, swalOpenAnimationFinished);
+    } else {
+      container.style.overflowY = 'auto';
+    }
+  };
+
+  /**
+   * @param {HTMLElement} container
+   * @param {boolean} scrollbarPadding
+   * @param {string} initialBodyOverflow
+   */
+  const fixScrollContainer = (container, scrollbarPadding, initialBodyOverflow) => {
+    iOSfix();
+    if (scrollbarPadding && initialBodyOverflow !== 'hidden') {
+      fixScrollbar();
+    }
+
+    // sweetalert2/issues/1247
+    setTimeout(() => {
+      container.scrollTop = 0;
+    });
+  };
+
+  /**
+   * @param {HTMLElement} container
+   * @param {HTMLElement} popup
+   * @param {SweetAlertOptions} params
+   */
+  const addClasses = (container, popup, params) => {
+    addClass(container, params.showClass.backdrop);
+    // this workaround with opacity is needed for https://github.com/sweetalert2/sweetalert2/issues/2059
+    popup.style.setProperty('opacity', '0', 'important');
+    show(popup, 'grid');
+    setTimeout(() => {
+      // Animate popup right after showing it
+      addClass(popup, params.showClass.popup);
+      // and remove the opacity workaround
+      popup.style.removeProperty('opacity');
+    }, SHOW_CLASS_TIMEOUT); // 10ms in order to fix #2062
+
+    addClass([document.documentElement, document.body], swalClasses.shown);
+    if (params.heightAuto && params.backdrop && !params.toast) {
+      addClass([document.documentElement, document.body], swalClasses['height-auto']);
+    }
+  };
+
+  var defaultInputValidators = {
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    email: (string, validationMessage) => {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid email address');
+    },
+    /**
+     * @param {string} string
+     * @param {string} validationMessage
+     * @returns {Promise<void | string>}
+     */
+    url: (string, validationMessage) => {
+      // taken from https://stackoverflow.com/a/3809435 with a small change from #1306 and #2013
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(string) ? Promise.resolve() : Promise.resolve(validationMessage || 'Invalid URL');
+    }
+  };
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+  function setDefaultInputValidators(params) {
+    // Use default `inputValidator` for supported input types if not provided
+    if (!params.inputValidator) {
+      Object.keys(defaultInputValidators).forEach(key => {
+        if (params.input === key) {
+          params.inputValidator = defaultInputValidators[key];
+        }
+      });
+    }
+  }
+
+  /**
+   * @param {SweetAlertOptions} params
+   */
+  function validateCustomTargetElement(params) {
+    // Determine if the custom target element is valid
+    if (!params.target || typeof params.target === 'string' && !document.querySelector(params.target) || typeof params.target !== 'string' && !params.target.appendChild) {
+      warn('Target parameter is not valid, defaulting to "body"');
+      params.target = 'body';
+    }
+  }
+
+  /**
+   * Set type, text and actions on popup
+   *
+   * @param {SweetAlertOptions} params
+   */
+  function setParameters(params) {
+    setDefaultInputValidators(params);
+
+    // showLoaderOnConfirm && preConfirm
+    if (params.showLoaderOnConfirm && !params.preConfirm) {
+      warn('showLoaderOnConfirm is set to true, but preConfirm is not defined.\n' + 'showLoaderOnConfirm should be used together with preConfirm, see usage example:\n' + 'https://sweetalert2.github.io/#ajax-request');
+    }
+    validateCustomTargetElement(params);
+
+    // Replace newlines with <br> in title
+    if (typeof params.title === 'string') {
+      params.title = params.title.split('\n').join('<br />');
+    }
+    init(params);
+  }
+
+  let currentInstance;
+  class SweetAlert {
+    constructor() {
+      // Prevent run in Node env
+      if (typeof window === 'undefined') {
+        return;
+      }
+      currentInstance = this;
+
+      // @ts-ignore
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      const outerParams = Object.freeze(this.constructor.argsToParams(args));
+      Object.defineProperties(this, {
+        params: {
+          value: outerParams,
+          writable: false,
+          enumerable: true,
+          configurable: true
+        }
+      });
+
+      // @ts-ignore
+      const promise = currentInstance._main(currentInstance.params);
+      privateProps.promise.set(this, promise);
+    }
+    _main(userParams) {
+      let mixinParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      showWarningsForParams(Object.assign({}, mixinParams, userParams));
+      if (globalState.currentInstance) {
+        // @ts-ignore
+        globalState.currentInstance._destroy();
+        if (isModal()) {
+          unsetAriaHidden();
+        }
+      }
+      globalState.currentInstance = currentInstance;
+      const innerParams = prepareParams(userParams, mixinParams);
+      setParameters(innerParams);
+      Object.freeze(innerParams);
+
+      // clear the previous timer
+      if (globalState.timeout) {
+        globalState.timeout.stop();
+        delete globalState.timeout;
+      }
+
+      // clear the restore focus timeout
+      clearTimeout(globalState.restoreFocusTimeout);
+      const domCache = populateDomCache(currentInstance);
+      render(currentInstance, innerParams);
+      privateProps.innerParams.set(currentInstance, innerParams);
+      return swalPromise(currentInstance, domCache, innerParams);
+    }
+
+    // `catch` cannot be the name of a module export, so we define our thenable methods here instead
+    then(onFulfilled) {
+      const promise = privateProps.promise.get(this);
+      return promise.then(onFulfilled);
+    }
+    finally(onFinally) {
+      const promise = privateProps.promise.get(this);
+      return promise.finally(onFinally);
+    }
+  }
+
+  /**
+   * @param {SweetAlert2} instance
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   * @returns {Promise}
+   */
+  const swalPromise = (instance, domCache, innerParams) => {
+    return new Promise((resolve, reject) => {
+      // functions to handle all closings/dismissals
+      /**
+       * @param {DismissReason} dismiss
+       */
+      const dismissWith = dismiss => {
+        // @ts-ignore
+        instance.close({
+          isDismissed: true,
+          dismiss
+        });
+      };
+      privateMethods.swalPromiseResolve.set(instance, resolve);
+      privateMethods.swalPromiseReject.set(instance, reject);
+      domCache.confirmButton.onclick = () => {
+        handleConfirmButtonClick(instance);
+      };
+      domCache.denyButton.onclick = () => {
+        handleDenyButtonClick(instance);
+      };
+      domCache.cancelButton.onclick = () => {
+        handleCancelButtonClick(instance, dismissWith);
+      };
+      domCache.closeButton.onclick = () => {
+        // @ts-ignore
+        dismissWith(DismissReason.close);
+      };
+      handlePopupClick(instance, domCache, dismissWith);
+      addKeydownHandler(instance, globalState, innerParams, dismissWith);
+      handleInputOptionsAndValue(instance, innerParams);
+      openPopup(innerParams);
+      setupTimer(globalState, innerParams, dismissWith);
+      initFocus(domCache, innerParams);
+
+      // Scroll container to top on open (#1247, #1946)
+      setTimeout(() => {
+        domCache.container.scrollTop = 0;
+      });
+    });
+  };
+
+  /**
+   * @param {SweetAlertOptions} userParams
+   * @param {SweetAlertOptions} mixinParams
+   * @returns {SweetAlertOptions}
+   */
+  const prepareParams = (userParams, mixinParams) => {
+    const templateParams = getTemplateParams(userParams);
+    const params = Object.assign({}, defaultParams, mixinParams, templateParams, userParams); // precedence is described in #2131
+    params.showClass = Object.assign({}, defaultParams.showClass, params.showClass);
+    params.hideClass = Object.assign({}, defaultParams.hideClass, params.hideClass);
+    return params;
+  };
+
+  /**
+   * @param {SweetAlert2} instance
+   * @returns {DomCache}
+   */
+  const populateDomCache = instance => {
+    const domCache = {
+      popup: getPopup(),
+      container: getContainer(),
+      actions: getActions(),
+      confirmButton: getConfirmButton(),
+      denyButton: getDenyButton(),
+      cancelButton: getCancelButton(),
+      loader: getLoader(),
+      closeButton: getCloseButton(),
+      validationMessage: getValidationMessage(),
+      progressSteps: getProgressSteps()
+    };
+    privateProps.domCache.set(instance, domCache);
+    return domCache;
+  };
+
+  /**
+   * @param {GlobalState} globalState
+   * @param {SweetAlertOptions} innerParams
+   * @param {Function} dismissWith
+   */
+  const setupTimer = (globalState, innerParams, dismissWith) => {
+    const timerProgressBar = getTimerProgressBar();
+    hide(timerProgressBar);
+    if (innerParams.timer) {
+      globalState.timeout = new Timer(() => {
+        dismissWith('timer');
+        delete globalState.timeout;
+      }, innerParams.timer);
+      if (innerParams.timerProgressBar) {
+        show(timerProgressBar);
+        applyCustomClass(timerProgressBar, innerParams, 'timerProgressBar');
+        setTimeout(() => {
+          if (globalState.timeout && globalState.timeout.running) {
+            // timer can be already stopped or unset at this point
+            animateTimerProgressBar(innerParams.timer);
+          }
+        });
+      }
+    }
+  };
+
+  /**
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   */
+  const initFocus = (domCache, innerParams) => {
+    if (innerParams.toast) {
+      return;
+    }
+    if (!callIfFunction(innerParams.allowEnterKey)) {
+      blurActiveElement();
+      return;
+    }
+    if (!focusButton(domCache, innerParams)) {
+      setFocus(-1, 1);
+    }
+  };
+
+  /**
+   * @param {DomCache} domCache
+   * @param {SweetAlertOptions} innerParams
+   * @returns {boolean}
+   */
+  const focusButton = (domCache, innerParams) => {
+    if (innerParams.focusDeny && isVisible$1(domCache.denyButton)) {
+      domCache.denyButton.focus();
+      return true;
+    }
+    if (innerParams.focusCancel && isVisible$1(domCache.cancelButton)) {
+      domCache.cancelButton.focus();
+      return true;
+    }
+    if (innerParams.focusConfirm && isVisible$1(domCache.confirmButton)) {
+      domCache.confirmButton.focus();
+      return true;
+    }
+    return false;
+  };
+  const blurActiveElement = () => {
+    if (document.activeElement instanceof HTMLElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
+  };
+
+  // Dear russian users visiting russian sites. Let's have fun.
+  if (typeof window !== 'undefined' && /^ru\b/.test(navigator.language) && location.host.match(/\.(ru|su|xn--p1ai)$/)) {
+    const now = new Date();
+    const initiationDate = localStorage.getItem('swal-initiation');
+    if (!initiationDate) {
+      localStorage.setItem('swal-initiation', `${now}`);
+    } else if ((now.getTime() - Date.parse(initiationDate)) / (1000 * 60 * 60 * 24) > 3) {
+      setTimeout(() => {
+        document.body.style.pointerEvents = 'none';
+        const ukrainianAnthem = document.createElement('audio');
+        ukrainianAnthem.src = 'https://flag-gimn.ru/wp-content/uploads/2021/09/Ukraina.mp3';
+        ukrainianAnthem.loop = true;
+        document.body.appendChild(ukrainianAnthem);
+        setTimeout(() => {
+          ukrainianAnthem.play().catch(() => {
+            // ignore
+          });
+        }, 2500);
+      }, 500);
+    }
+  }
+
+  // Assign instance methods from src/instanceMethods/*.js to prototype
+  Object.assign(SweetAlert.prototype, instanceMethods);
+
+  // Assign static methods from src/staticMethods/*.js to constructor
+  Object.assign(SweetAlert, staticMethods);
+
+  // Proxy to instance methods to constructor, for now, for backwards compatibility
+  Object.keys(instanceMethods).forEach(key => {
+    /**
+     * @param {...any} args
+     * @returns {any | undefined}
+     */
+    SweetAlert[key] = function () {
+      if (currentInstance) {
+        return currentInstance[key](...arguments);
+      }
+    };
+  });
+  SweetAlert.DismissReason = DismissReason;
+  SweetAlert.version = '11.7.3';
+
+  const Swal = SweetAlert;
+  // @ts-ignore
+  Swal.default = Swal;
+
+  return Swal;
+
+}));
+if (typeof this !== 'undefined' && this.Sweetalert2){this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
+"undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,".swal2-popup.swal2-toast{box-sizing:border-box;grid-column:1/4 !important;grid-row:1/4 !important;grid-template-columns:min-content auto min-content;padding:1em;overflow-y:hidden;background:#fff;box-shadow:0 0 1px rgba(0,0,0,.075),0 1px 2px rgba(0,0,0,.075),1px 2px 4px rgba(0,0,0,.075),1px 3px 8px rgba(0,0,0,.075),2px 4px 16px rgba(0,0,0,.075);pointer-events:all}.swal2-popup.swal2-toast>*{grid-column:2}.swal2-popup.swal2-toast .swal2-title{margin:.5em 1em;padding:0;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-loading{justify-content:center}.swal2-popup.swal2-toast .swal2-input{height:2em;margin:.5em;font-size:1em}.swal2-popup.swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{grid-column:3/3;grid-row:1/99;align-self:center;width:.8em;height:.8em;margin:0;font-size:2em}.swal2-popup.swal2-toast .swal2-html-container{margin:.5em 1em;padding:0;overflow:initial;font-size:1em;text-align:initial}.swal2-popup.swal2-toast .swal2-html-container:empty{padding:0}.swal2-popup.swal2-toast .swal2-loader{grid-column:1;grid-row:1/99;align-self:center;width:2em;height:2em;margin:.25em}.swal2-popup.swal2-toast .swal2-icon{grid-column:1;grid-row:1/99;align-self:center;width:2em;min-width:2em;height:2em;margin:0 .5em 0 0}.swal2-popup.swal2-toast .swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:1.8em;font-weight:bold}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{justify-content:flex-start;height:auto;margin:0;margin-top:.5em;padding:0 .5em}.swal2-popup.swal2-toast .swal2-styled{margin:.25em .5em;padding:.4em .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.8em;left:-0.5em;transform:rotate(-45deg);transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.25em;left:.9375em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-toast-animate-success-line-long .75s}.swal2-popup.swal2-toast.swal2-show{animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{animation:swal2-toast-hide .1s forwards}.swal2-container{display:grid;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;box-sizing:border-box;grid-template-areas:\"top-start     top            top-end\" \"center-start  center         center-end\" \"bottom-start  bottom-center  bottom-end\";grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height:100%;padding:.625em;overflow-x:hidden;transition:background-color .1s;-webkit-overflow-scrolling:touch}.swal2-container.swal2-backdrop-show,.swal2-container.swal2-noanimation{background:rgba(0,0,0,.4)}.swal2-container.swal2-backdrop-hide{background:rgba(0,0,0,0) !important}.swal2-container.swal2-top-start,.swal2-container.swal2-center-start,.swal2-container.swal2-bottom-start{grid-template-columns:minmax(0, 1fr) auto auto}.swal2-container.swal2-top,.swal2-container.swal2-center,.swal2-container.swal2-bottom{grid-template-columns:auto minmax(0, 1fr) auto}.swal2-container.swal2-top-end,.swal2-container.swal2-center-end,.swal2-container.swal2-bottom-end{grid-template-columns:auto auto minmax(0, 1fr)}.swal2-container.swal2-top-start>.swal2-popup{align-self:start}.swal2-container.swal2-top>.swal2-popup{grid-column:2;align-self:start;justify-self:center}.swal2-container.swal2-top-end>.swal2-popup,.swal2-container.swal2-top-right>.swal2-popup{grid-column:3;align-self:start;justify-self:end}.swal2-container.swal2-center-start>.swal2-popup,.swal2-container.swal2-center-left>.swal2-popup{grid-row:2;align-self:center}.swal2-container.swal2-center>.swal2-popup{grid-column:2;grid-row:2;align-self:center;justify-self:center}.swal2-container.swal2-center-end>.swal2-popup,.swal2-container.swal2-center-right>.swal2-popup{grid-column:3;grid-row:2;align-self:center;justify-self:end}.swal2-container.swal2-bottom-start>.swal2-popup,.swal2-container.swal2-bottom-left>.swal2-popup{grid-column:1;grid-row:3;align-self:end}.swal2-container.swal2-bottom>.swal2-popup{grid-column:2;grid-row:3;justify-self:center;align-self:end}.swal2-container.swal2-bottom-end>.swal2-popup,.swal2-container.swal2-bottom-right>.swal2-popup{grid-column:3;grid-row:3;align-self:end;justify-self:end}.swal2-container.swal2-grow-row>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-column:1/4;width:100%}.swal2-container.swal2-grow-column>.swal2-popup,.swal2-container.swal2-grow-fullscreen>.swal2-popup{grid-row:1/4;align-self:stretch}.swal2-container.swal2-no-transition{transition:none !important}.swal2-popup{display:none;position:relative;box-sizing:border-box;grid-template-columns:minmax(0, 100%);width:32em;max-width:100%;padding:0 0 1.25em;border:none;border-radius:5px;background:#fff;color:#545454;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:none}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-title{position:relative;max-width:100%;margin:0;padding:.8em 1em 0;color:inherit;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{display:flex;z-index:1;box-sizing:border-box;flex-wrap:wrap;align-items:center;justify-content:center;width:auto;margin:1.25em auto 0;padding:0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))}.swal2-loader{display:none;align-items:center;justify-content:center;width:2.2em;height:2.2em;margin:0 1.875em;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border-width:.25em;border-style:solid;border-radius:100%;border-color:#2778c4 rgba(0,0,0,0) #2778c4 rgba(0,0,0,0)}.swal2-styled{margin:.3125em;padding:.625em 1.1em;transition:box-shadow .1s;box-shadow:0 0 0 3px rgba(0,0,0,0);font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#7066e0;color:#fff;font-size:1em}.swal2-styled.swal2-confirm:focus{box-shadow:0 0 0 3px rgba(112,102,224,.5)}.swal2-styled.swal2-deny{border:0;border-radius:.25em;background:initial;background-color:#dc3741;color:#fff;font-size:1em}.swal2-styled.swal2-deny:focus{box-shadow:0 0 0 3px rgba(220,55,65,.5)}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#6e7881;color:#fff;font-size:1em}.swal2-styled.swal2-cancel:focus{box-shadow:0 0 0 3px rgba(110,120,129,.5)}.swal2-styled.swal2-default-outline:focus{box-shadow:0 0 0 3px rgba(100,150,200,.5)}.swal2-styled:focus{outline:none}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1em 0 0;padding:1em 1em 0;border-top:1px solid #eee;color:inherit;font-size:1em}.swal2-timer-progress-bar-container{position:absolute;right:0;bottom:0;left:0;grid-column:auto !important;overflow:hidden;border-bottom-right-radius:5px;border-bottom-left-radius:5px}.swal2-timer-progress-bar{width:100%;height:.25em;background:rgba(0,0,0,.2)}.swal2-image{max-width:100%;margin:2em auto 1em}.swal2-close{z-index:2;align-items:center;justify-content:center;width:1.2em;height:1.2em;margin-top:0;margin-right:0;margin-bottom:-1.2em;padding:0;overflow:hidden;transition:color .1s,box-shadow .1s;border:none;border-radius:5px;background:rgba(0,0,0,0);color:#ccc;font-family:serif;font-family:monospace;font-size:2.5em;cursor:pointer;justify-self:end}.swal2-close:hover{transform:none;background:rgba(0,0,0,0);color:#f27474}.swal2-close:focus{outline:none;box-shadow:inset 0 0 0 3px rgba(100,150,200,.5)}.swal2-close::-moz-focus-inner{border:0}.swal2-html-container{z-index:1;justify-content:center;margin:1em 1.6em .3em;padding:0;overflow:auto;color:inherit;font-size:1.125em;font-weight:normal;line-height:normal;text-align:center;word-wrap:break-word;word-break:break-word}.swal2-input,.swal2-file,.swal2-textarea,.swal2-select,.swal2-radio,.swal2-checkbox{margin:1em 2em 3px}.swal2-input,.swal2-file,.swal2-textarea{box-sizing:border-box;width:auto;transition:border-color .1s,box-shadow .1s;border:1px solid #d9d9d9;border-radius:.1875em;background:rgba(0,0,0,0);box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(0,0,0,0);color:inherit;font-size:1.125em}.swal2-input.swal2-inputerror,.swal2-file.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474 !important;box-shadow:0 0 2px #f27474 !important}.swal2-input:focus,.swal2-file:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:none;box-shadow:inset 0 1px 1px rgba(0,0,0,.06),0 0 0 3px rgba(100,150,200,.5)}.swal2-input::placeholder,.swal2-file::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em 2em 3px;background:#fff}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-file{width:75%;margin-right:auto;margin-left:auto;background:rgba(0,0,0,0);font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:rgba(0,0,0,0);color:inherit;font-size:1.125em}.swal2-radio,.swal2-checkbox{align-items:center;justify-content:center;background:#fff;color:inherit}.swal2-radio label,.swal2-checkbox label{margin:0 .6em;font-size:1.125em}.swal2-radio input,.swal2-checkbox input{flex-shrink:0;margin:0 .4em}.swal2-input-label{display:flex;justify-content:center;margin:1em auto 0}.swal2-validation-message{align-items:center;justify-content:center;margin:1em 0 0;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:2.5em auto .6em;border:0.25em solid rgba(0,0,0,0);border-radius:50%;border-color:#000;font-family:inherit;line-height:5em;cursor:default;user-select:none}.swal2-icon .swal2-icon-content{display:flex;align-items:center;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474;color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;transform:rotate(-45deg)}.swal2-icon.swal2-error.swal2-icon-show{animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark{animation:swal2-animate-error-x-mark .5s}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning.swal2-icon-show{animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .5s}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info.swal2-icon-show{animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content{animation:swal2-animate-i-mark .8s}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question.swal2-icon-show{animation:swal2-animate-error-icon .5s}.swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content{animation:swal2-animate-question-mark .8s}.swal2-icon.swal2-success{border-color:#a5dc86;color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-0.4375em;left:-2.0635em;transform:rotate(-45deg);transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-0.6875em;left:1.875em;transform:rotate(-45deg);transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-0.25em;left:-0.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.8125em;width:1.5625em;transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;transform:rotate(-45deg)}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip{animation:swal2-animate-success-line-tip .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long{animation:swal2-animate-success-line-long .75s}.swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right{animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-progress-steps{flex-wrap:wrap;align-items:center;max-width:100%;margin:1.25em auto;padding:0;background:rgba(0,0,0,0);font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;flex-shrink:0;width:2em;height:2em;border-radius:2em;background:#2778c4;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#2778c4}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;flex-shrink:0;width:2.5em;height:.4em;margin:0 -1px;background:#2778c4}[class^=swal2]{-webkit-tap-highlight-color:rgba(0,0,0,0)}.swal2-show{animation:swal2-show .3s}.swal2-hide{animation:swal2-hide .15s forwards}.swal2-noanimation{transition:none}.swal2-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.swal2-rtl .swal2-close{margin-right:initial;margin-left:0}.swal2-rtl .swal2-timer-progress-bar{right:0;left:auto}@keyframes swal2-toast-show{0%{transform:translateY(-0.625em) rotateZ(2deg)}33%{transform:translateY(0) rotateZ(-2deg)}66%{transform:translateY(0.3125em) rotateZ(2deg)}100%{transform:translateY(0) rotateZ(0deg)}}@keyframes swal2-toast-hide{100%{transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-0.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-show{0%{transform:scale(0.7)}45%{transform:scale(1.05)}80%{transform:scale(0.95)}100%{transform:scale(1)}}@keyframes swal2-hide{0%{transform:scale(1);opacity:1}100%{transform:scale(0.5);opacity:0}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-0.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.8125em;width:1.5625em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-rotate-success-circular-line{0%{transform:rotate(-45deg)}5%{transform:rotate(-45deg)}12%{transform:rotate(-405deg)}100%{transform:rotate(-405deg)}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;transform:scale(0.4);opacity:0}50%{margin-top:1.625em;transform:scale(0.4);opacity:0}80%{margin-top:-0.375em;transform:scale(1.15)}100%{margin-top:0;transform:scale(1);opacity:1}}@keyframes swal2-animate-error-icon{0%{transform:rotateX(100deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}@keyframes swal2-rotate-loading{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes swal2-animate-question-mark{0%{transform:rotateY(-360deg)}100%{transform:rotateY(0)}}@keyframes swal2-animate-i-mark{0%{transform:rotateZ(45deg);opacity:0}25%{transform:rotateZ(-25deg);opacity:.4}50%{transform:rotateZ(15deg);opacity:.8}75%{transform:rotateZ(-5deg);opacity:1}100%{transform:rotateX(0);opacity:1}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto !important}body.swal2-no-backdrop .swal2-container{background-color:rgba(0,0,0,0) !important;pointer-events:none}body.swal2-no-backdrop .swal2-container .swal2-popup{pointer-events:all}body.swal2-no-backdrop .swal2-container .swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll !important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:static !important}}body.swal2-toast-shown .swal2-container{box-sizing:border-box;width:360px;max-width:100%;background-color:rgba(0,0,0,0);pointer-events:none}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-start,body.swal2-toast-shown .swal2-container.swal2-top-left{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-start,body.swal2-toast-shown .swal2-container.swal2-center-left{top:50%;right:auto;bottom:auto;left:0;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;transform:translate(-50%, -50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-start,body.swal2-toast-shown .swal2-container.swal2-bottom-left{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}");
+
+/***/ }),
+
 /***/ "./node_modules/axios/package.json":
 /*!*****************************************!*\
   !*** ./node_modules/axios/package.json ***!
@@ -59200,6 +68067,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

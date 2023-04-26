@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.skeleton')
 
 @section('content')
-<div class="container">
+<div class="container-fluid  dashboard-content">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
