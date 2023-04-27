@@ -220,10 +220,12 @@ class ProductLists extends Component {
                                         
                             <div className="card-body">
 
+                                <div className="form-group col-md-12">
                                 <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.handleClearData.bind(this)}>
                                     <i className="material-icons">Add New</i>                                                
                                 </button>
                                 <br/>  
+                                </div>
                                
                                 <table className="table table-bordered mb-0 text-center">
                                     <thead>
