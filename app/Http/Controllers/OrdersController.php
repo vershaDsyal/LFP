@@ -35,7 +35,26 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'customer_id'=>'required',
+            'product_id'=>'required',
+            'product_quantity'=>'required'
+        ]);
+
+        try{
+            
+            Orders::create($request->post());
+
+            return response()->json([
+                'message'=>'Orders Created Successfully!!'
+            ]);
+        }catch(\Exception $e){
+            \Log::error($e->getMessage());
+            return response()->json([
+                'message'=>'Something goes wrong while creating  Orders!!'
+            ],500);
+        }
     }
 
     /**

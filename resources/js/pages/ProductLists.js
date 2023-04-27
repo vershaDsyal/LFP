@@ -10,6 +10,7 @@ class ProductLists extends Component {
         super(props);
         this.state = { 
             ProductList: [''],
+            LoggedUser: [''],
             Loader:false,
             errors: {},
             pid:'',
@@ -27,7 +28,8 @@ class ProductLists extends Component {
     }
    
     componentDidMount() {
-        this.fetchProducts();    
+        this.fetchProducts();
+        this.fetchUser();    
     }
 
     handleValidation(){
@@ -81,6 +83,19 @@ class ProductLists extends Component {
         axios.get('/api/products').then(({data})=>{
             this.setState({
                 ProductList: data,
+            });
+
+        }).catch(error => {
+            console.log('Error..', error);                
+        }); 
+    }
+
+    //Fetch All Products List 
+    fetchUser() {
+
+        axios.get('/api/user').then(({data})=>{
+            this.setState({
+                LoggedUser: data,
             });
 
         }).catch(error => {
@@ -252,6 +267,11 @@ class ProductLists extends Component {
                                                             &nbsp;&nbsp;&nbsp;
                                                             <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"   onClick={this.editProduct.bind(this, row.id)}>
                                                                 <i className="material-icons">Edit</i>                                                
+                                                            </button>
+
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal">
+                                                                <i className="material-icons"> Make Order</i>                                                
                                                             </button>
 
 

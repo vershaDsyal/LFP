@@ -5436,6 +5436,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       ProductList: [''],
+      LoggedUser: [''],
       Loader: false,
       errors: {},
       pid: '',
@@ -5454,6 +5455,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.fetchProducts();
+      this.fetchUser();
     }
   }, {
     key: "handleValidation",
@@ -5512,20 +5514,35 @@ var ProductLists = /*#__PURE__*/function (_Component) {
         console.log('Error..', error);
       });
     }
+
+    //Fetch All Products List 
+  }, {
+    key: "fetchUser",
+    value: function fetchUser() {
+      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/user').then(function (_ref2) {
+        var data = _ref2.data;
+        _this3.setState({
+          LoggedUser: data
+        });
+      })["catch"](function (error) {
+        console.log('Error..', error);
+      });
+    }
   }, {
     key: "editProduct",
     value: function editProduct(pid) {
-      var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/products/' + pid).then(function (_ref2) {
-        var data = _ref2.data;
-        _this3.setState({
+      var _this4 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/products/' + pid).then(function (_ref3) {
+        var data = _ref3.data;
+        _this4.setState({
           pid: pid,
           title: data.product.title,
           description: data.product.description,
           price: data.product.price
         });
-      })["catch"](function (_ref3) {
-        var data = _ref3.response.data;
+      })["catch"](function (_ref4) {
+        var data = _ref4.response.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           text: data.message,
           icon: "error"
@@ -5535,22 +5552,22 @@ var ProductLists = /*#__PURE__*/function (_Component) {
   }, {
     key: "updateProduct",
     value: function updateProduct(pid, title, description, price) {
-      var _this4 = this;
+      var _this5 = this;
       var formData = new FormData();
       formData.append('_method', 'PATCH');
       formData.append('title', title);
       formData.append('description', description);
       formData.append('price', price);
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/products/' + pid, formData).then(function (_ref4) {
-        var data = _ref4.data;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/products/' + pid, formData).then(function (_ref5) {
+        var data = _ref5.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           icon: "success",
           text: data.message
         });
-        _this4.handleClearData();
-        _this4.fetchProducts();
-      })["catch"](function (_ref5) {
-        var response = _ref5.response;
+        _this5.handleClearData();
+        _this5.fetchProducts();
+      })["catch"](function (_ref6) {
+        var response = _ref6.response;
         if (response.status === 422) {
           setValidationError(response.data.errors);
         } else {
@@ -5564,23 +5581,23 @@ var ProductLists = /*#__PURE__*/function (_Component) {
   }, {
     key: "addProduct",
     value: function addProduct(title, description, price) {
-      var _this5 = this;
+      var _this6 = this;
       if (this.handleValidation()) {
         var formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('price', price);
-        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/products', formData).then(function (_ref6) {
-          var data = _ref6.data;
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/products', formData).then(function (_ref7) {
+          var data = _ref7.data;
           sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
             icon: "success",
             text: data.message
           });
-          _this5.handleClearData();
-          _this5.fetchProducts();
-        })["catch"](function (_ref7) {
-          var response = _ref7.response;
-          _this5.handleClearData();
+          _this6.handleClearData();
+          _this6.fetchProducts();
+        })["catch"](function (_ref8) {
+          var response = _ref8.response;
+          _this6.handleClearData();
           if (response.status === 422) {
             setValidationError(response.data.errors);
           } else {
@@ -5600,7 +5617,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
   }, {
     key: "deleteProduct",
     value: function deleteProduct(id) {
-      var _this6 = this;
+      var _this7 = this;
       var isConfirm = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
         title: 'Are you sure?',
         text: "You won't be able to delete this!",
@@ -5615,15 +5632,15 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       if (!isConfirm) {
         return;
       }
-      axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/api/products/' + id).then(function (_ref8) {
-        var data = _ref8.data;
+      axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/api/products/' + id).then(function (_ref9) {
+        var data = _ref9.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           icon: "success",
           text: data.message
         });
-        _this6.fetchProducts();
-      })["catch"](function (_ref9) {
-        var data = _ref9.response.data;
+        _this7.fetchProducts();
+      })["catch"](function (_ref10) {
+        var data = _ref10.response.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           text: data.message,
           icon: "error"
@@ -5633,7 +5650,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this7 = this;
+      var _this8 = this;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "row",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -5687,7 +5704,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                           type: "button",
                           className: "btn btn-danger btn-xs",
-                          onClick: _this7.deleteProduct.bind(_this7, row.id),
+                          onClick: _this8.deleteProduct.bind(_this8, row.id),
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                             className: "material-icons",
                             children: "delete"
@@ -5697,10 +5714,19 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                           className: "btn btn-primary btn-xs",
                           "data-toggle": "modal",
                           "data-target": "#defaultModal",
-                          onClick: _this7.editProduct.bind(_this7, row.id),
+                          onClick: _this8.editProduct.bind(_this8, row.id),
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                             className: "material-icons",
                             children: "Edit"
+                          })
+                        }), "\xA0\xA0\xA0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-primary btn-xs",
+                          "data-toggle": "modal",
+                          "data-target": "#defaultModal",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                            className: "material-icons",
+                            children: " Make Order"
                           })
                         })]
                       })]
