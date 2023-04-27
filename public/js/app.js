@@ -5520,7 +5520,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
     key: "fetchUser",
     value: function fetchUser() {
       var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/user').then(function (_ref2) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/user').then(function (_ref2) {
         var data = _ref2.data;
         _this3.setState({
           LoggedUser: data

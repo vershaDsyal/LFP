@@ -93,7 +93,7 @@ class ProductLists extends Component {
     //Fetch All Products List 
     fetchUser() {
 
-        axios.get('/api/user').then(({data})=>{
+        axios.get('/user').then(({data})=>{
             this.setState({
                 LoggedUser: data,
             });

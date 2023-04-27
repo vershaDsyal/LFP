@@ -31,8 +31,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 Route::resource('products',ProductController::class);
 
-Route::middleware('auth')->get('/user', [App\Http\Controllers\UsersController::class, 'user']);
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
