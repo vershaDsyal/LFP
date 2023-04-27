@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+         <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('elc_theme/assets/images/lfp.jpg') }}">
 
         <!-- Styles -->
         <style>
@@ -38,10 +40,10 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+              <!--   <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                  <img src="{{ asset('elc_theme/assets/images/lfp.jpg') }}" /> 
                 </div>
-
+ -->
                 
             </div>
         </div>

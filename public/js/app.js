@@ -5445,8 +5445,9 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       modalClasses: ['modal', 'fade']
     };
     _this.onChange = _this.onChange.bind(_assertThisInitialized(_this));
-    _this.handleModalClose = _this.handleModalClose.bind(_assertThisInitialized(_this));
+    _this.handleClearData = _this.handleClearData.bind(_assertThisInitialized(_this));
     _this.handleModalOpen = _this.handleModalOpen.bind(_assertThisInitialized(_this));
+    _this.handleValidation = _this.handleValidation.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(ProductLists, [{
@@ -5455,8 +5456,30 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       this.fetchProducts();
     }
   }, {
-    key: "handleModalClose",
-    value: function handleModalClose() {
+    key: "handleValidation",
+    value: function handleValidation() {
+      var errors = {};
+      var formIsValid = true;
+      if (!this.state.title) {
+        formIsValid = false;
+        errors["title"] = "required";
+      }
+      if (!this.state.description) {
+        formIsValid = false;
+        errors["description"] = "required";
+      }
+      if (!this.state.price) {
+        formIsValid = false;
+        errors["price"] = "required";
+      }
+      this.setState({
+        errors: errors
+      });
+      return formIsValid;
+    }
+  }, {
+    key: "handleClearData",
+    value: function handleClearData() {
       this.setState({
         pid: '',
         title: '',
@@ -5524,7 +5547,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
           icon: "success",
           text: data.message
         });
-        _this4.handleModalClose();
+        _this4.handleClearData();
         _this4.fetchProducts();
       })["catch"](function (_ref5) {
         var response = _ref5.response;
@@ -5539,9 +5562,45 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "addProduct",
+    value: function addProduct(title, description, price) {
+      var _this5 = this;
+      if (this.handleValidation()) {
+        var formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', price);
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/products', formData).then(function (_ref6) {
+          var data = _ref6.data;
+          sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+            icon: "success",
+            text: data.message
+          });
+          _this5.handleClearData();
+          _this5.fetchProducts();
+        })["catch"](function (_ref7) {
+          var response = _ref7.response;
+          _this5.handleClearData();
+          if (response.status === 422) {
+            setValidationError(response.data.errors);
+          } else {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+              text: response.data.message,
+              icon: "error"
+            });
+          }
+        });
+      } else {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
+          text: "Please fill all required fields !!",
+          icon: "error"
+        });
+      }
+    }
+  }, {
     key: "deleteProduct",
     value: function deleteProduct(id) {
-      var _this5 = this;
+      var _this6 = this;
       var isConfirm = sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
         title: 'Are you sure?',
         text: "You won't be able to delete this!",
@@ -5556,15 +5615,15 @@ var ProductLists = /*#__PURE__*/function (_Component) {
       if (!isConfirm) {
         return;
       }
-      axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/api/products/' + id).then(function (_ref6) {
-        var data = _ref6.data;
+      axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/api/products/' + id).then(function (_ref8) {
+        var data = _ref8.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           icon: "success",
           text: data.message
         });
-        _this5.fetchProducts();
-      })["catch"](function (_ref7) {
-        var data = _ref7.response.data;
+        _this6.fetchProducts();
+      })["catch"](function (_ref9) {
+        var data = _ref9.response.data;
         sweetalert2__WEBPACK_IMPORTED_MODULE_2___default().fire({
           text: data.message,
           icon: "error"
@@ -5574,7 +5633,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "row",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -5582,11 +5641,23 @@ var ProductLists = /*#__PURE__*/function (_Component) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             className: "section-title",
             children: "Products List"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "card",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+              className: "row"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "card-body",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                type: "button",
+                className: "btn btn-primary btn-xs",
+                "data-toggle": "modal",
+                "data-target": "#defaultModal",
+                onClick: this.handleClearData.bind(this),
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                  className: "material-icons",
+                  children: "Add New"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
                 className: "table table-bordered mb-0 text-center",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
@@ -5613,7 +5684,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                           type: "button",
                           className: "btn btn-danger btn-xs",
-                          onClick: _this6.deleteProduct.bind(_this6, row.id),
+                          onClick: _this7.deleteProduct.bind(_this7, row.id),
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                             className: "material-icons",
                             children: "delete"
@@ -5623,7 +5694,7 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                           className: "btn btn-primary btn-xs",
                           "data-toggle": "modal",
                           "data-target": "#defaultModal",
-                          onClick: _this6.editProduct.bind(_this6, row.id),
+                          onClick: _this7.editProduct.bind(_this7, row.id),
                           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                             className: "material-icons",
                             children: "Edit"
@@ -5646,14 +5717,14 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                     className: "modal-content",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                       className: "modal-header",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h5", {
                         className: "modal-title",
                         id: "defaultModalLabel",
-                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                        children: [this.state.pid && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
                           children: " edit Product"
-                        })
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), this.state.Loader && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                        className: "dashboard-spinner spinner-xs"
+                        }), !this.state.pid && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                          children: " Add Product"
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
                         href: "#",
                         className: "close",
@@ -5721,18 +5792,23 @@ var ProductLists = /*#__PURE__*/function (_Component) {
                           className: "btn btn-secondary",
                           "data-dismiss": "modal",
                           children: "Close"
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                        }), this.state.pid && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
                           type: "button",
                           className: "btn btn-primary",
                           onClick: this.updateProduct.bind(this, this.state.pid, this.state.title, this.state.description, this.state.price),
                           children: "Save changes"
+                        }), !this.state.pid && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-primary",
+                          onClick: this.addProduct.bind(this, this.state.title, this.state.description, this.state.price),
+                          children: "Add"
                         })]
                       })]
                     })]
                   })
                 })
               })]
-            })
+            })]
           })]
         })
       });

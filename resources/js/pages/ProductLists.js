@@ -20,8 +20,9 @@ class ProductLists extends Component {
         };
 
         this.onChange = this.onChange.bind(this);
-        this.handleModalClose  = this.handleModalClose.bind(this);
+        this.handleClearData  = this.handleClearData.bind(this);
         this.handleModalOpen  = this.handleModalOpen.bind(this);
+        this.handleValidation  = this.handleValidation.bind(this);
 
     }
    
@@ -29,8 +30,30 @@ class ProductLists extends Component {
         this.fetchProducts();    
     }
 
+    handleValidation(){
 
-    handleModalClose(){
+        let errors = {};
+        let formIsValid = true;
+
+        if(!this.state.title){
+             formIsValid = false;
+             errors["title"] = "required";
+        }
+        if(!this.state.description){
+             formIsValid = false;
+             errors["description"] = "required";
+        }
+        if(!this.state.price){
+             formIsValid = false;
+             errors["price"] = "required";
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
+
+    }
+
+    handleClearData(){
        
         this.setState({
             pid:'',
@@ -97,7 +120,7 @@ class ProductLists extends Component {
                 icon:"success",
                 text:data.message
               })
-            this.handleModalClose();
+            this.handleClearData();
             this.fetchProducts();
         }).catch(({response})=>{
           if(response.status===422){
@@ -109,6 +132,45 @@ class ProductLists extends Component {
             })
           }
         })
+
+    }
+
+    addProduct(title,description,price){
+
+        if(this.handleValidation()){
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', price);
+
+            axios.post('/api/products', formData).then(({data})=>{
+              Swal.fire({
+                icon:"success",
+                text:data.message
+              })
+              this.handleClearData();
+              this.fetchProducts();
+
+            }).catch(({response})=>{
+
+                this.handleClearData();
+                if(response.status===422){
+                    setValidationError(response.data.errors)
+                }else{
+                    Swal.fire({
+                      text:response.data.message,
+                      icon:"error"
+                    })
+                }
+            })
+
+        }else{
+            Swal.fire({
+                text:"Please fill all required fields !!",
+                icon:"error"
+            })
+        }
 
     }
     deleteProduct(id){
@@ -150,9 +212,19 @@ class ProductLists extends Component {
                 
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h3 className="section-title">Products List</h3>
-                        <div className="card">                            
+                        <div className="card">  
+                       
+                            <div className="row">  
+                               
+                            </div>
+                                        
                             <div className="card-body">
 
+                                <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.handleClearData.bind(this)}>
+                                    <i className="material-icons">Add New</i>                                                
+                                </button>
+                                <br/>  
+                               
                                 <table className="table table-bordered mb-0 text-center">
                                     <thead>
                                         <tr>
@@ -198,11 +270,14 @@ class ProductLists extends Component {
                                         <div className="modal-content">
                                             <div className="modal-header">
                                                 <h5 className="modal-title" id="defaultModalLabel">
-                                                <i> edit Product</i></h5><br/>
-                                                 { this.state.Loader &&  <span className="dashboard-spinner spinner-xs"></span> }                               
-                                                    <a href="#" className="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </a>
+                                                 { this.state.pid && <i> edit Product</i>} 
+                                                  { !this.state.pid && <i> Add Product</i>} 
+                                                  <br/>
+                                                  </h5>
+                                                                            
+                                                <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
                                             </div>
                                             <div className="modal-body">
 
@@ -233,10 +308,16 @@ class ProductLists extends Component {
                                                 </div>
                                                 <div className="modal-footer">
                                                     <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                    
+                                                    { this.state.pid &&
                                                      <button type="button" className="btn btn-primary" onClick={this.updateProduct.bind(this,this.state.pid,this.state.title,this.state.description,this.state.price)} >
                                                              Save changes
-                                                        </button>   
+                                                        </button>}
+
+                                                    { !this.state.pid && <button type="button" className="btn btn-primary" onClick={this.addProduct.bind(this,this.state.title,this.state.description,this.state.price)} >
+                                                             Add
+                                                        </button>}
+
+
                                                         
                                                 </div>
                                         
