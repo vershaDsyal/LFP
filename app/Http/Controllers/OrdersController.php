@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use App\Models\Transactions;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use DB;
 
 class OrdersController extends Controller
 {
@@ -31,8 +33,33 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        //return Orders::with('user')->get(); 
+        //relations can be also used 
+
+        $customer   = \Auth::user()->id;
+        
+         $orders = DB::table('orders')
+            ->select('orders.*', 'users.name','products.*')
+            ->leftJoin('users', 'orders.customer_id', '=', 'users.id')
+            ->leftJoin('products', 'orders.product_id', '=', 'products.id')
+            ->where('orders.customer_id',$customer)
+            ->orderBy('orders.id','asc')->get();
+        return response()->json($orders);
+
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrders()
+    {
+         return view('show-orders');
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +81,6 @@ class OrdersController extends Controller
     {
         
         $request->validate([
-            'customer_id'=>'required',
             'product_id'=>'required',
             'quantity'=>'required'
         ]);
@@ -62,7 +88,8 @@ class OrdersController extends Controller
         try{
             
             $params     =  $request->all();
-            $customer = (isset($params['customer_id']) && $params['customer_id'] != '' && $params['customer_id'] != null) ? $params['customer_id'] : \Auth::user()->id;
+            $customer   = \Auth::user()->id;
+
             $product = Product::where('id',$params['product_id'])->first();
 
             $order                   = new Orders;

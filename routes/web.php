@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('orders',App\Http\Controllers\OrdersController::class);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/show-orders', [App\Http\Controllers\OrdersController::class, 'showOrders'])->name('showOrders');
 Route::get('/user', [App\Http\Controllers\UsersController::class, 'user']);
 
 

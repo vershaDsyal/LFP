@@ -19,6 +19,12 @@
                         <a class="nav-link dash" href="@if(\Auth::user()) {{ route('home') }} @endif"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
                         
                     </li>
+                    @if(\Auth::user())
+                    <li class="nav-item ">
+                        <a class="nav-link dash" href=" {{ route('showOrders') }} "><i class="fa fa-fw fa-user-circle"></i>Orders <span class="badge badge-success">6</span></a>
+                        
+                    </li>
+                    @endif
                   
                     <li>
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-power-off mr-2"></i>Logout</a>
