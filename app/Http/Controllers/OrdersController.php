@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use DB;
+use Mail;
 
 class OrdersController extends Controller
 {
@@ -105,6 +106,22 @@ class OrdersController extends Controller
                 $transaction->price        = $product->price * $params['quantity'];
                 $transaction->status       = 'in-progress';
                 if($transaction->save()){
+
+                    //send  mail to user
+                    //---------------------------------------------------------
+
+                    $passdata = array(
+                        'email' => \Auth::user()->email,
+                        'name' => 'versha' 
+                    );
+                    Mail::send('emails.order', $passdata, function($message) use ($passdata)
+                        {
+                            $message->from('health@fitnessfirst-me.com', "LF Demo");
+                            $message->subject("Welcome to Life Pharmacy demo");
+                            $message->to($passdata['email']);
+                        });
+
+
                     return response()->json([
                         'message'=>'Orders Created Successfully!!'
                     ]);
