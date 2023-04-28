@@ -49,7 +49,7 @@
 		<table width="100%" cellpadding="0" cellspacing="0">
 			<tr>
 				Hey {{$name}}, Welcome to Demo. <br>
-				You have succesfuuly regustered !!  <br>
+				You have succesfully registered !!  <br>
 				Please login to your account
 			</tr>
 		</table>
