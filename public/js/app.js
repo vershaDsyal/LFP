@@ -6171,9 +6171,9 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
                           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
                             className: "form-group col-md-12",
                             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                              children: ["single Price : ", this.state.orderDetails[0].price, " "]
+                              children: ["single Price : ", this.state.orderDetails[0].price, " AED "]
                             }), " \xA0\xA0\xA0\xA0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                              children: ["Total Price : ", this.state.orderDetails[0].total_price, " "]
+                              children: ["Total Price : ", this.state.orderDetails[0].total_price, " AED  "]
                             })]
                           })]
                         })
