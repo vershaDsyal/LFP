@@ -2,7 +2,7 @@
 <!-- ============================================================== -->
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
-        <span style="font-size: 22px;" class="customImage"><!-- <a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ asset('elc_theme/assets/images/lfp.jpg') }}" width="125px" height="50px" /></a> --></span>
+       <!--  <span style="font-size: 22px;" class="customImage"><a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ asset('elc_theme/assets/images/lfp.jpg') }}" width="125px" height="50px" /></a></span> -->
 
          
 
@@ -10,6 +10,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            @if(\Auth::user())
             <ul class="navbar-nav ml-auto navbar-right-top">
                 
                 <li class="nav-item dropdown nav-user">
@@ -18,7 +19,7 @@
                         <div class="nav-user-info">
                             <h5 class="mb-0 text-white nav-user-name">
                                 <span class="badge-dot badge-success"></span>
-                                @if(\Auth::user()) {{ Auth::user()->name }} @endif<br>
+                                 {{ Auth::user()->name }}<br>
                             </h5>
                         </div>
                        
@@ -30,6 +31,7 @@
                 </li>
                 
             </ul>
+             @endif
         </div>
     </nav>
 </div>

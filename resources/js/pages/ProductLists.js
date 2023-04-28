@@ -10,27 +10,55 @@ class ProductLists extends Component {
         super(props);
         this.state = { 
             ProductList: [''],
+            LoggedUser: [''],
             Loader:false,
             errors: {},
             pid:'',
+            buyPid:'',
+            buyPrice:'',
             title: '',
             description : '',
             price: '',
+            quantity:'',
             modalClasses: ['modal','fade'],
         };
 
         this.onChange = this.onChange.bind(this);
-        this.handleModalClose  = this.handleModalClose.bind(this);
+        this.handleClearData  = this.handleClearData.bind(this);
         this.handleModalOpen  = this.handleModalOpen.bind(this);
+        this.handleValidation  = this.handleValidation.bind(this);
 
     }
    
     componentDidMount() {
-        this.fetchProducts();    
+        this.fetchProducts();
+        this.fetchUser();    
     }
 
+    handleValidation(){
 
-    handleModalClose(){
+        let errors = {};
+        let formIsValid = true;
+
+        if(!this.state.title){
+             formIsValid = false;
+             errors["title"] = "required";
+        }
+        if(!this.state.description){
+             formIsValid = false;
+             errors["description"] = "required";
+        }
+        if(!this.state.price){
+             formIsValid = false;
+             errors["price"] = "required";
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
+
+    }
+
+    handleClearData(){
        
         this.setState({
             pid:'',
@@ -65,6 +93,56 @@ class ProductLists extends Component {
         }); 
     }
 
+    //Fetch All Products List 
+    fetchUser() {
+
+        axios.get('/user').then(({data})=>{
+            this.setState({
+                LoggedUser: data,
+            });
+
+        }).catch(error => {
+            console.log('Error..', error);                
+        }); 
+    }
+
+    setbuyProduct(pid,price){
+        this.setState({
+                buyPid:pid,
+                buyPrice: price,
+            });
+    }
+
+
+    buyProduct(pid,qty){
+        
+        const formData = new FormData();
+        formData.append('product_id', pid);
+        formData.append('quantity', qty);
+        
+        axios.post('/orders', formData).then(({data})=>{
+          Swal.fire({
+            icon:"success",
+            text:data.message
+          })
+          this.handleClearData();
+          this.fetchProducts();
+
+        }).catch(({response})=>{
+
+            this.handleClearData();
+            if(response.status===422){
+                setValidationError(response.data.errors)
+            }else{
+                Swal.fire({
+                  text:response.data.message,
+                  icon:"error"
+                })
+            }
+        });
+    }
+
+
     editProduct(pid){
         
         axios.get('/api/products/'+pid).then(({data})=>{
@@ -97,7 +175,7 @@ class ProductLists extends Component {
                 icon:"success",
                 text:data.message
               })
-            this.handleModalClose();
+            this.handleClearData();
             this.fetchProducts();
         }).catch(({response})=>{
           if(response.status===422){
@@ -109,6 +187,45 @@ class ProductLists extends Component {
             })
           }
         })
+
+    }
+
+    addProduct(title,description,price){
+
+        if(this.handleValidation()){
+
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('price', price);
+
+            axios.post('/api/products', formData).then(({data})=>{
+              Swal.fire({
+                icon:"success",
+                text:data.message
+              })
+              this.handleClearData();
+              this.fetchProducts();
+
+            }).catch(({response})=>{
+
+                this.handleClearData();
+                if(response.status===422){
+                    setValidationError(response.data.errors)
+                }else{
+                    Swal.fire({
+                      text:response.data.message,
+                      icon:"error"
+                    })
+                }
+            })
+
+        }else{
+            Swal.fire({
+                text:"Please fill all required fields !!",
+                icon:"error"
+            })
+        }
 
     }
     deleteProduct(id){
@@ -150,9 +267,21 @@ class ProductLists extends Component {
                 
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h3 className="section-title">Products List</h3>
-                        <div className="card">                            
+                        <div className="card">  
+                       
+                            <div className="row">  
+                               
+                            </div>
+                                        
                             <div className="card-body">
 
+                                <div className="form-group col-md-12">
+                                <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.handleClearData.bind(this)}>
+                                    <i className="material-icons">Add New</i>                                                
+                                </button>
+                                <br/>  
+                                </div>
+                               
                                 <table className="table table-bordered mb-0 text-center">
                                     <thead>
                                         <tr>
@@ -180,6 +309,11 @@ class ProductLists extends Component {
                                                                 <i className="material-icons">Edit</i>                                                
                                                             </button>
 
+                                                            &nbsp;&nbsp;&nbsp;
+                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal2" onClick={this.setbuyProduct.bind(this, row.id,row.price)}>
+                                                                <i className="material-icons"> Make Order</i>                                                
+                                                            </button>
+
 
                                                         
                                                         </td>
@@ -198,11 +332,14 @@ class ProductLists extends Component {
                                         <div className="modal-content">
                                             <div className="modal-header">
                                                 <h5 className="modal-title" id="defaultModalLabel">
-                                                <i> edit Product</i></h5><br/>
-                                                 { this.state.Loader &&  <span className="dashboard-spinner spinner-xs"></span> }                               
-                                                    <a href="#" className="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </a>
+                                                 { this.state.pid && <i> edit Product</i>} 
+                                                  { !this.state.pid && <i> Add Product</i>} 
+                                                  <br/>
+                                                  </h5>
+                                                                            
+                                                <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
                                             </div>
                                             <div className="modal-body">
 
@@ -233,10 +370,62 @@ class ProductLists extends Component {
                                                 </div>
                                                 <div className="modal-footer">
                                                     <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
-                                                    
+                                                    { this.state.pid &&
                                                      <button type="button" className="btn btn-primary" onClick={this.updateProduct.bind(this,this.state.pid,this.state.title,this.state.description,this.state.price)} >
                                                              Save changes
-                                                        </button>   
+                                                        </button>}
+
+                                                    { !this.state.pid && <button type="button" className="btn btn-primary" onClick={this.addProduct.bind(this,this.state.title,this.state.description,this.state.price)} >
+                                                             Add
+                                                        </button>}
+
+
+                                                        
+                                                </div>
+                                        
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={this.state.modalClasses.join(' ')} id="defaultModal2" role="dialog" aria-labelledby="defaultModalLabel2" aria-hidden="true">
+                                   
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="defaultModalLabel2">
+                                                    Make Order
+                                                  </h5>
+                                                                            
+                                                <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
+                                            </div>
+                                            <div className="modal-body">
+
+                                                <div className="form-group">
+                                                    <div className="row">
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>QUANTITY</label>
+                                                            <input className="form-control" type="number" name="quantity" value={this.state.quantity} onChange={this.onChange}/>
+                                                            <span className="text-danger">{this.state.errors["quantity"]}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                   
+                                                     
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                    
+                                                    { !this.state.pid && <button type="button" className="btn btn-primary" onClick={this.buyProduct.bind(this,this.state.buyPid,this.state.quantity)} >
+                                                             Buy
+                                                        </button>}
+
+
                                                         
                                                 </div>
                                         
