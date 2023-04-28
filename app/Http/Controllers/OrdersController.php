@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Orders;
+use App\Models\Transactions;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class OrdersController extends Controller
 {
@@ -51,16 +56,36 @@ class OrdersController extends Controller
         $request->validate([
             'customer_id'=>'required',
             'product_id'=>'required',
-            'product_quantity'=>'required'
+            'quantity'=>'required'
         ]);
 
         try{
             
-            Orders::create($request->post());
+            $params     =  $request->all();
+            $customer = (isset($params['customer_id']) && $params['customer_id'] != '' && $params['customer_id'] != null) ? $params['customer_id'] : \Auth::user()->id;
+            $product = Product::where('id',$params['product_id'])->first();
 
-            return response()->json([
-                'message'=>'Orders Created Successfully!!'
-            ]);
+            $order                   = new Orders;
+            $order->product_id       = $params['product_id'];
+            $order->customer_id      = $customer;
+            $order->status           = 'pending' ;
+            $order->product_quantity = $params['quantity'] ;
+            
+            if($order->save()){
+                $transaction               = new Transactions;
+                $transaction->order_id     = $order->id;
+                $transaction->customer_id  = $customer;
+                $transaction->price        = $product->price * $params['quantity'];
+                $transaction->status       = 'in-progress';
+                if($transaction->save()){
+                    return response()->json([
+                        'message'=>'Orders Created Successfully!!'
+                    ]);
+
+                }
+
+            }
+
         }catch(\Exception $e){
             \Log::error($e->getMessage());
             return response()->json([
