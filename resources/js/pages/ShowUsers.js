@@ -4,12 +4,12 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
 
-class ShowOrders extends Component {
+class ShowUsers extends Component {
 
     constructor(props) {
         super(props);
         this.state = { 
-            OrdersList: [''],
+            UsersList: [''],
             LoggedUser: [''],
             Loader:false,
             errors: {},
@@ -23,15 +23,15 @@ class ShowOrders extends Component {
     }
    
     componentDidMount() {
-         this.fetchOrders();
+         this.fetchUsers();
     }
 
-     //Fetch All orders List 
-    fetchOrders() {
+     //Fetch All users List 
+    fetchUsers() {
 
-        axios.get('/orders').then(({data})=>{
+        axios.get('/user').then(({data})=>{
             this.setState({
-                OrdersList: data,
+                UsersList: data,
             });
             console.log(data);
 
@@ -46,30 +46,33 @@ class ShowOrders extends Component {
         return(
             <div className="row">
                     <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <h3 className="section-title">Orders List</h3>
-                        <div className="card">
-
-                        <div className="card-body">
+                        <h3 className="section-title">Users List</h3>
+                        <div className="card"> 
+                            <div className="card-body">
 
                                 <table className="table table-bordered mb-0 text-center">
                                     <thead>
                                         <tr>
-                                            <th>Order ID</th>
-                                            <th>Product</th>
-                                            <th>Customer</th>
-                                            <th>Status</th>
+                                            <th>User ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {
-                                        this.state.OrdersList.length > 0 && (
-                                               this.state.OrdersList.map((row, key)=>(
+                                        this.state.UsersList.length > 0 && (
+                                               this.state.UsersList.map((row, key)=>(
 
                                                     <tr key={key}>
                                                         <td>{row.id}</td>
-                                                        <td>{row.title}</td>
-                                                        <td>{row.cutomer_name}</td>
-                                                        <td>{row.status}</td>
+                                                        <td>{row.name}</td>
+                                                        <td>{row.email} AED</td>
+                                                        <td>
+                                                            
+
+                                                        
+                                                        </td>
 
                                                     </tr>
                                                 ))
@@ -78,7 +81,7 @@ class ShowOrders extends Component {
 
                                     </tbody>
                                 </table>
-                            </div> 
+                            </div>
                             
                         </div>
                     </div>
@@ -88,4 +91,4 @@ class ShowOrders extends Component {
     }
 }   
 
-export default ShowOrders;
+export default ShowUsers;

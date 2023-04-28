@@ -39,7 +39,7 @@ class OrdersController extends Controller
         $customer   = \Auth::user()->id;
         
          $orders = DB::table('orders')
-            ->select('orders.*', 'users.name','products.*')
+            ->select('orders.*', 'users.name as cutomer_name','products.title')
             ->leftJoin('users', 'orders.customer_id', '=', 'users.id')
             ->leftJoin('products', 'orders.product_id', '=', 'products.id')
             ->where('orders.customer_id',$customer)

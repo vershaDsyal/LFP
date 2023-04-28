@@ -14,9 +14,12 @@ class ProductLists extends Component {
             Loader:false,
             errors: {},
             pid:'',
+            buyPid:'',
+            buyPrice:'',
             title: '',
             description : '',
             price: '',
+            quantity:'',
             modalClasses: ['modal','fade'],
         };
 
@@ -102,6 +105,43 @@ class ProductLists extends Component {
             console.log('Error..', error);                
         }); 
     }
+
+    setbuyProduct(pid,price){
+        this.setState({
+                buyPid:pid,
+                buyPrice: price,
+            });
+    }
+
+
+    buyProduct(pid,qty){
+        
+        const formData = new FormData();
+        formData.append('product_id', pid);
+        formData.append('quantity', qty);
+        
+        axios.post('/orders', formData).then(({data})=>{
+          Swal.fire({
+            icon:"success",
+            text:data.message
+          })
+          this.handleClearData();
+          this.fetchProducts();
+
+        }).catch(({response})=>{
+
+            this.handleClearData();
+            if(response.status===422){
+                setValidationError(response.data.errors)
+            }else{
+                Swal.fire({
+                  text:response.data.message,
+                  icon:"error"
+                })
+            }
+        });
+    }
+
 
     editProduct(pid){
         
@@ -270,7 +310,7 @@ class ProductLists extends Component {
                                                             </button>
 
                                                             &nbsp;&nbsp;&nbsp;
-                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal">
+                                                            <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal2" onClick={this.setbuyProduct.bind(this, row.id,row.price)}>
                                                                 <i className="material-icons"> Make Order</i>                                                
                                                             </button>
 
@@ -337,6 +377,52 @@ class ProductLists extends Component {
 
                                                     { !this.state.pid && <button type="button" className="btn btn-primary" onClick={this.addProduct.bind(this,this.state.title,this.state.description,this.state.price)} >
                                                              Add
+                                                        </button>}
+
+
+                                                        
+                                                </div>
+                                        
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={this.state.modalClasses.join(' ')} id="defaultModal2" role="dialog" aria-labelledby="defaultModalLabel2" aria-hidden="true">
+                                   
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="defaultModalLabel2">
+                                                    Make Order
+                                                  </h5>
+                                                                            
+                                                <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
+                                            </div>
+                                            <div className="modal-body">
+
+                                                <div className="form-group">
+                                                    <div className="row">
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>QUANTITY</label>
+                                                            <input className="form-control" type="number" name="quantity" value={this.state.quantity} onChange={this.onChange}/>
+                                                            <span className="text-danger">{this.state.errors["quantity"]}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                   
+                                                     
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                    
+                                                    { !this.state.pid && <button type="button" className="btn btn-primary" onClick={this.buyProduct.bind(this,this.state.buyPid,this.state.quantity)} >
+                                                             Buy
                                                         </button>}
 
 

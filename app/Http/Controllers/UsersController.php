@@ -28,4 +28,14 @@ class UsersController extends Controller
         return User::select('id','name','email')->get();
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showUsers()
+    {
+       return view('show-users');
+    }
+
 }

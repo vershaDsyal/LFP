@@ -23,6 +23,7 @@ Route::resource('orders',App\Http\Controllers\OrdersController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/show-orders', [App\Http\Controllers\OrdersController::class, 'showOrders'])->name('showOrders');
+Route::get('/show-users', [App\Http\Controllers\UsersController::class, 'showUsers'])->name('showUsers');
 Route::get('/user', [App\Http\Controllers\UsersController::class, 'user']);
 
 

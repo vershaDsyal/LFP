@@ -16,12 +16,16 @@
                      
 
                     <li class="nav-item ">
-                        <a class="nav-link dash" href="@if(\Auth::user()) {{ route('home') }} @endif"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                        <a class="nav-link dash" href="@if(\Auth::user()) {{ route('home') }} @endif"><i class="fa fa-fw fa-user-circle"></i>Dashboard -> Products<span class="badge badge-success">6</span></a>
                         
                     </li>
                     @if(\Auth::user())
                     <li class="nav-item ">
-                        <a class="nav-link dash" href=" {{ route('showOrders') }} "><i class="fa fa-fw fa-user-circle"></i>Orders <span class="badge badge-success">6</span></a>
+                        <a class="nav-link" href=" {{ route('showOrders') }} "><i class="fa fa-fw fa-user-circle"></i>Orders <span class="badge badge-success">6</span></a>
+                        
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href=" {{ route('showUsers') }} "><i class="fa fa-fw fa-user-circle"></i>users <span class="badge badge-success">6</span></a>
                         
                     </li>
                     @endif

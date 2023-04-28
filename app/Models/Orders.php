@@ -12,8 +12,8 @@ class Orders extends Model
 
     protected $fillable = ['id','customer_id', 'product_id', 'product_quantity', 'status'];
 
-    public function user()
+    /*public function user()
     {
         return $this->belongsTo(User::class,'customer_id',);
-    }
+    }*/
 }
