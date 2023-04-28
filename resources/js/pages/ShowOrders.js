@@ -10,7 +10,7 @@ class ShowOrders extends Component {
         super(props);
         this.state = { 
             OrdersList: [''],
-            LoggedUser: [''],
+            orderDetails: [''],
             Loader:false,
             errors: {},
             pid:'',
@@ -33,13 +33,25 @@ class ShowOrders extends Component {
             this.setState({
                 OrdersList: data,
             });
-            console.log(data);
-
+            
         }).catch(error => {
             console.log('Error..', error);                
         }); 
     }
 
+    showdetails(id){
+
+        axios.get('/orders/'+id).then(({data})=>{
+            this.setState({
+                orderDetails: data,
+            });
+          
+
+        }).catch(error => {
+            console.log('Error..', error);                
+        }); 
+
+    }
     
     render(){
          
@@ -58,6 +70,7 @@ class ShowOrders extends Component {
                                             <th>Product</th>
                                             <th>Customer</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,7 +83,11 @@ class ShowOrders extends Component {
                                                         <td>{row.title}</td>
                                                         <td>{row.cutomer_name}</td>
                                                         <td>{row.status}</td>
-
+                                                        <td>
+                                                        <button type="button" className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"   onClick={this.showdetails.bind(this, row.id)}>
+                                                            <i className="material-icons">show</i>                                                
+                                                        </button>
+                                                        </td>
                                                     </tr>
                                                 ))
                                             )
@@ -78,6 +95,66 @@ class ShowOrders extends Component {
 
                                     </tbody>
                                 </table>
+
+
+                                <div className={this.state.modalClasses.join(' ')} id="defaultModal" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                                   
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="defaultModalLabel">
+                                                  order details
+                                                 
+                                                  </h5>
+                                                                            
+                                                <a href="#" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </a>
+                                            </div>
+                                            <div className="modal-body">
+
+                                                <div className="form-group">
+                                                    <div className="row">
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>Order id : {this.state.orderDetails[0].id}</label>
+                                                            
+                                                        </div>
+                                                        <div className="form-group col-md-12">
+                                                            <label>Transaction id : {this.state.orderDetails[0].trans_id}</label>
+                                                            
+                                                        </div>
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>Product : {this.state.orderDetails[0].title}</label>
+                                                            
+                                                        </div>
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>qty : {this.state.orderDetails[0].product_quantity}</label>
+                                                            
+                                                        </div>
+
+                                                        <div className="form-group col-md-12">
+                                                            <label>single Price : {this.state.orderDetails[0].price} </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <label>Total Price : {this.state.orderDetails[0].total_price} </label>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                   
+                                                     
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <a href="#" className="btn btn-secondary" data-dismiss="modal">Close</a>
+                                                </div>
+                                        
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div> 
                             
                         </div>

@@ -2,7 +2,7 @@
 <!-- ============================================================== -->
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
-       <!--  <span style="font-size: 22px;" class="customImage"><a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ asset('elc_theme/assets/images/lfp.jpg') }}" width="125px" height="50px" /></a></span> -->
+        <span style="font-size: 22px;" class="customImage"><a class="navbar-brand" href="{{ url('/') }}"> <img src="{{ asset('elc_theme/assets/images/lfp.jpg') }}" width="125px" height="50px" /></a></span>
 
          
 
