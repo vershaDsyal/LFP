@@ -38,7 +38,7 @@ class OrdersController extends Controller
 
         $customer   = \Auth::user()->id;
         
-         $orders = DB::table('orders')
+        $orders = DB::table('orders')
             ->select('orders.*', 'users.name as cutomer_name','products.title')
             ->leftJoin('users', 'orders.customer_id', '=', 'users.id')
             ->leftJoin('products', 'orders.product_id', '=', 'products.id')
@@ -127,9 +127,20 @@ class OrdersController extends Controller
      * @param  \App\Models\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function show(Orders $orders)
+    public function show($order)
     {
-        //
+      
+       $customer   = \Auth::user()->id;
+        
+        $orders = DB::table('orders')
+            ->select('orders.*', 'users.name as cutomer_name','products.title','products.price','transactions.price as total_price','transactions.status as trans_status','transactions.id as trans_id')
+            ->leftJoin('users', 'orders.customer_id', '=', 'users.id')
+            ->leftJoin('products', 'orders.product_id', '=', 'products.id')
+            ->leftJoin('transactions', 'orders.id', '=', 'transactions.order_id')
+            ->where('orders.id',$order)
+            ->orderBy('orders.id','asc')->get();
+        return response()->json($orders);
+
     }
 
     /**

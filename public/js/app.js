@@ -6013,7 +6013,7 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       OrdersList: [''],
-      LoggedUser: [''],
+      orderDetails: [''],
       Loader: false,
       errors: {},
       pid: '',
@@ -6040,7 +6040,19 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
         _this2.setState({
           OrdersList: data
         });
-        console.log(data);
+      })["catch"](function (error) {
+        console.log('Error..', error);
+      });
+    }
+  }, {
+    key: "showdetails",
+    value: function showdetails(id) {
+      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/orders/' + id).then(function (_ref2) {
+        var data = _ref2.data;
+        _this3.setState({
+          orderDetails: data
+        });
       })["catch"](function (error) {
         console.log('Error..', error);
       });
@@ -6048,6 +6060,7 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "row",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -6057,9 +6070,9 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
             children: "Orders List"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
             className: "card",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "card-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
                 className: "table table-bordered mb-0 text-center",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
@@ -6071,6 +6084,8 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
                       children: "Customer"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
                       children: "Status"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      children: "Action"
                     })]
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
@@ -6084,11 +6099,97 @@ var ShowOrders = /*#__PURE__*/function (_Component) {
                         children: row.cutomer_name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
                         children: row.status
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+                          type: "button",
+                          className: "btn btn-primary btn-xs",
+                          "data-toggle": "modal",
+                          "data-target": "#defaultModal",
+                          onClick: _this4.showdetails.bind(_this4, row.id),
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                            className: "material-icons",
+                            children: "show"
+                          })
+                        })
                       })]
                     }, key);
                   })
                 })]
-              })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: this.state.modalClasses.join(' '),
+                id: "defaultModal",
+                role: "dialog",
+                "aria-labelledby": "defaultModalLabel",
+                "aria-hidden": "true",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "modal-dialog",
+                  role: "document",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                    className: "modal-content",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "modal-header",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h5", {
+                        className: "modal-title",
+                        id: "defaultModalLabel",
+                        children: "order details"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                        href: "#",
+                        className: "close",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+                          "aria-hidden": "true",
+                          children: "\xD7"
+                        })
+                      })]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      className: "modal-body",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "form-group",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                          className: "row",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                            className: "form-group col-md-12",
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["Order id : ", this.state.orderDetails[0].id]
+                            })
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                            className: "form-group col-md-12",
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["Transaction id : ", this.state.orderDetails[0].trans_id]
+                            })
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                            className: "form-group col-md-12",
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["Product : ", this.state.orderDetails[0].title]
+                            })
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                            className: "form-group col-md-12",
+                            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["qty : ", this.state.orderDetails[0].product_quantity]
+                            })
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                            className: "form-group col-md-12",
+                            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["single Price : ", this.state.orderDetails[0].price, " "]
+                            }), " \xA0\xA0\xA0\xA0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
+                              children: ["Total Price : ", this.state.orderDetails[0].total_price, " "]
+                            })]
+                          })]
+                        })
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                        className: "modal-footer",
+                        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+                          href: "#",
+                          className: "btn btn-secondary",
+                          "data-dismiss": "modal",
+                          children: "Close"
+                        })
+                      })]
+                    })]
+                  })
+                })
+              })]
             })
           })]
         })
