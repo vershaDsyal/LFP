@@ -136,8 +136,8 @@ class ShowOrders extends Component {
                                                         </div>
 
                                                         <div className="form-group col-md-12">
-                                                            <label>single Price : {this.state.orderDetails[0].price} </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <label>Total Price : {this.state.orderDetails[0].total_price} </label>
+                                                            <label>single Price : {this.state.orderDetails[0].price} AED </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <label>Total Price : {this.state.orderDetails[0].total_price} AED  </label>
                                                            
                                                         </div>
 
