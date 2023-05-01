@@ -44,9 +44,9 @@ class ShowUsers extends Component {
                                 Header: "Status",
                                 accessor: "id",
                                 
-                                    Cell: ({ value }) => (
+                                    Cell: ({row}) => (
                                       <div>
-                                        <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.viewFull.bind(value)}>Edit</button>
+                                        <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.viewFull.bind(this,row.original.id)}>Edit</button>
                                       </div>
                                     )       
                               },
@@ -65,8 +65,8 @@ class ShowUsers extends Component {
          this.fetchUsers();
     }
 
-    viewFull(row){
-        console.log(row);
+    viewFull(id){
+        console.log(id);
     }
 
      //Fetch All users List 
@@ -77,8 +77,7 @@ class ShowUsers extends Component {
                 UsersList: data,
                 data:data
             });
-            console.log(data);
-
+           
         }).catch(error => {
             console.log('Error..', error);                
         }); 

@@ -6276,13 +6276,13 @@ var ShowUsers = /*#__PURE__*/function (_Component) {
           Header: "Status",
           accessor: "id",
           Cell: function Cell(_ref) {
-            var value = _ref.value;
+            var row = _ref.row;
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
                 className: "btn btn-primary btn-xs",
                 "data-toggle": "modal",
                 "data-target": "#defaultModal",
-                onClick: _this.viewFull.bind(value),
+                onClick: _this.viewFull.bind(_assertThisInitialized(_this), row.original.id),
                 children: "Edit"
               })
             });
@@ -6303,8 +6303,8 @@ var ShowUsers = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "viewFull",
-    value: function viewFull(row) {
-      console.log(row);
+    value: function viewFull(id) {
+      console.log(id);
     }
 
     //Fetch All users List 
@@ -6318,7 +6318,6 @@ var ShowUsers = /*#__PURE__*/function (_Component) {
           UsersList: data,
           data: data
         });
-        console.log(data);
       })["catch"](function (error) {
         console.log('Error..', error);
       });
