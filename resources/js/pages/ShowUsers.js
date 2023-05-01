@@ -3,17 +3,56 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useTable } from "react-table";
+import Table from "./Table";
 
+   
 class ShowUsers extends Component {
+
+
 
     constructor(props) {
         super(props);
         this.state = { 
             UsersList: [''],
+            data:[],
             LoggedUser: [''],
             Loader:false,
             errors: {},
             pid:'',
+            columns :  [
+                          {
+                            // first group - TV Show
+                            Header: "Users",
+                            // First group columns
+                            columns: [
+                              {
+                                Header: "Name",
+                                accessor: "name",
+                              }
+                            ],
+                          },
+                          {
+                            // Second group - Details
+                            Header: "Details",
+                            // Second group columns
+                            columns: [
+                              {
+                                Header: "Email",
+                                accessor: "email",
+                              },
+                              {
+                                Header: "Status",
+                                accessor: "id",
+                                
+                                    Cell: ({ value }) => (
+                                      <div>
+                                        <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#defaultModal"  onClick={this.viewFull.bind(value)}>Edit</button>
+                                      </div>
+                                    )       
+                              },
+                            ],
+                          },
+                        ],
             title: '',
             description : '',
             price: '',
@@ -26,12 +65,17 @@ class ShowUsers extends Component {
          this.fetchUsers();
     }
 
+    viewFull(row){
+        console.log(row);
+    }
+
      //Fetch All users List 
     fetchUsers() {
 
         axios.get('/user').then(({data})=>{
             this.setState({
                 UsersList: data,
+                data:data
             });
             console.log(data);
 
@@ -50,37 +94,9 @@ class ShowUsers extends Component {
                         <div className="card"> 
                             <div className="card-body">
 
-                                <table className="table table-bordered mb-0 text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>User ID</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                        this.state.UsersList.length > 0 && (
-                                               this.state.UsersList.map((row, key)=>(
+                            <Table columns={this.state.columns} data={this.state.UsersList} />
 
-                                                    <tr key={key}>
-                                                        <td>{row.id}</td>
-                                                        <td>{row.name}</td>
-                                                        <td>{row.email} AED</td>
-                                                        <td>
-                                                            
-
-                                                        
-                                                        </td>
-
-                                                    </tr>
-                                                ))
-                                            )
-                                        }
-
-                                    </tbody>
-                                </table>
+                               
                             </div>
                             
                         </div>
